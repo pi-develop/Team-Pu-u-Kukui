@@ -289,7 +289,7 @@ def main():
 
         json_data = None
       
-        if st.button("Extract from Page"):
+        if st.button("Extract Table from Page"):
             with pdfplumber.open(uploaded_file) as pdf:
               pages = pdf.pages
               # Get the total number of pages in the PDF
@@ -331,7 +331,8 @@ def main():
                 prompt = f"Extract JSON from table in text: {extracted_text}"
 
                 # Model Predict
-                model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
+                with st.spinner("Extracting data, please wait..."):
+                  model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
                 json_data = extract_json(model_prediction.outputs[0].data.text.raw)
         
         if json_data:
