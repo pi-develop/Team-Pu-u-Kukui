@@ -500,6 +500,28 @@ json_string = '''{
   ]
 }'''
 
+@st.experimental_fragment
+def show_codes():
+    st.text_area(
+      "Edit the JSON here:",
+      value=st.session_state['json_key'],
+      height=300,
+      key="json_key")
+    
+    # Update the table only when the button is clicked
+    if st.button("Update HTML"):
+      update_table()
+
+    # Show the generated HTML table
+    st.subheader("Generated HTML")
+    
+    html_table = st.session_state["html_table"]
+    st.markdown("### HTML Table Output")
+    st.markdown(html_table, unsafe_allow_html=True) 
+      
+    st.markdown("### HTML Code")
+    st.code(html_table, language='html')
+  
 def main():
     st.title("Health Data Extractor")
     
@@ -570,26 +592,7 @@ def main():
           if 'html_table' not in st.session_state:
             st.session_state['html_table'] = ""  # Empty until first update
           
-          with st.form("HTML"):
-            st.text_area(
-              "Edit the JSON here:",
-              value=st.session_state['json_key'],
-              height=300,
-              key="json_key")
-            
-            # Update the table only when the button is clicked
-            if st.form_submit_button("Update HTML"):
-              update_table()
-    
-            # Show the generated HTML table
-            st.subheader("Generated HTML")
-            
-            html_table = st.session_state["html_table"]
-            st.markdown("### HTML Table Output")
-            st.markdown(html_table, unsafe_allow_html=True) 
-              
-            st.markdown("### HTML Code")
-            st.code(html_table, language='html')        
-      
+          show_codes()
+                    
 if __name__ == "__main__":
     main()
