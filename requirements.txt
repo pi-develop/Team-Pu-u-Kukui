@@ -1,5 +1,5 @@
 streamlit
 requests
-clarifai==10.9.2
+clarifai==10.9.1
 pdfplumber
 regex
