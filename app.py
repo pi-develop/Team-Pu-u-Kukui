@@ -145,7 +145,7 @@ def json_to_html(data):
     <table border="1">
         <thead>
             <tr>
-                <th>Demographic Category</th> <!-- Updated header -->
+                <th>Category</th> <!-- Updated header -->
                 <th colspan="2">Non-rural</th>
                 <th colspan="2">Rural</th>
             </tr>
@@ -173,32 +173,60 @@ def json_to_html(data):
     # Add total population
     total_population = data.get("total_population", {})
     html += add_row("Total Population", total_population.get("non_rural"), total_population.get("rural"))
+    
+    # Add a divider row
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
 
     # Add county distribution
+    html += '<tr><td colspan="5"><strong>County</strong></td></tr>'
     for county_data in data.get("county_distribution", []):
         html += add_row(county_data['county'], county_data.get("non_rural"), county_data.get("rural"))
 
+    # Add a divider row
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+
     # Add gender identity
+    html += '<tr><td colspan="5"><strong>Gender Identity</strong></td></tr>'
     for gender_data in data.get("gender_identity", []):
         html += add_row(gender_data['gender'], gender_data.get("non_rural"), gender_data.get("rural"))
 
+    # Add a divider row
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+
     # Add race and ethnicity
+    html += '<tr><td colspan="5"><strong>Race/Ethnicity</strong></td></tr>'
     for race_data in data.get("race_ethnicity", []):
         html += add_row(race_data['race'], race_data.get("non_rural"), race_data.get("rural"))
 
+    # Add a divider row
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+
     # Add income
+    html += '<tr><td colspan="5"><strong>Income</strong></td></tr>'
     for income_data in data.get("income", []):
         html += add_row(income_data['income_level'], income_data.get("non_rural"), income_data.get("rural"))
 
+    # Add a divider row
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+
     # Add education
+    html += '<tr><td colspan="5"><strong>Education</strong></td></tr>'
     for education_data in data.get("education", []):
         html += add_row(education_data['education_level'], education_data.get("non_rural"), education_data.get("rural"))
 
+    # Add a divider row
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+
     # Add disability
+    html += '<tr><td colspan="5"><strong>Disability</strong></td></tr>'
     for disability_data in data.get("disability", []):
         html += add_row(disability_data['disability_level'], disability_data.get("non_rural"), disability_data.get("rural"))
 
+    # Add a divider row
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+
     # Add age continuous
+    html += '<tr><td colspan="5"><strong>Age (continuous)</strong></td></tr>'
     for age_data in data.get("age_continuous", []):
         html += add_row(age_data['age'], age_data.get("non_rural"), age_data.get("rural"))
 
