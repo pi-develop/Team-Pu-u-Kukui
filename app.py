@@ -30,8 +30,74 @@ You are a text entity extraction specialist. Given some text, your task is to ex
      "sample": "integer",
       "state_population": "integer"
     }
-  }] 
-}  
+  }],
+  "gender_identity": [{
+    "gender": "string",
+    "non_rural": {
+      "sample": "integer",
+      "state_population": "integer"
+    },
+    "rural": {
+     "sample": "integer",
+      "state_population": "integer"
+    }
+  }],
+  "race_ethnicity": [{
+    "race": "string",
+    "non_rural": {
+      "sample": "integer",
+      "state_population": "integer"
+    },
+    "rural": {
+     "sample": "integer",
+      "state_population": "integer"
+    }
+  }],
+  "income": [{
+    "income_level": "string",
+    "non_rural": {
+      "sample": "integer",
+      "state_population": "integer"
+    },
+    "rural": {
+     "sample": "integer",
+      "state_population": "integer"
+    }
+  }],
+  "education": [{
+    "education_level": "string",
+    "non_rural": {
+      "sample": "integer",
+      "state_population": "integer"
+    },
+    "rural": {
+     "sample": "integer",
+      "state_population": "integer"
+    }
+  }],
+  "disability": [{
+    "disability_level": "string",
+    "non_rural": {
+      "sample": "integer",
+      "state_population": "integer"
+    },
+    "rural": {
+     "sample": "integer",
+      "state_population": "integer"
+    }
+  }],
+  "age_continuous": [{
+    "age": "string",
+    "non_rural": {
+      "sample": "integer",
+      "state_population": "integer"
+    },
+    "rural": {
+     "sample": "integer",
+      "state_population": "integer"
+    }
+  }]
+}
 
 The JSON schema must be followed during the extraction.
 The values must only include text found in the document
