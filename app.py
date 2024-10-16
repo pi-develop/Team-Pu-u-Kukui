@@ -500,7 +500,7 @@ json_string = '''{
   ]
 }'''
 
-@st.experimental_fragment
+@st.fragment
 def show_codes():
     st.text_area(
       "Edit the JSON here:",
