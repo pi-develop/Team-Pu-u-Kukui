@@ -276,6 +276,7 @@ def show_codes():
   
 def main():
     st.title("Health Data Extractor")
+    st.image("https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png")
     
     # File uploader for PDF files
     uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
