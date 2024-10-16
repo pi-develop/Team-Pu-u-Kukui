@@ -267,6 +267,253 @@ def update_table():
         st.error("The JSON data is invalid. Please correct it.")
         st.session_state["html_table"] = ""
 
+json_string = '''{
+  "total_population": {
+    "non_rural": {
+      "sample": 1232,
+      "state_population": 1043628
+    },
+    "rural": {
+      "sample": 325,
+      "state_population": 370050
+    }
+  },
+  "county_distribution": [
+    {
+      "county": "Hawai\u2018i county",
+      "non_rural": {
+        "sample": 122,
+        "state_population": 91339
+      },
+      "rural": {
+        "sample": 102,
+        "state_population": 106072
+      }
+    },
+    {
+      "county": "Honolulu county",
+      "non_rural": {
+        "sample": 1049,
+        "state_population": 875369
+      },
+      "rural": {
+        "sample": 103,
+        "state_population": 116220
+      }
+    },
+    {
+      "county": "Kauai county",
+      "non_rural": {
+        "sample": 18,
+        "state_population": 17604
+      },
+      "rural": {
+        "sample": 42,
+        "state_population": 44949
+      }
+    },
+    {
+      "county": "Maui county",
+      "non_rural": {
+        "sample": 43,
+        "state_population": 59316
+      },
+      "rural": {
+        "sample": 78,
+        "state_population": 102809
+      }
+    }
+  ],
+  "gender_identity": [
+    {
+      "gender": "Women",
+      "non_rural": {
+        "sample": 723,
+        "state_population": 1187763
+      },
+      "rural": {
+        "sample": 224,
+        "state_population": 297056
+      }
+    },
+    {
+      "gender": "Men",
+      "non_rural": {
+        "sample": 503,
+        "state_population": 1187763
+      },
+      "rural": {
+        "sample": 98,
+        "state_population": 297056
+      }
+    }
+  ],
+  "race_ethnicity": [
+    {
+      "race": "Asian",
+      "non_rural": {
+        "sample": 610,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 90,
+        "state_population": null
+      }
+    },
+    {
+      "race": "Native Hawaiian or Pacific Islander",
+      "non_rural": {
+        "sample": 174,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 72,
+        "state_population": null
+      }
+    },
+    {
+      "race": "Other race",
+      "non_rural": {
+        "sample": 81,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 17,
+        "state_population": null
+      }
+    },
+    {
+      "race": "White",
+      "non_rural": {
+        "sample": 319,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 133,
+        "state_population": null
+      }
+    }
+  ],
+  "income": [
+    {
+      "income_level": "Below poverty line",
+      "non_rural": {
+        "sample": 90,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 49,
+        "state_population": null
+      }
+    },
+    {
+      "income_level": "Above poverty line",
+      "non_rural": {
+        "sample": 987,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 239,
+        "state_population": null
+      }
+    }
+  ],
+  "education": [
+    {
+      "education_level": "High School or Below",
+      "non_rural": {
+        "sample": 105,
+        "state_population": 242295
+      },
+      "rural": {
+        "sample": 54,
+        "state_population": 114250
+      }
+    },
+    {
+      "education_level": "Postsecondary",
+      "non_rural": {
+        "sample": 1122,
+        "state_population": 526801
+      },
+      "rural": {
+        "sample": 270,
+        "state_population": 164105
+      }
+    }
+  ],
+  "disability": [
+    {
+      "disability_level": "Disability",
+      "non_rural": {
+        "sample": 259,
+        "state_population": 120077
+      },
+      "rural": {
+        "sample": 79,
+        "state_population": 51248
+      }
+    },
+    {
+      "disability_level": "No disability",
+      "non_rural": {
+        "sample": 929,
+        "state_population": 912719
+      },
+      "rural": {
+        "sample": 239,
+        "state_population": 352546
+      }
+    }
+  ],
+  "age_continuous": [
+    {
+      "age": "Minimum",
+      "non_rural": {
+        "sample": 18,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 19,
+        "state_population": null
+      }
+    },
+    {
+      "age": "Mean",
+      "non_rural": {
+        "sample": 54.7,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 51.8,
+        "state_population": null
+      }
+    },
+    {
+      "age": "Median",
+      "non_rural": {
+        "sample": 55,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 49,
+        "state_population": null
+      }
+    },
+    {
+      "age": "Maximum",
+      "non_rural": {
+        "sample": 93,
+        "state_population": null
+      },
+      "rural": {
+        "sample": 93,
+        "state_population": null
+      }
+    }
+  ]
+}'''
+
 def main():
     st.title("Health Data Extractor")
     
@@ -324,9 +571,10 @@ def main():
                 prompt = f"Extract JSON from table in text: {extracted_text}"
 
                 # Model Predict
-                model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
-                json_data = extract_json(model_prediction.outputs[0].data.text.raw)
+                # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
+                # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
 
+        json_data = json.loads(json_string)
         if json_data:
           # Store JSON in session_state to persist across reruns
           if 'json_key' not in st.session_state:
