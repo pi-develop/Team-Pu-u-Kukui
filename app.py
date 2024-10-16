@@ -167,7 +167,7 @@ def json_to_html(data):
             html_row += f'<td>{non_rural.get(key) if non_rural and key in non_rural else ""}</td>'
         for key in ['sample', 'state_population']:
             html_row += f'<td>{rural.get(key) if rural and key in rural else ""}</td>'
-        html_row += '</tr>'
+        html_row += '</tr>\n'  # Add newline for readability
         return html_row
 
     # Add total population
@@ -175,58 +175,58 @@ def json_to_html(data):
     html += add_row("Total Population", total_population.get("non_rural"), total_population.get("rural"))
     
     # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
 
     # Add county distribution
-    html += '<tr><td colspan="5"><strong>County</strong></td></tr>'
+    html += '<tr><td colspan="5"><strong>County</strong></td></tr>\n'
     for county_data in data.get("county_distribution", []):
         html += add_row(county_data['county'], county_data.get("non_rural"), county_data.get("rural"))
 
     # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
 
     # Add gender identity
-    html += '<tr><td colspan="5"><strong>Gender Identity</strong></td></tr>'
+    html += '<tr><td colspan="5"><strong>Gender Identity</strong></td></tr>\n'
     for gender_data in data.get("gender_identity", []):
         html += add_row(gender_data['gender'], gender_data.get("non_rural"), gender_data.get("rural"))
 
     # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
 
     # Add race and ethnicity
-    html += '<tr><td colspan="5"><strong>Race/Ethnicity</strong></td></tr>'
+    html += '<tr><td colspan="5"><strong>Race and Ethnicity</strong></td></tr>\n'
     for race_data in data.get("race_ethnicity", []):
         html += add_row(race_data['race'], race_data.get("non_rural"), race_data.get("rural"))
 
     # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
 
     # Add income
-    html += '<tr><td colspan="5"><strong>Income</strong></td></tr>'
+    html += '<tr><td colspan="5"><strong>Income</strong></td></tr>\n'
     for income_data in data.get("income", []):
         html += add_row(income_data['income_level'], income_data.get("non_rural"), income_data.get("rural"))
 
     # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
 
     # Add education
-    html += '<tr><td colspan="5"><strong>Education</strong></td></tr>'
+    html += '<tr><td colspan="5"><strong>Education</strong></td></tr>\n'
     for education_data in data.get("education", []):
         html += add_row(education_data['education_level'], education_data.get("non_rural"), education_data.get("rural"))
 
     # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
 
     # Add disability
-    html += '<tr><td colspan="5"><strong>Disability</strong></td></tr>'
+    html += '<tr><td colspan="5"><strong>Disability</strong></td></tr>\n'
     for disability_data in data.get("disability", []):
         html += add_row(disability_data['disability_level'], disability_data.get("non_rural"), disability_data.get("rural"))
 
     # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>'
+    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
 
     # Add age continuous
-    html += '<tr><td colspan="5"><strong>Age (continuous)</strong></td></tr>'
+    html += '<tr><td colspan="5"><strong>Age (continuous)</strong></td></tr>\n'
     for age_data in data.get("age_continuous", []):
         html += add_row(age_data['age'], age_data.get("non_rural"), age_data.get("rural"))
 
