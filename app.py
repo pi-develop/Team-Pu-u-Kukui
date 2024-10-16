@@ -275,8 +275,12 @@ def show_codes():
     st.code(html_table, language='html')
   
 def main():
-    st.title("Health Data Extractor")
-    st.image("https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png")
+    col1, mid, col2 = st.columns([1,1,20])
+    with col1:
+      st.image("https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png", width=60)
+    with col2:
+      st.title("Health Data Extractor")
+
     
     # File uploader for PDF files
     uploaded_file = st.file_uploader("Upload a PDF file", type=["pdf"])
