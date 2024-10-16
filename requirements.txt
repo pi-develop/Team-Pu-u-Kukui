@@ -1,0 +1,5 @@
+streamlit
+requests
+clarifai
+pdfplumber
+regex
