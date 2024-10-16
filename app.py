@@ -140,118 +140,76 @@ def validate_and_load_json(json_string):
     return None
 
 def json_to_html(data):
-    html = "<table border='1'>\n"
+    # Start the HTML table
+    html = '''
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Demographic Category</th> <!-- Updated header -->
+                <th colspan="2">Non-rural</th>
+                <th colspan="2">Rural</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>Sample</th>
+                <th>State Population</th>
+                <th>Sample</th>
+                <th>State Population</th>
+            </tr>
+        </thead>
+        <tbody>
+    '''
+    
+    # Helper function to add rows
+    def add_row(label, non_rural, rural):
+        html_row = f'<tr><td>{label}</td>'
+        for key in ['sample', 'state_population']:
+            html_row += f'<td>{non_rural.get(key) if non_rural and key in non_rural else ""}</td>'
+        for key in ['sample', 'state_population']:
+            html_row += f'<td>{rural.get(key) if rural and key in rural else ""}</td>'
+        html_row += '</tr>'
+        return html_row
 
-    # Create the header row
-    html += "  <tr>\n"
-    html += "    <th>Section</th>\n"
-    html += "    <th colspan='2'>Non-Rural</th>\n"
-    html += "    <th colspan='2'>Rural</th>\n"
-    html += "  </tr>\n"
-    html += "  <tr>\n"
-    html += "    <th></th>\n"
-    html += "    <th>Sample</th>\n"
-    html += "    <th>State Population</th>\n"
-    html += "    <th>Sample</th>\n"
-    html += "    <th>State Population</th>\n"
-    html += "  </tr>\n"
+    # Add total population
+    total_population = data.get("total_population", {})
+    html += add_row("Total Population", total_population.get("non_rural"), total_population.get("rural"))
 
-    if "sample_data" in data:
-        sample_data = data["sample_data"]
+    # Add county distribution
+    for county_data in data.get("county_distribution", []):
+        html += add_row(county_data['county'], county_data.get("non_rural"), county_data.get("rural"))
 
-        # Total Population Section
-        if "total_population" in sample_data:
-            html += "  <tr><td>Total Population</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["total_population"].get("non_rural", "N/A"))
-            html += "    <td>N/A</td>\n"  # No State Population for Total Population
-            html += "    <td>{}</td>\n".format(sample_data["total_population"].get("rural", "N/A"))
-            html += "    <td>N/A</td>\n"
-            html += "  </tr>\n"
+    # Add gender identity
+    for gender_data in data.get("gender_identity", []):
+        html += add_row(gender_data['gender'], gender_data.get("non_rural"), gender_data.get("rural"))
 
-        # County Distribution Section
-        if "county_distribution" in sample_data:
-            for county in sample_data["county_distribution"]:
-                html += "  <tr><td>County: {}</td>\n".format(county["county"])
-                html += "    <td>{}</td>\n".format(county["sample"].get("non_rural", "N/A"))
-                html += "    <td>{}</td>\n".format(county["state_population"].get("non_rural", "N/A"))
-                html += "    <td>{}</td>\n".format(county["sample"].get("rural", "N/A"))
-                html += "    <td>{}</td>\n".format(county["state_population"].get("rural", "N/A"))
-                html += "  </tr>\n"
+    # Add race and ethnicity
+    for race_data in data.get("race_ethnicity", []):
+        html += add_row(race_data['race'], race_data.get("non_rural"), race_data.get("rural"))
 
-        # Gender Identity Section
-        if "gender_identity" in sample_data:
-            html += "  <tr><td>Gender Identity: Women</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["non_rural"]["women"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["non_rural"]["women"]["percentage"])
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["rural"]["women"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["rural"]["women"]["percentage"])
-            html += "  </tr>\n"
+    # Add income
+    for income_data in data.get("income", []):
+        html += add_row(income_data['income_level'], income_data.get("non_rural"), income_data.get("rural"))
 
-            html += "  <tr><td>Gender Identity: Men</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["non_rural"]["men"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["non_rural"]["men"]["percentage"])
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["rural"]["men"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["gender_identity"]["rural"]["men"]["percentage"])
-            html += "  </tr>\n"
+    # Add education
+    for education_data in data.get("education", []):
+        html += add_row(education_data['education_level'], education_data.get("non_rural"), education_data.get("rural"))
 
-        # Race and Ethnicity Section
-        if "race_ethnicity" in sample_data:
-            html += "  <tr><td>Race/Ethnicity: Asian</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["race_ethnicity"]["non_rural"].get("asian", "N/A"))
-            html += "    <td>N/A</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["race_ethnicity"]["rural"].get("asian", "N/A"))
-            html += "    <td>N/A</td>\n"
-            html += "  </tr>\n"
+    # Add disability
+    for disability_data in data.get("disability", []):
+        html += add_row(disability_data['disability_level'], disability_data.get("non_rural"), disability_data.get("rural"))
 
-            html += "  <tr><td>Race/Ethnicity: NHPI</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["race_ethnicity"]["non_rural"].get("nhpi", "N/A"))
-            html += "    <td>N/A</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["race_ethnicity"]["rural"].get("nhpi", "N/A"))
-            html += "    <td>N/A</td>\n"
-            html += "  </tr>\n"
+    # Add age continuous
+    for age_data in data.get("age_continuous", []):
+        html += add_row(age_data['age'], age_data.get("non_rural"), age_data.get("rural"))
 
-            html += "  <tr><td>Race/Ethnicity: White</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["race_ethnicity"]["non_rural"].get("white", "N/A"))
-            html += "    <td>N/A</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["race_ethnicity"]["rural"].get("white", "N/A"))
-            html += "    <td>N/A</td>\n"
-            html += "  </tr>\n"
-
-        # Income Section
-        if "income" in sample_data:
-            html += "  <tr><td>Income: Below Poverty</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["income"]["non_rural"]["below_poverty"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["income"]["non_rural"]["below_poverty"]["percentage"])
-            html += "    <td>{}</td>\n".format(sample_data["income"]["rural"]["below_poverty"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["income"]["rural"]["below_poverty"]["percentage"])
-            html += "  </tr>\n"
-
-            html += "  <tr><td>Income: Above Poverty</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["income"]["non_rural"]["above_poverty"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["income"]["non_rural"]["above_poverty"]["percentage"])
-            html += "    <td>{}</td>\n".format(sample_data["income"]["rural"]["above_poverty"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["income"]["rural"]["above_poverty"]["percentage"])
-            html += "  </tr>\n"
-
-        # Education Section
-        if "education" in sample_data:
-            html += "  <tr><td>Education: High School or Below</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["education"]["non_rural"]["high_school_or_below"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["education"]["non_rural"]["high_school_or_below"]["percentage"])
-            html += "    <td>{}</td>\n".format(sample_data["education"]["rural"]["high_school_or_below"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["education"]["rural"]["high_school_or_below"]["percentage"])
-            html += "  </tr>\n"
-
-            html += "  <tr><td>Education: Postsecondary</td>\n"
-            html += "    <td>{}</td>\n".format(sample_data["education"]["non_rural"]["postsecondary"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["education"]["non_rural"]["postsecondary"]["percentage"])
-            html += "    <td>{}</td>\n".format(sample_data["education"]["rural"]["postsecondary"]["count"])
-            html += "    <td>{}</td>\n".format(sample_data["education"]["rural"]["postsecondary"]["percentage"])
-            html += "  </tr>\n"
-
-    html += "</table>\n"
+    # Close the table
+    html += '''
+        </tbody>
+    </table>
+    '''
+    
     return html
-
+   
 # Function to update HTML table based on changes in the JSON textarea
 def update_table():
     try:
