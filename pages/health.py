@@ -100,53 +100,106 @@ def validate_and_load_json(json_string):
         st.error(f"Invalid JSON format: {e}")
     return None
 
-def json_to_html(json_data):
-    # Start HTML table
-    html = """
+def json_to_html(data):
+    # Start the HTML table
+    html_table = """
     <table border="1" cellpadding="5" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Category</th>
-                <th colspan="2">Rurality Definition 1</th>
-                <th colspan="2">Rurality Definition 2</th>
-                <th colspan="2">Rurality Definition 3</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>Non-Rural</th>
-                <th>Rural</th>
-                <th>Non-Rural</th>
-                <th>Rural</th>
-                <th>Non-Rural</th>
-                <th>Rural</th>
-            </tr>
-        </thead>
-        <tbody>
+      <thead>
+        <tr>
+          <th></th>
+          <th colspan="2">Rurality Definition 1</th>
+          <th colspan="2">Rurality Definition 2</th>
+          <th colspan="2">Rurality Definition 3</th>
+        </tr>
+        <tr>
+          <th>Category</th>
+          <th>Non-Rural</th>
+          <th>Rural</th>
+          <th>Non-Rural</th>
+          <th>Rural</th>
+          <th>Non-Rural</th>
+          <th>Rural</th>
+        </tr>
+      </thead>
+      <tbody>
     """
-    
-    # Define categories to iterate over
-    categories = ["overall_health", "physical_health", "mental_health"]
-    
-    # Iterate through each category in the JSON data
-    for category in categories:
-        if category in json_data and isinstance(json_data[category], list):
-            for item in json_data[category]:
-                html += f"<tr><td>{category.replace('_', ' ').capitalize()}</td>"
-                
-                # Safely get values for rurality definitions
-                for i in range(1, 4):
-                    def_key = f"rurality_definition_{i}"
-                    non_rural = item.get(def_key, {}).get("non_rural", "N/A")
-                    rural = item.get(def_key, {}).get("rural", "N/A")
-                    
-                    # Add non-rural and rural values to the row
-                    html += f"<td>{non_rural}</td><td>{rural}</td>"
-                
-                html += "</tr>"
-    
-    # Close the table
-    html += "</tbody></table>"
-    return html
+
+    # Helper function to handle missing values
+    def get_value(d, key, sub_key):
+        return d.get(key, {}).get(sub_key, 'N/A')
+
+    # Process overall_health section
+    if 'overall_health' in data:
+        for entry in data['overall_health']:
+            perception = entry.get('perception', 'N/A')
+            row = f"""
+            <tr>
+              <td>{perception}</td>
+              <td>{get_value(entry, 'rurality_definition_1', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_1', 'rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_2', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_2', 'rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_3', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_3', 'rural')}</td>
+            </tr>
+            """
+            html_table += row
+
+        # Add a section separator row
+        html_table += """
+        <tr>
+          <td colspan="7" style="text-align:center; font-weight:bold;">Physical Health</td>
+        </tr>
+        """
+
+    # Process physical_health section
+    if 'physical_health' in data:
+        for entry in data['physical_health']:
+            aggregate = entry.get('aggregate', 'N/A')
+            row = f"""
+            <tr>
+              <td>{aggregate}</td>
+              <td>{get_value(entry, 'rurality_definition_1', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_1', 'rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_2', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_2', 'rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_3', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_3', 'rural')}</td>
+            </tr>
+            """
+            html_table += row
+
+        # Add a section separator row
+        html_table += """
+        <tr>
+          <td colspan="7" style="text-align:center; font-weight:bold;">Mental Health</td>
+        </tr>
+        """
+
+    # Process mental_health section
+    if 'mental_health' in data:
+        for entry in data['mental_health']:
+            aggregate = entry.get('aggregate', 'N/A')
+            row = f"""
+            <tr>
+              <td>{aggregate}</td>
+              <td>{get_value(entry, 'rurality_definition_1', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_1', 'rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_2', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_2', 'rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_3', 'non_rural')}</td>
+              <td>{get_value(entry, 'rurality_definition_3', 'rural')}</td>
+            </tr>
+            """
+            html_table += row
+
+    # End the table
+    html_table += """
+      </tbody>
+    </table>
+    """
+
+    return html_table
    
 # Function to update HTML table based on changes in the JSON textarea
 def update_table():
