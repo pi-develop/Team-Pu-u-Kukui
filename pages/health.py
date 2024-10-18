@@ -184,7 +184,211 @@ def show_codes():
       
     st.markdown("### HTML Code")
     st.code(html_table, language='html')
-  
+
+json_string = '''{
+  "overall_health": [
+    {
+      "perception": "Excellent",
+      "rurality_definition_1": {
+        "non_rural": 140,
+        "rural": 30
+      },
+      "rurality_definition_2": {
+        "non_rural": 147,
+        "rural": 23
+      },
+      "rurality_definition_3": {
+        "non_rural": 124,
+        "rural": 46
+      }
+    },
+    {
+      "perception": "Very good",
+      "rurality_definition_1": {
+        "non_rural": 493,
+        "rural": 101
+      },
+      "rurality_definition_2": {
+        "non_rural": 521,
+        "rural": 73
+      },
+      "rurality_definition_3": {
+        "non_rural": 458,
+        "rural": 136
+      }
+    },
+    {
+      "perception": "Good",
+      "rurality_definition_1": {
+        "non_rural": 405,
+        "rural": 121
+      },
+      "rurality_definition_2": {
+        "non_rural": 447,
+        "rural": 79
+      },
+      "rurality_definition_3": {
+        "non_rural": 381,
+        "rural": 145
+      }
+    },
+    {
+      "perception": "Fair",
+      "rurality_definition_1": {
+        "non_rural": 147,
+        "rural": 52
+      },
+      "rurality_definition_2": {
+        "non_rural": 164,
+        "rural": 35
+      },
+      "rurality_definition_3": {
+        "non_rural": 137,
+        "rural": 62
+      }
+    },
+    {
+      "perception": "Poor",
+      "rurality_definition_1": {
+        "non_rural": 22,
+        "rural": 18
+      },
+      "rurality_definition_2": {
+        "non_rural": 31,
+        "rural": 9
+      },
+      "rurality_definition_3": {
+        "non_rural": 28,
+        "rural": 12
+      }
+    }
+  ],
+  "physical_health": [
+    {
+      "aggregate": "Minimum",
+      "rurality_definition_1": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_2": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_3": {
+        "non_rural": 0,
+        "rural": 0
+      }
+    },
+    {
+      "aggregate": "Median",
+      "rurality_definition_1": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_2": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_3": {
+        "non_rural": 0,
+        "rural": 0
+      }
+    },
+    {
+      "aggregate": "Mean",
+      "rurality_definition_1": {
+        "non_rural": 2.5,
+        "rural": 3.8
+      },
+      "rurality_definition_2": {
+        "non_rural": 2.7,
+        "rural": 3.2
+      },
+      "rurality_definition_3": {
+        "non_rural": 2.7,
+        "rural": 2.9
+      }
+    },
+    {
+      "aggregate": "Maximum",
+      "rurality_definition_1": {
+        "non_rural": 30,
+        "rural": 30
+      },
+      "rurality_definition_2": {
+        "non_rural": 30,
+        "rural": 30
+      },
+      "rurality_definition_3": {
+        "non_rural": 30,
+        "rural": 30
+      }
+    }
+  ],
+  "mental_health": [
+    {
+      "aggregate": "Minimum",
+      "rurality_definition_1": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_2": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_3": {
+        "non_rural": 0,
+        "rural": 0
+      }
+    },
+    {
+      "aggregate": "Median",
+      "rurality_definition_1": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_2": {
+        "non_rural": 0,
+        "rural": 0
+      },
+      "rurality_definition_3": {
+        "non_rural": 0,
+        "rural": 0
+      }
+    },
+    {
+      "aggregate": "Mean",
+      "rurality_definition_1": {
+        "non_rural": 2,
+        "rural": 3.1
+      },
+      "rurality_definition_2": {
+        "non_rural": 2.2,
+        "rural": 2.6
+      },
+      "rurality_definition_3": {
+        "non_rural": 2.2,
+        "rural": 2.4
+      }
+    },
+    {
+      "aggregate": "Maximum",
+      "rurality_definition_1": {
+        "non_rural": 30,
+        "rural": 30
+      },
+      "rurality_definition_2": {
+        "non_rural": 30,
+        "rural": 30
+      },
+      "rurality_definition_3": {
+        "non_rural": 30,
+        "rural": 30
+      }
+    }
+  ]
+}'''
+
 def main():
     col1, mid, col2 = st.columns([1,1,20])
     with col1:
@@ -248,8 +452,9 @@ def main():
 
                 # Model Predict
                 with st.spinner("Extracting data, please wait..."):
-                  model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
-                  json_data = extract_json(model_prediction.outputs[0].data.text.raw)
+                  # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
+                  # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
+                  json_data = json.loads(json_string)
                   
         if json_data:
           # Store JSON in session_state to persist across reruns
