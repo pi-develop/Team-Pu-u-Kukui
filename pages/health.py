@@ -100,7 +100,7 @@ def validate_and_load_json(json_string):
         st.error(f"Invalid JSON format: {e}")
     return None
 
-def json_to_html(data):
+def json_to_html(json_data):
     # Start HTML table
     html = """
     <table border="1" cellpadding="5" cellspacing="0">
