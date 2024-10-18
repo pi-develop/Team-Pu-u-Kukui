@@ -227,8 +227,8 @@ def json_to_html(data):
 
     # Add age continuous
     html += '<tr><td colspan="5"><strong>Age (continuous)</strong></td></tr>\n'
-    for age_data in data.get("age_continuous", []):
-        html += add_row(age_data['age'], age_data.get("non_rural"), age_data.get("rural"))
+    for age_data in data.get("age", []):
+        html += add_row(age_data['aggregate'], age_data.get("non_rural"), age_data.get("rural"))
 
     # Close the table
     html += '''
