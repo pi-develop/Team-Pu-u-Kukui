@@ -225,7 +225,7 @@ def main():
                       else:
                           # Loop through the page range and extract text
                           for page_num in range(start_page, end_page + 1):
-                              extracted_text += pdf.pages[page_num].extract_text) + "\n"
+                              extracted_text += pdf.pages[page_num].extract_text() + "\n"
   
                   else:
                       # Single page input
@@ -235,7 +235,7 @@ def main():
                       if single_page < 0 or single_page >= total_pages:
                           st.error("Invalid page number")
                       else:
-                          extracted_text += pdf.pages[page_num].extract_text)
+                          extracted_text += pdf.pages[page_num].extract_text()
   
               except ValueError:
                   st.error("Please enter a valid page number or range.")
