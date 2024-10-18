@@ -247,7 +247,8 @@ def main():
                 with st.spinner("Extracting data, please wait..."):
                   # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
                 # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
-
+                json_data = json.loads('{"hello": "world"}')
+                  
                   for page in extracted_text:
                     # Join the strings within the inner list (page) and display them as one block
                     page_text = '\n'.join(page)
@@ -259,9 +260,9 @@ def main():
         if json_data:
           # Store JSON in session_state to persist across reruns
           if 'json_key' not in st.session_state:
-            # st.session_state['json_key'] = json.dumps(json_data, indent=2)
+            st.session_state['json_key'] = json.dumps(json_data, indent=2)
           if 'html_table' not in st.session_state:
-            # st.session_state['html_table'] = ""  # Empty until first update
+            st.session_state['html_table'] = ""  # Empty until first update
           
           show_codes()
                     
