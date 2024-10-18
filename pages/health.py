@@ -152,13 +152,14 @@ def json_to_html(data):
 def update_table():
     try:
         # Get the modified JSON data
-        json_data = json.loads(st.session_state["json_key"])
+        json_data = json.loads(st.session_state['json_key'])
+      
+        if json_data:
+          # Generate the updated HTML table
+          html_table = json_to_html(json_data)
 
-        # Generate the updated HTML table
-        html_table = json_to_html(json_data)
-
-        # Update the HTML content on the page
-        st.session_state["html_table"] = html_table
+          # Update the HTML content on the page
+          st.session_state["html_table"] = html_table
     except json.JSONDecodeError:
         st.error("The JSON data is invalid. Please correct it.")
         st.session_state["html_table"] = ""
@@ -461,13 +462,10 @@ def main():
           # Store JSON in session_state to persist across reruns
           if 'json_key' not in st.session_state:
             st.session_state['json_key'] = json.dumps(json_data, indent=2)
-
-            st.code(st.session_state['json_key'])
-          
           if 'html_table' not in st.session_state:
             st.session_state['html_table'] = ""  # Empty until first update
           
-          # show_codes()
+          show_codes()
                     
 if __name__ == "__main__":
     main()
