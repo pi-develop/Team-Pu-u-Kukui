@@ -249,7 +249,7 @@ def main():
                 # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
                   json_data = json.loads('{"hello": "world"}')
 
-                  st.markdown('\n\n'.join(extracted_text))
+                  st.markdown(json.dumps(extracted_text))
                   
                   
         
