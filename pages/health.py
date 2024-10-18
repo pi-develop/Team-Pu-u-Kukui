@@ -130,6 +130,13 @@ def json_to_html(data):
 
     # Process overall_health section
     if 'overall_health' in data:
+        # Add the "Overall Health Perception" section
+        html_table += """
+        <tr>
+          <td colspan="7" style="text-align:center; font-weight:bold;">Overall Health Perception</td>
+        </tr>
+        """
+      
         for entry in data['overall_health']:
             perception = entry.get('perception', 'N/A')
             row = f"""
