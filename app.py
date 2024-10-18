@@ -266,12 +266,8 @@ def show_codes():
       update_table()
 
     # Show the generated HTML table
-    st.subheader("Generated HTML")
     
-    html_table = st.session_state["html_table"]
-    st.markdown("### HTML Table Output")
-    st.markdown(html_table, unsafe_allow_html=True) 
-      
+    html_table = st.session_state["html_table"]  
     st.markdown("### HTML Code")
     st.code(html_table, language='html')
   
