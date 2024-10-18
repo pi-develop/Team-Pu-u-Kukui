@@ -7,7 +7,7 @@ import regex
 from clarifai.client.model import Model
 
 SYS_PROMPT = '''
-You are a text entity extraction specialist. Given some text, your task is to extract the values of the following entities:
+You are a text entity extraction specialist. Given a table embedded in some text, your task is to extract the table values into the following entities:
 
 {
   "overall_health": [{
@@ -61,6 +61,9 @@ The JSON schema must be followed during the extraction.
 The values must only include text found in the document
 Do not normalize any entity value.
 If an entity is not found in the document, set the entity value to null.
+Table starts when columns "Rurality Definition 1", "Rurality Definition 2", or "Rurality Definition 3" are encountered.
+Table ends when phrase "Table 2" is encountered.
+Ignore other text that are not part of the table.
 '''
 
 inference_params = dict(temperature=0.2, system_prompt=SYS_PROMPT)
@@ -241,18 +244,13 @@ def main():
                   st.error("Please enter a valid page number or range.")
             
               if extracted_text:
-                # prompt = f"Extract JSON from table in text: {extracted_text}"
+                prompt = f"Extract JSON from table in text: {extracted_text}"
 
                 # Model Predict
                 with st.spinner("Extracting data, please wait..."):
-                  # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
-                # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
-                  json_data = json.loads('{"hello": "world"}')
-
-                  st.markdown(extracted_text)
+                  model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
+                  json_data = extract_json(model_prediction.outputs[0].data.text.raw)
                   
-                  
-        
         if json_data:
           # Store JSON in session_state to persist across reruns
           if 'json_key' not in st.session_state:
