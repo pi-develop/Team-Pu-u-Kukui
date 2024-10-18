@@ -450,8 +450,6 @@ def main():
               if extracted_text:
                 prompt = f"Extract JSON from table in text: {extracted_text}"
 
-                st.markdown(prompt)
-
                 # Model Predict
                 with st.spinner("Extracting data, please wait..."):
                   # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
@@ -463,10 +461,13 @@ def main():
           # Store JSON in session_state to persist across reruns
           if 'json_key' not in st.session_state:
             st.session_state['json_key'] = json.dumps(json_data, indent=2)
+
+            st.code(st.session_state['json_key'])
+          
           if 'html_table' not in st.session_state:
             st.session_state['html_table'] = ""  # Empty until first update
           
-          show_codes()
+          # show_codes()
                     
 if __name__ == "__main__":
     main()
