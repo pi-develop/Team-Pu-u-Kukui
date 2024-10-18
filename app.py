@@ -86,8 +86,8 @@ You are a text entity extraction specialist. Given some text, your task is to ex
       "state_population": "integer"
     }
   }],
-  "age_continuous": [{
-    "age": "string",
+  "age": [{
+    "aggregate": "string",
     "non_rural": {
       "sample": "integer",
       "state_population": "integer"
