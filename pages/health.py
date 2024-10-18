@@ -61,7 +61,6 @@ The JSON schema must be followed during the extraction.
 The values must only include text found in the document
 Do not normalize any entity value.
 If an entity is not found in the document, set the entity value to null.
-If category "Age (continuous)" is detected store the values in "age" key in the JSON.
 '''
 
 inference_params = dict(temperature=0.2, system_prompt=SYS_PROMPT)
