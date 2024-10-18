@@ -209,7 +209,7 @@ def main():
               total_pages = len(pages)
 
               # Initialize the variable to store all extracted text
-              extracted_text = []
+              extracted_text = ''
   
               try:
                   # Check if the input is a range
@@ -225,7 +225,7 @@ def main():
                       else:
                           # Loop through the page range and extract text
                           for page_num in range(start_page, end_page + 1):
-                              extracted_text += pdf.pages[page_num].extract_table() + "\n"
+                              extracted_text += pdf.pages[page_num].extract_text) + "\n"
   
                   else:
                       # Single page input
@@ -235,7 +235,7 @@ def main():
                       if single_page < 0 or single_page >= total_pages:
                           st.error("Invalid page number")
                       else:
-                          extracted_text.append(pdf.pages[single_page].extract_table())
+                          extracted_text += pdf.pages[page_num].extract_text)
   
               except ValueError:
                   st.error("Please enter a valid page number or range.")
@@ -249,7 +249,7 @@ def main():
                 # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
                   json_data = json.loads('{"hello": "world"}')
 
-                  st.markdown(json.dumps(extracted_text))
+                  st.markdown(extracted_text)
                   
                   
         
