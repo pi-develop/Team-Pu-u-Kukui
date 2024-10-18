@@ -259,9 +259,9 @@ def main():
         if json_data:
           # Store JSON in session_state to persist across reruns
           if 'json_key' not in st.session_state:
-            st.session_state['json_key'] = json.dumps(json_data, indent=2)
+            # st.session_state['json_key'] = json.dumps(json_data, indent=2)
           if 'html_table' not in st.session_state:
-            st.session_state['html_table'] = ""  # Empty until first update
+            # st.session_state['html_table'] = ""  # Empty until first update
           
           show_codes()
                     
