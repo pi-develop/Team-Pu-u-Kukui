@@ -236,7 +236,8 @@ def show_codes():
     if st.button("Update HTML"):
       update_table()
 
-    # Show the generated HTML table      
+    # Show the generated HTML table 
+    html_table = st.session_state["html_table"]
     st.markdown("### HTML Code")
     st.code(html_table, language='html')
 
