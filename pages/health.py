@@ -99,101 +99,51 @@ def validate_and_load_json(json_string):
     return None
 
 def json_to_html(data):
-    # Start the HTML table
-    html = '''
-    <table border="1">
+    # Start HTML table
+    html = """
+    <table border="1" cellpadding="5" cellspacing="0">
         <thead>
             <tr>
-                <th>Category</th> <!-- Updated header -->
-                <th colspan="2">Non-rural</th>
-                <th colspan="2">Rural</th>
+                <th>Category</th>
+                <th colspan="2">Rurality Definition 1</th>
+                <th colspan="2">Rurality Definition 2</th>
+                <th colspan="2">Rurality Definition 3</th>
             </tr>
             <tr>
                 <th></th>
-                <th>Sample</th>
-                <th>State Population</th>
-                <th>Sample</th>
-                <th>State Population</th>
+                <th>Non-Rural</th>
+                <th>Rural</th>
+                <th>Non-Rural</th>
+                <th>Rural</th>
+                <th>Non-Rural</th>
+                <th>Rural</th>
             </tr>
         </thead>
         <tbody>
-    '''
+    """
     
-    # Helper function to add rows
-    def add_row(label, non_rural, rural):
-        html_row = f'<tr><td>{label}</td>'
-        for key in ['sample', 'state_population']:
-            html_row += f'<td>{non_rural.get(key) if non_rural and key in non_rural else ""}</td>'
-        for key in ['sample', 'state_population']:
-            html_row += f'<td>{rural.get(key) if rural and key in rural else ""}</td>'
-        html_row += '</tr>\n'  # Add newline for readability
-        return html_row
-
-    # Add total population
-    total_population = data.get("total_population", {})
-    html += add_row("Total Population", total_population.get("non_rural"), total_population.get("rural"))
+    # Define categories to iterate over
+    categories = ["overall_health", "physical_health", "mental_health"]
     
-    # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
-
-    # Add county distribution
-    html += '<tr><td colspan="5"><strong>County</strong></td></tr>\n'
-    for county_data in data.get("county_distribution", []):
-        html += add_row(county_data['county'], county_data.get("non_rural"), county_data.get("rural"))
-
-    # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
-
-    # Add gender identity
-    html += '<tr><td colspan="5"><strong>Gender Identity</strong></td></tr>\n'
-    for gender_data in data.get("gender_identity", []):
-        html += add_row(gender_data['gender'], gender_data.get("non_rural"), gender_data.get("rural"))
-
-    # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
-
-    # Add race and ethnicity
-    html += '<tr><td colspan="5"><strong>Race and Ethnicity</strong></td></tr>\n'
-    for race_data in data.get("race_ethnicity", []):
-        html += add_row(race_data['race'], race_data.get("non_rural"), race_data.get("rural"))
-
-    # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
-
-    # Add income
-    html += '<tr><td colspan="5"><strong>Income</strong></td></tr>\n'
-    for income_data in data.get("income", []):
-        html += add_row(income_data['income_level'], income_data.get("non_rural"), income_data.get("rural"))
-
-    # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
-
-    # Add education
-    html += '<tr><td colspan="5"><strong>Education</strong></td></tr>\n'
-    for education_data in data.get("education", []):
-        html += add_row(education_data['education_level'], education_data.get("non_rural"), education_data.get("rural"))
-
-    # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
-
-    # Add disability
-    html += '<tr><td colspan="5"><strong>Disability</strong></td></tr>\n'
-    for disability_data in data.get("disability", []):
-        html += add_row(disability_data['disability_level'], disability_data.get("non_rural"), disability_data.get("rural"))
-
-    # Add a divider row
-    html += '<tr><td colspan="5" style="height: 10px;"></td></tr>\n'
-
-    # Add age continuous
-    html += '<tr><td colspan="5"><strong>Age (continuous)</strong></td></tr>\n'
-    for age_data in data.get("age", []):
-        html += add_row(age_data['aggregate'], age_data.get("non_rural"), age_data.get("rural"))
-
+    # Iterate through each category in the JSON data
+    for category in categories:
+        if category in json_data and isinstance(json_data[category], list):
+            for item in json_data[category]:
+                html += f"<tr><td>{category.replace('_', ' ').capitalize()}</td>"
+                
+                # Safely get values for rurality definitions
+                for i in range(1, 4):
+                    def_key = f"rurality_definition_{i}"
+                    non_rural = item.get(def_key, {}).get("non_rural", "N/A")
+                    rural = item.get(def_key, {}).get("rural", "N/A")
+                    
+                    # Add non-rural and rural values to the row
+                    html += f"<td>{non_rural}</td><td>{rural}</td>"
+                
+                html += "</tr>"
+    
     # Close the table
-    html += '''
-        </tbody>
-    </table>
-    '''
+    html += "</tbody></table>"
     return html
    
 # Function to update HTML table based on changes in the JSON textarea
