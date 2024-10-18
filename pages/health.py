@@ -248,14 +248,10 @@ def main():
                   # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
                 # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
                   json_data = json.loads('{"hello": "world"}')
+
+                  st.markdown('\n\n'.join(extracted_text))
                   
-                  for page in extracted_text:
-                    # Join the strings within the inner list (page) and display them as one block
-                    page_text = '\n'.join(page)
-                    st.markdown(page_text)
-                    
-                    # Optional: Add a separator between pages
-                    st.markdown("---")
+                  
         
         if json_data:
           # Store JSON in session_state to persist across reruns
