@@ -103,6 +103,7 @@ The JSON schema must be followed during the extraction.
 The values must only include text found in the document
 Do not normalize any entity value.
 If an entity is not found in the document, set the entity value to null.
+Do not include any text other than JSON in the response.
 '''
 
 inference_params = dict(temperature=0.2, system_prompt=SYS_PROMPT)
@@ -279,7 +280,7 @@ def main():
     with col1:
       st.image("https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png", width=60)
     with col2:
-      st.title("Health Data Extractor")
+      st.title("Demographics Data Extractor")
 
     
     # File uploader for PDF files
