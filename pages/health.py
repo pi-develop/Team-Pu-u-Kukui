@@ -209,7 +209,7 @@ def main():
               total_pages = len(pages)
 
               # Initialize the variable to store all extracted text
-              extracted_text = ""
+              extracted_text = []
   
               try:
                   # Check if the input is a range
@@ -235,20 +235,26 @@ def main():
                       if single_page < 0 or single_page >= total_pages:
                           st.error("Invalid page number")
                       else:
-                          extracted_text += pdf.pages[single_page].extract_table()
+                          extracted_text.append(pdf.pages[single_page].extract_table())
   
               except ValueError:
                   st.error("Please enter a valid page number or range.")
             
               if extracted_text:
-                prompt = f"Extract JSON from table in text: {extracted_text}"
+                # prompt = f"Extract JSON from table in text: {extracted_text}"
 
                 # Model Predict
                 with st.spinner("Extracting data, please wait..."):
                   # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
                 # json_data = extract_json(model_prediction.outputs[0].data.text.raw)
 
-                  st.markdown(extracted_text)
+                  for page in extracted_text:
+                    # Join the strings within the inner list (page) and display them as one block
+                    page_text = '\n'.join(page)
+                    st.markdown(page_text)
+                    
+                    # Optional: Add a separator between pages
+                    st.markdown("---")
         
         if json_data:
           # Store JSON in session_state to persist across reruns
