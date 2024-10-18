@@ -10,91 +10,49 @@ SYS_PROMPT = '''
 You are a text entity extraction specialist. Given some text, your task is to extract the values of the following entities:
 
 {
-  "total_population": {
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
+  "overall_health": [{
+    "perception": "string",
+    "rurality_definition_1": {
+      "non_rural": "integer",
+      "rural": "integer"
     },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
-    }
-  },
-  "county_distribution": [{
-    "county": "string",
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
+    "rurality_definition_2": {
+      "non_rural": "integer",
+      "rural": "integer"
     },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
+    "rurality_definition_3": {
+      "non_rural": "integer",
+      "rural": "integer"
     }
   }],
-  "gender_identity": [{
-    "gender": "string",
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
-    },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
-    }
-  }],
-  "race_ethnicity": [{
-    "race": "string",
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
-    },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
-    }
-  }],
-  "income": [{
-    "income_level": "string",
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
-    },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
-    }
-  }],
-  "education": [{
-    "education_level": "string",
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
-    },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
-    }
-  }],
-  "disability": [{
-    "disability_level": "string",
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
-    },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
-    }
-  }],
-  "age": [{
+  "physical_health": [{
     "aggregate": "string",
-    "non_rural": {
-      "sample": "integer",
-      "state_population": "integer"
+    "rurality_definition_1": {
+      "non_rural": "integer",
+      "rural": "integer"
     },
-    "rural": {
-     "sample": "integer",
-      "state_population": "integer"
+    "rurality_definition_2": {
+      "non_rural": "integer",
+      "rural": "integer"
+    },
+    "rurality_definition_3": {
+      "non_rural": "integer",
+      "rural": "integer"
+    }
+  }],
+  "mental_health": [{
+    "aggregate": "string",
+    "rurality_definition_1": {
+      "non_rural": "integer",
+      "rural": "integer"
+    },
+    "rurality_definition_2": {
+      "non_rural": "integer",
+      "rural": "integer"
+    },
+    "rurality_definition_3": {
+      "non_rural": "integer",
+      "rural": "integer"
     }
   }]
 }
