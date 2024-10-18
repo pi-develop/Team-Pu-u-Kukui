@@ -450,6 +450,8 @@ def main():
               if extracted_text:
                 prompt = f"Extract JSON from table in text: {extracted_text}"
 
+                st.markdown(prompt)
+
                 # Model Predict
                 with st.spinner("Extracting data, please wait..."):
                   # model_prediction = Model("https://clarifai.com/openai/chat-completion/models/gpt-4-turbo").predict_by_bytes(prompt.encode(), input_type="text", inference_params=inference_params)
