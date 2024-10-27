@@ -36,13 +36,13 @@ def main():
     data.dropna(subset=['Latitude', 'Longitude'], inplace=True)
 
     # Create Leafmap map
-    coverage_map = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
+    m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
 
     # Prepare data for heatmap
     data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
     
     # Add heatmap layer
-    coverage_map.add_heatmap(data=data,
+    m.add_heatmap(data=data,
                   latitude="Latitude",
                   longitude="Longitude",
                   value="BroadbandCoverage",
@@ -51,7 +51,20 @@ def main():
                   blur=10, 
                   max_val=100)
 
-    coverage_map.to_streamlit(height=500)
+    # Add clickable markers for each city
+    for _, row in data.iterrows():
+        city = row["City"]
+        coverage = row["BroadbandCoverage"]
+        providers = row["Providers"]
+        latitude = row["Latitude"]
+        longitude = row["Longitude"]
+    
+        # Add a small point (marker) with a popup
+        m.add_marker(location=[latitude, longitude],
+                     popup=f"{city}<br>Coverage: {coverage}<br>Providers: {providers}",
+                     icon=leafmap.MarkerIcon(color="blue", icon="info-sign", prefix="glyphicon"))
+
+    m.to_streamlit(height=500)
 
 if __name__ == "__main__":
     main()
