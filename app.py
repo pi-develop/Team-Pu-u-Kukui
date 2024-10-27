@@ -8,8 +8,7 @@ def main():
     
     # Customize the sidebar
     markdown = """
-    A Streamlit map template
-    <https://github.com/opengeos/streamlit-map-template>
+    Team Puʻu Kukui HBDEO project for HACC 2024
     """
     
     st.sidebar.title("About")
