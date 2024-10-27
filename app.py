@@ -58,7 +58,6 @@ def main():
         x="Latitude",
         y="Longitude",
         color_column="County",
-        icon_names=["gear", "map", "leaf", "globe"],
         spin=True,
         add_legend=True,
     )
