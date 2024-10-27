@@ -40,7 +40,18 @@ def main():
 
     # Prepare data for heatmap
     data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
-    
+
+    regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
+    m.add_geojson(regions, layer_name="US Regions")
+    m.add_points_from_xy(
+        data,
+        x="Latitude",
+        y="Longitude",
+        color_column="County",
+        spin=False,
+        add_legend=False,
+    )
+
     # Add heatmap layer
     m.add_heatmap(data=data,
                   latitude="Latitude",
@@ -50,17 +61,6 @@ def main():
                   radius=15,
                   blur=10, 
                   max_val=100)
-
-    regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
-    m.add_geojson(regions, layer_name="US Regions")
-    m.add_points_from_xy(
-        data,
-        x="Latitude",
-        y="Longitude",
-        color_column="County",
-        spin=True,
-        add_legend=True,
-    )
     
     m.to_streamlit(height=500)
 
