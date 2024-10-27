@@ -18,7 +18,11 @@ def main():
     st.sidebar.image(logo)
     
     # Customize page title
-    st.title("Hawaii Digital Equity Dashboard")
+    col1, mid, col2 = st.columns([1,1,20])
+    with col1:
+      st.image("https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png", width=60)
+    with col2:
+      st.title("Hawaii Digital Equity Dashboard")
     
     st.markdown(
         """
