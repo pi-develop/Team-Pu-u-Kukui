@@ -51,19 +51,18 @@ def main():
                   blur=10, 
                   max_val=100)
 
-    # Add clickable markers for each city
-    for _, row in data.iterrows():
-        city = row["City"]
-        coverage = row["BroadbandCoverage"]
-        providers = row["Providers"]
-        latitude = row["Latitude"]
-        longitude = row["Longitude"]
+    regions = "https://raw.githubusercontent.com/giswqs/leafmap/master/examples/data/us_regions.geojson"
+    m.add_geojson(regions, layer_name="US Regions")
+    m.add_points_from_xy(
+        data,
+        x="Latitude",
+        y="Longitude",
+        color_column="region",
+        icon_names=["gear", "map", "leaf", "globe"],
+        spin=True,
+        add_legend=True,
+    )
     
-        # Add a small point (marker) with a popup
-        m.add_marker(location=[latitude, longitude],
-                     popup=f"{city}<br>Coverage: {coverage}<br>Providers: {providers}",
-                     icon=leafmap.MarkerIcon(color="blue", icon="info-sign", prefix="glyphicon"))
-
     m.to_streamlit(height=500)
 
 if __name__ == "__main__":
