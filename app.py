@@ -26,7 +26,7 @@ def main():
         """
     )
     
-    st.header("Heat Map")
+    st.header("Heatmap")
 
     # Load data
     data_file = "data/BroadBandCover_by_City.csv"
