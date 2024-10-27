@@ -28,7 +28,7 @@ def main():
     st.sidebar.image(logo)
     
     # Customize page title
-    st.title("Digital Equity Dashboard")
+    st.title("Hawaii Digital Equity Dashboard")
     
     st.markdown(
         """
@@ -54,9 +54,27 @@ def main():
     
     # Initialize geolocator
     geolocator = Nominatim(user_agent="hawaii_map_app")
+
+    # Add coordinates to the DataFrame
+    data[['Latitude', 'Longitude']] = data.apply(lambda row: get_coordinates(row['City']), axis=1, result_type='expand')
     
-    m = leafmap.Map(minimap_control=True)
-    m.add_basemap("OpenTopoMap")
+    # Drop rows where coordinates couldn't be found
+    data.dropna(subset=['Latitude', 'Longitude'], inplace=True)
+
+    # Create Leafmap map
+    m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
+
+    # Add markers for each city with latitude and longitude
+    for _, row in data.iterrows():
+        city = row["City"]
+        coverage = row["BroadbandCoverage"]
+        providers = row["Providers"]
+        latitude = row["Latitude"]
+        longitude = row["Longitude"]
+    
+        m.add_marker(location=[latitude, longitude],
+                     popup=f"{city}<br>Coverage: {coverage}<br>Providers: {providers}")
+
     m.to_streamlit(height=500)
 
 if __name__ == "__main__":
