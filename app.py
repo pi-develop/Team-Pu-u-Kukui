@@ -4,6 +4,9 @@ import pandas as pd
 import leafmap.foliumap as leafmap
 from geopy.geocoders import Nominatim
 
+# Initialize geolocator
+geolocator = Nominatim(user_agent="hawaii_map_app")
+
 # Cache the geocoding results for each city
 @st.cache_data
 def get_coordinates(city, state="Hawaii"):
