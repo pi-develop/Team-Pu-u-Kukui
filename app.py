@@ -22,21 +22,12 @@ def main():
     
     st.markdown(
         """
-        This multipage app template demonstrates various interactive web apps created using [streamlit](https://streamlit.io) and [leafmap](https://leafmap.org). It is an open-source project and you are very welcome to contribute to the [GitHub repository](https://github.com/opengeos/streamlit-map-template).
+        This page displays a heatmap of broadband coverage in Hawaii. 
+        It visualizes the percentage of broadband coverage across different cities, allowing users to easily identify areas with varying levels of access.
         """
     )
     
-    st.header("Instructions")
-    
-    markdown = """
-    1. For the [GitHub repository](https://github.com/opengeos/streamlit-map-template) or [use it as a template](https://github.com/opengeos/streamlit-map-template/generate) for your own project.
-    2. Customize the sidebar by changing the sidebar text and logo in each Python files.
-    3. Find your favorite emoji from https://emojipedia.org.
-    4. Add a new app to the `pages/` directory with an emoji in the file name, e.g., `1_🚀_Chart.py`.
-    
-    """
-    
-    st.markdown(markdown)
+    st.header("Heat Map")
 
     # Load data
     data_file = "data/BroadBandCover_by_City.csv"
@@ -57,20 +48,11 @@ def main():
                   longitude="Longitude",
                   value="BroadbandCoverage",
                   name="Heat map",
-                  radius=15)
+                  radius=15,
+                  blur=10, 
+                  max_val=100)
 
     coverage_map.to_streamlit(height=500)
-
-    providers_map = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
-    # Add heatmap layer
-    providers_map.add_heatmap(data=data,
-                  latitude="Latitude",
-                  longitude="Longitude",
-                  value="Providers",
-                  name="Heat map",
-                  radius=15)
-
-    providers_map.to_streamlit(height=500)
 
 if __name__ == "__main__":
     main()
