@@ -49,7 +49,7 @@ def main():
     st.markdown(markdown)
 
     # Load data
-    data_file = "/data/BroadBandCover_by_City.csv"
+    data_file = "data/BroadBandCover_by_City.csv"
     data = pd.read_csv(data_file)
     
     # Initialize geolocator
