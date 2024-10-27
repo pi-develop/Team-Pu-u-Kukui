@@ -13,7 +13,8 @@ def main():
     
     st.sidebar.title("About")
     st.sidebar.info(markdown)
-    logo = "https://i.imgur.com/UbOXYAU.png"
+    # logo = "https://i.imgur.com/UbOXYAU.png"
+    logo = "https://static.thenounproject.com/png/1182550-200.png"
     st.sidebar.image(logo)
     
     # Customize page title
