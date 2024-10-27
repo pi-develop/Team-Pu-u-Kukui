@@ -1,6 +1,7 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def main():
     st.set_page_config(layout="wide")
@@ -47,16 +48,29 @@ def main():
     # Create Leafmap map
     m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
 
-    # Add markers for each city with latitude and longitude
+    # Normalize color based on coverage percentage
+    norm = plt.Normalize(vmin=data["BroadbandCoverage"].str.rstrip('%').astype(float).min(), 
+                         vmax=data["BroadbandCoverage"].str.rstrip('%').astype(float).max())
+
+
+    # Add circles for each city
     for _, row in data.iterrows():
         city = row["City"]
-        coverage = row["BroadbandCoverage"]
+        coverage = float(row["BroadbandCoverage"].strip('%'))
         providers = row["Providers"]
         latitude = row["Latitude"]
         longitude = row["Longitude"]
     
-        m.add_marker(location=[latitude, longitude],
-                     popup=f"{city}<br>Coverage: {coverage}<br>Providers: {providers}")
+        # Set circle color and radius based on coverage
+        color = plt.cm.OrRd(norm(coverage))
+        radius = coverage * 0.1  # Adjust scaling as needed
+    
+        m.add_circle_marker(location=[latitude, longitude],
+                            radius=radius,
+                            color=f"rgba({int(color[0]*255)}, {int(color[1]*255)}, {int(color[2]*255)}, 0.6)",
+                            fill=True,
+                            fill_color=f"rgba({int(color[0]*255)}, {int(color[1]*255)}, {int(color[2]*255)}, 0.6)",
+                            popup=f"{city}<br>Coverage: {coverage}%<br>Providers: {providers}")
 
     m.to_streamlit(height=500)
 
