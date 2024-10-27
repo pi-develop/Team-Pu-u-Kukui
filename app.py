@@ -49,14 +49,15 @@ def main():
     m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
 
     # Prepare data for heatmap
-    heatmap_data = data[['Latitude', 'Longitude', 'BroadbandCoverage']].copy()
-    heatmap_data['BroadbandCoverage'] = heatmap_data['BroadbandCoverage'].str.replace('%', '').astype(float)
+    data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
     
     # Add heatmap layer
-    m.add_heatmap(data=heatmap_data[['Latitude', 'Longitude', 'BroadbandCoverage']], 
-                   radius=15, 
-                   blur=10, 
-                   max_val=100)
+    m.add_heatmap(data=data,
+                  latitude="Latitude",
+                  longitude="Longitude",
+                  value="BroadbandCoverage",
+                  name="Heat map",
+                  radius=15)
 
     m.to_streamlit(height=500)
 
