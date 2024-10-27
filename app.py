@@ -1,20 +1,6 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 import pandas as pd
-import leafmap.foliumap as leafmap
-from geopy.geocoders import Nominatim
-
-# Initialize geolocator
-geolocator = Nominatim(user_agent="hawaii_map_app")
-
-# Cache the geocoding results for each city
-@st.cache_data
-def get_coordinates(city, state="Hawaii"):
-    location = geolocator.geocode(f"{city}, {state}")
-    if location:
-        return location.latitude, location.longitude
-    else:
-        return None, None
 
 def main():
     st.set_page_config(layout="wide")
@@ -54,12 +40,6 @@ def main():
     # Load data
     data_file = "data/BroadBandCover_by_City.csv"
     data = pd.read_csv(data_file)
-    
-    # Initialize geolocator
-    geolocator = Nominatim(user_agent="hawaii_map_app")
-
-    # Add coordinates to the DataFrame
-    data[['Latitude', 'Longitude']] = data.apply(lambda row: get_coordinates(row['City']), axis=1, result_type='expand')
     
     # Drop rows where coordinates couldn't be found
     data.dropna(subset=['Latitude', 'Longitude'], inplace=True)
