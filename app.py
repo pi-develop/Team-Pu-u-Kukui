@@ -48,29 +48,15 @@ def main():
     # Create Leafmap map
     m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
 
-    # Normalize color based on coverage percentage
-    norm = plt.Normalize(vmin=data["BroadbandCoverage"].str.rstrip('%').astype(float).min(), 
-                         vmax=data["BroadbandCoverage"].str.rstrip('%').astype(float).max())
-
-
-    # Add circles for each city
-    for _, row in data.iterrows():
-        city = row["City"]
-        coverage = float(row["BroadbandCoverage"].strip('%'))
-        providers = row["Providers"]
-        latitude = row["Latitude"]
-        longitude = row["Longitude"]
+    # Prepare data for heatmap
+    heatmap_data = data[['Latitude', 'Longitude', 'BroadbandCoverage']].copy()
+    heatmap_data['BroadbandCoverage'] = heatmap_data['BroadbandCoverage'].str.replace('%', '').astype(float)
     
-        # Set circle color and radius based on coverage
-        color = plt.cm.OrRd(norm(coverage))
-        radius = coverage * 0.1  # Adjust scaling as needed
-    
-        m.add_circle_marker(location=[latitude, longitude],
-                            radius=radius,
-                            color=f"rgba({int(color[0]*255)}, {int(color[1]*255)}, {int(color[2]*255)}, 0.6)",
-                            fill=True,
-                            fill_color=f"rgba({int(color[0]*255)}, {int(color[1]*255)}, {int(color[2]*255)}, 0.6)",
-                            popup=f"{city}<br>Coverage: {coverage}%<br>Providers: {providers}")
+    # Add heatmap layer
+    m.add_heatmap(data=heatmap_data[['Latitude', 'Longitude', 'BroadbandCoverage']], 
+                   radius=15, 
+                   blur=10, 
+                   max_val=100)
 
     m.to_streamlit(height=500)
 
