@@ -46,20 +46,31 @@ def main():
     data.dropna(subset=['Latitude', 'Longitude'], inplace=True)
 
     # Create Leafmap map
-    m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
+    coverage_map = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
 
     # Prepare data for heatmap
     data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
     
     # Add heatmap layer
-    m.add_heatmap(data=data,
+    coverage_map.add_heatmap(data=data,
                   latitude="Latitude",
                   longitude="Longitude",
                   value="BroadbandCoverage",
                   name="Heat map",
                   radius=15)
 
-    m.to_streamlit(height=500)
+    coverage_map.to_streamlit(height=500)
+
+    providers_map = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
+    # Add heatmap layer
+    providers_map.add_heatmap(data=data,
+                  latitude="Latitude",
+                  longitude="Longitude",
+                  value="Providers",
+                  name="Heat map",
+                  radius=15)
+
+    providers_map.to_streamlit(height=500)
 
 if __name__ == "__main__":
     main()
