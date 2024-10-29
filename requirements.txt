@@ -9,3 +9,5 @@ geopandas
 leafmap
 owslib
 matplotlib
+SQLAlchemy 
+mysqlclient
