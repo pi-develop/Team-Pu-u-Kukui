@@ -1,12 +1,13 @@
 import streamlit as st
 import socket
 
-def get_server_ip():
+def print_server_info():
   hostname = socket.gethostname()
   server_ip = socket.gethostbyname(hostname)
-  return server_ip
+  st.write("Server Host:", hostname)
+  st.write("Server IP:", server_ip)
 
-st.write("Server IP Address:", get_server_ip())
+print_server_info()
 
 # Initialize connection.
 conn = st.connection('mysql', type='sql')
