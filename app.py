@@ -54,7 +54,7 @@ def main():
     .stButton > button {
         background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
         color: rgba(255, 255, 255, 1);
-        width: 150px;  /* Set a maximum width */
+        width: 200px;  /* Set a maximum width */
         height: 60px;  /* Set height */
         border-radius: 23px;  /* Rounded corners */
         font-family: 'Montserrat', sans-serif;
