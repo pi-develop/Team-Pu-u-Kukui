@@ -6,16 +6,61 @@ import matplotlib.pyplot as plt
 def main():
     st.set_page_config(layout="wide")
     
-    # Customize the sidebar
-    markdown = """
-    Team Puʻu Kukui HBDEO project for HACC 2024
+    # Define the HTML and CSS
+    html_content = """
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+    /* Set Montserrat as the default font */
+    body {
+        font-family: 'Montserrat', sans-serif;
+    }
+    .e1_15 { 
+        color:rgba(255, 255, 255, 1);
+        width:727px;
+        height:52px;
+        font-family:Montserrat;
+        text-align:left;
+        font-size:45.37845230102539px;
+        letter-spacing:0;
+        line-height:52px; /* Adjusted to give line height a specific value */
+    }
+    .e2_21 { 
+        background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
+        width:100%; /* Set width to 100% for responsiveness */
+        height:256px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .e2_22 { 
+        color:rgba(255, 255, 255, 1);
+        width:177px;
+        height:52px;
+        font-family:Montserrat;
+        text-align:left;
+        font-size:45.37845230102539px;
+        letter-spacing:0;
+        line-height:52px; /* Adjusted for consistency */
+    }
+    .e2_23 { 
+        transform: rotate(-2.4848083448933725e-17deg);
+        width:281.00177001953125px;
+        height:0px;
+        border:2px solid rgba(255, 255, 255, 1);
+    }
+    </style>
+    
+    <div class="e2_21">
+        <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
+        <div class="e2_23"></div>
+        <span class="e2_22">HAWAII</span>
+    </div>
     """
     
-    st.sidebar.title("About")
-    st.sidebar.info(markdown)
-    # logo = "https://i.imgur.com/UbOXYAU.png"
-    logo = "https://static.thenounproject.com/png/1182550-200.png"
-    st.sidebar.image(logo)
+    # Insert the HTML and CSS into the Streamlit app
+    st.markdown(html_content, unsafe_allow_html=True)
     
     st.header("Bridging Hawaii's Digital Divide")
     
