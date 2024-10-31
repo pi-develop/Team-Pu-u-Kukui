@@ -96,7 +96,7 @@ def main():
 
     # First row of buttons
     with col1:
-        st.button("Digital Literacy")
+        st.button("Digital\nLiteracy")
             
     with col2:
         st.button("Device Access")
