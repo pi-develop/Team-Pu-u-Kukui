@@ -109,7 +109,12 @@ def main():
             
     # Second row of buttons
     with col1:
-        st.button("Open Data")
+        if st.button("Open Data"):
+            # Using HTML to create a link that opens in a new tab
+            st.markdown(
+                '<a href="https://opendata.hawaii.gov/organization/hbdeo" target="_blank" rel="noopener noreferrer">HBDEO Open Data</a>',
+                unsafe_allow_html=True
+            )
             
     with col2:
         st.button("Initiatives Impact")
