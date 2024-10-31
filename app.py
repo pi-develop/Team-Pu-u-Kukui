@@ -4,11 +4,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from streamlit_extras.switch_page_button import switch_page
-from streamlit_extras.app_logo import add_logo
 
 def main():
     st.set_page_config(layout="wide")
-    add_logo("https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png")
     
     # Define the HTML and CSS
     html_content = """
