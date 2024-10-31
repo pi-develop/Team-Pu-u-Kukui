@@ -50,6 +50,26 @@ def main():
         height:0px;
         border:2px solid rgba(255, 255, 255, 1);
     }
+    
+    .stButton > button {
+        background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
+        color: rgba(255, 255, 255, 1);
+        width: 370px;  /* Set width */
+        height: 70px;  /* Set height */
+        border-radius: 23px;  /* Rounded corners */
+        font-family: 'Montserrat', sans-serif;
+        font-size: 24px;  /* Font size */
+        text-align: center;
+        line-height: 70px;  /* Center text vertically */
+        border: none;  /* No border */
+        cursor: pointer;  /* Change cursor on hover */
+        transition: opacity 0.3s ease;  /* Smooth transition for hover effect */
+    }
+
+    /* Hover effect */
+    .stButton > button:hover {
+        opacity: 0.9;  /* Slightly transparent on hover */
+    }
     </style>
     
     <div class="e2_21">
@@ -72,6 +92,8 @@ def main():
     )
     
     st.header("Heatmap")
+
+    st.button("Digital Literacy")
 
     # Load data
     data_file = "data/BroadBandCover_by_City.csv"
