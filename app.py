@@ -3,6 +3,8 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from streamlit_extras.switch_page_button import switch_page
+
 def main():
     st.set_page_config(layout="wide")
     
@@ -110,11 +112,7 @@ def main():
     # Second row of buttons
     with col1:
         if st.button("Open Data"):
-            # Using HTML to create a link that opens in a new tab
-            st.markdown(
-                '<a href="https://opendata.hawaii.gov/organization/hbdeo" target="_blank" rel="noopener noreferrer">HBDEO Open Data</a>',
-                unsafe_allow_html=True
-            )
+            switch_page("demographics")
             
     with col2:
         st.button("Initiatives Impact")
