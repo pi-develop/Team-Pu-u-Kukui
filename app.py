@@ -17,7 +17,7 @@ def main():
     logo = "https://static.thenounproject.com/png/1182550-200.png"
     st.sidebar.image(logo)
     
-    st.title("Bridging Hawaii's Digital Divide")
+    st.header("Bridging Hawaii's Digital Divide")
     
     st.markdown(
         """
