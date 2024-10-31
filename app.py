@@ -92,7 +92,7 @@ def main():
     )
 
     # Create 3 columns
-    col1, col2, col3 = st.columns(3)
+    col1, spacer1, col2, spacer2, col3 = st.columns([1, 0.2, 1, 0.2, 1])
 
     # First row of buttons
     with col1:
