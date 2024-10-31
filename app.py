@@ -90,10 +90,31 @@ def main():
         This tool maps the digital divide in our communities, showing where support is needed most.
         """
     )
-    
-    st.header("Heatmap")
 
-    st.button("Digital Literacy")
+    # Create 3 columns
+    col1, col2, col3 = st.columns(3)
+
+    # First row of buttons
+    with col1:
+        st.button("Digital Literacy"):
+            
+    with col2:
+        st.button("Device Access"):
+            
+    with col3:
+        st.button("Broadband Connectivity"):
+            
+    # Second row of buttons
+    with col1:
+        st.button("Open Data"):
+            
+    with col2:
+        st.button("Initiatives Impact"):
+            
+    with col3:
+        st.button("User Feedback"):
+            
+    st.header("Heatmap")
 
     # Load data
     data_file = "data/BroadBandCover_by_City.csv"
