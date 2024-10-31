@@ -96,23 +96,23 @@ def main():
 
     # First row of buttons
     with col1:
-        st.button("Digital Literacy"):
+        st.button("Digital Literacy")
             
     with col2:
-        st.button("Device Access"):
+        st.button("Device Access")
             
     with col3:
-        st.button("Broadband Connectivity"):
+        st.button("Broadband Connectivity")
             
     # Second row of buttons
     with col1:
-        st.button("Open Data"):
+        st.button("Open Data")
             
     with col2:
-        st.button("Initiatives Impact"):
+        st.button("Initiatives Impact")
             
     with col3:
-        st.button("User Feedback"):
+        st.button("User Feedback")
             
     st.header("Heatmap")
 
