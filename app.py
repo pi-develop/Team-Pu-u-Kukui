@@ -17,17 +17,12 @@ def main():
     logo = "https://static.thenounproject.com/png/1182550-200.png"
     st.sidebar.image(logo)
     
-    # Customize page title
-    col1, mid, col2 = st.columns([1,1,20])
-    with col1:
-      st.image("https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png", width=60)
-    with col2:
-      st.title("Hawaii Digital Equity Dashboard")
+    st.title("Bridging Hawaii's Digital Divide")
     
     st.markdown(
         """
-        This page displays a heatmap of broadband coverage in Hawaii. 
-        It visualizes the percentage of broadband coverage across different cities, allowing users to easily identify areas with varying levels of access.
+        Welcome to Hawaii's Digital Equity Dashboard, where we track technology and internet access across our islands. 
+        This tool maps the digital divide in our communities, showing where support is needed most.
         """
     )
     
