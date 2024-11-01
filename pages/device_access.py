@@ -15,6 +15,15 @@ def main():
 
     internet_df = pd.concat([df.iloc[0:1], df.iloc[169:174]], ignore_index=True)
 
+    # Rename columns for clarity (based on your provided data)
+    internet_df.columns = ['Label', 'Hawaii_Total', 'Hawaii_MOE', 'Hawaii_Percent', 'Hawaii_Percent_MOE',
+              'Hawaii_County_Total', 'Hawaii_County_MOE', 'Hawaii_County_Percent', 'Hawaii_County_Percent_MOE',
+              'Honolulu_County_Total', 'Honolulu_County_MOE', 'Honolulu_County_Percent', 'Honolulu_County_Percent_MOE',
+              'Kalawao_County_Total', 'Kalawao_County_MOE', 'Kalawao_County_Percent', 'Kalawao_County_Percent_MOE',
+              'Kauai_County_Total', 'Kauai_County_MOE', 'Kauai_County_Percent', 'Kauai_County_Percent_MOE',
+              'Maui_County_Total', 'Maui_County_MOE', 'Maui_County_Percent', 'Maui_County_Percent_MOE']
+
+
     filtered_df = dataframe_explorer(internet_df, case=False)
     st.dataframe(internet_df, use_container_width=True)
     
