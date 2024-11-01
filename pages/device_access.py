@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from streamlit_extras.dataframe_explorer import dataframe_explorer
+from streamlit_extras.add_vertical_space import add_vertical_space
 
 from style_helper import apply_custom_style
 
@@ -90,7 +90,8 @@ def main():
             # Display progress bar with the computed percentage
             st.subheader(f"{county}")
             st.progress(percentage)
-    
+
+    add_vertical_space(2)
     st.dataframe(internet_df, use_container_width=True)
     
 if __name__ == "__main__":
