@@ -33,7 +33,7 @@ def main():
 
     # Extract relevant rows and columns for each county
     locations = {
-        "Hawaii Total": internet_df.iloc[0, 2],  # Column 2 for "Total households", row 2 for Hawaii Total
+        "Hawaii Total": internet_df.iloc[0, 1],  # Column 2 for "Total households", row 2 for Hawaii Total
         "Hawaii County": internet_df.iloc[0, 6], # Column 6 for "Total households" of Hawaii County, row 2
         "Honolulu County": internet_df.iloc[0, 10], # Column 10 for "Total households" of Honolulu, row 2
         "Kalawao County": internet_df.iloc[0, 14], # Column 14 for "Total households" of Kalawao, row 2
@@ -43,7 +43,7 @@ def main():
     
     # "With a computer" values for each county
     computer_users = {
-        "Hawaii Total": internet_df.iloc[1, 2], 
+        "Hawaii Total": internet_df.iloc[1, 1], 
         "Hawaii County": internet_df.iloc[1, 6],
         "Honolulu County": internet_df.iloc[1, 10],
         "Kalawao County": internet_df.iloc[1, 14],
