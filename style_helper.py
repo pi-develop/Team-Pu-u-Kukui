@@ -96,7 +96,6 @@ def apply_custom_style():
     <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
     <div class="e2_23"></div>
     <span class="e2_22">HAWAII</span>
-
     <div class="e1_8">
       <img class="header-img" src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png"/>
     </div>
