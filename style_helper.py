@@ -14,21 +14,6 @@ def apply_custom_style():
   body {
       font-family: 'Montserrat', sans-serif;
   }
-  .e1_8 { 
-  	width:281px;
-  	height:281px;
-  	margin-left: auto;
-    display: flex;
-    justify-content: flex-end;
-  }
-  .e1_9 { 
-  	background-color:rgba(255, 255, 255, 1);
-  	width:259.046875px;
-  	height:166.84375px;
-  	position:absolute;
-  	left:10.9765625px;
-  	top:57.078125px;
-  }
   .e1_15 { 
       color:rgba(255, 255, 255, 1);
       width:727px;
@@ -65,7 +50,21 @@ def apply_custom_style():
       height:0px;
       border:2px solid rgba(255, 255, 255, 1);
   }
-  
+  .e1_8 { 
+    	width:281px;
+    	height:281px;
+    	margin-left: auto;
+      display: flex;
+      justify-content: flex-end;
+  }
+  .e1_9 { 
+    	background-color:rgba(255, 255, 255, 1);
+    	width:259.046875px;
+    	height:166.84375px;
+    	position:absolute;
+    	left:10.9765625px;
+    	top:57.078125px;
+  }
   .stButton > button {
       background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
       color: rgba(255, 255, 255, 1);
