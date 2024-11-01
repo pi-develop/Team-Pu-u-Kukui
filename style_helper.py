@@ -120,7 +120,9 @@ def apply_custom_style():
 
   # First row of buttons
   with col1:
-      st.button("Digital\nLiteracy")
+    with st.container():
+      st.write("")  # Blank line for spacing
+      st.button("Digital Literacy")
           
   with col2:
       st.button("Device Access")
