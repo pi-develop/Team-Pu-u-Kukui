@@ -13,7 +13,7 @@ def main():
 
     df = pd.read_excel("data/acs2022_5yr_counties_hi.xlsx")
 
-    internet_df = pd.concat([df.iloc[0], df.iloc[169:174]], ignore_index=True)
+    internet_df = df.iloc[169:174]
 
     # Rename columns for clarity (based on your provided data)
     internet_df.columns = ['Label', 'Hawaii_Total', 'Hawaii_MOE', 'Hawaii_Percent', 'Hawaii_Percent_MOE',
