@@ -17,7 +17,9 @@ def apply_custom_style():
   .e1_8 { 
   	width:281px;
   	height:281px;
-  	position:absolute;
+  	margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
   }
   .e1_9 { 
   	background-color:rgba(255, 255, 255, 1);
