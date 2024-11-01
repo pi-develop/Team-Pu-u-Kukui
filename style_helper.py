@@ -109,7 +109,7 @@ def apply_custom_style():
   # Second row of buttons
   with col1:
       if st.button("Open Data"):
-          switch_page("demographics")
+          switch_page("open_data")
           
   with col2:
       st.button("Initiatives Impact")
