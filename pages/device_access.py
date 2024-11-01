@@ -31,7 +31,7 @@ def main():
               'Maui_County_Total', 'Maui_County_MOE', 'Maui_County_Percent', 'Maui_County_Percent_MOE']
 
 
-    total_households_df = df[df['Computers and Internet Use'] == 'Total households']
+    total_households_df = internet_df[internet_df['Computers and Internet Use'] == 'Total households']
     # Data for Total Households pie chart
     total_households = {
         'County': ['Hawaii County', 'Honolulu County', 'Kalawao County', 'Kauai County', 'Maui County'],
@@ -48,7 +48,7 @@ def main():
     st.subheader("Total Households")
     # plot_pie_chart(total_households, "Total Households by County")
     
-    filtered_df = dataframe_explorer(total_households_df, case=False)
+    filtered_df = dataframe_explorer(internet_df, case=False)
     st.dataframe(filtered_df, use_container_width=True)
     
 if __name__ == "__main__":
