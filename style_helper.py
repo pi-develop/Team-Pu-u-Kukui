@@ -98,10 +98,11 @@ def apply_custom_style():
     <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
     <div class="e2_23"></div>
     <span class="e2_22">HAWAII</span>
-    <div class=e1_8>
+    
+  </div>
+  <div class=e1_8>
       <div class="e1_9"></div>
     </div>
-  </div>
   """
   
   # Insert the HTML and CSS into the Streamlit app
