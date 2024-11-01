@@ -120,8 +120,9 @@ def apply_custom_style():
 
   # First row of buttons
   with col1:
-      st.button("Digital Literacy")
-          
+      if st.button("Digital Literacy"):
+          switch_page("digital_literacy")
+        
   with col2:
       if st.button("Device Access"):
           switch_page("device_access")
