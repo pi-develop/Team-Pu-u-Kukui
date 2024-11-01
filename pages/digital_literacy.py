@@ -11,7 +11,7 @@ def main():
 
     with pdfplumber.open("data/WDC Digital Literacy Report FINAL Post Client Input R111021 (003) Inc Appendices.pdf") as pdf:
         # Select page 20 (index 19 since it's zero-indexed)
-        page = pdf.pages[19]  # Page numbers start from 0
+        page = pdf.pages[20]  # Page numbers start from 0
         
         # Extract the table
         table = page.extract_table()
