@@ -3,6 +3,8 @@ import streamlit as st
 import pdfplumber
 import pandas as pd
 
+from streamlit_extras.dataframe_explorer import dataframe_explorer
+
 from style_helper import apply_custom_style
 
 def main():
@@ -21,8 +23,9 @@ def main():
             # Convert the table into a DataFrame
             table_df = pd.DataFrame(table[1:], columns=table[0])
             table_df.columns = ["Category", "Unprepared", "Old Guard", "Social Users", "Technical DIYers", "Digital Learners"]
-            st.write("Table extracted successfully:")
-            st.dataframe(table_df)
+
+            filtered_df = dataframe_explorer(table_df, case=False)
+            st.dataframe(filtered_df, use_container_width=True)
         else:
             st.write("No table found on page 20.")
 
