@@ -1,6 +1,7 @@
 import streamlit as st
 
 import pdfplumber
+import pandas as pd
 
 from style_helper import apply_custom_style
 
@@ -18,7 +19,7 @@ def main():
         
         if table:
             # Convert the table into a DataFrame
-            table_df = pdf.DataFrame(table[1:], columns=table[0])
+            table_df = pd.DataFrame(table[1:], columns=table[0])
             st.write("Table extracted successfully:")
             print(table_df)
         else:
