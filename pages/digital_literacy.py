@@ -19,10 +19,10 @@ def main():
         if table:
             # Convert the table into a DataFrame
             table_df = pd.DataFrame(table[1:], columns=table[0])
-            print("Table extracted successfully:")
+            st.write("Table extracted successfully:")
             print(table_df)
         else:
-            print("No table found on page 20.")
+            st.write("No table found on page 20.")
 
 if __name__ == "__main__":
     main()
