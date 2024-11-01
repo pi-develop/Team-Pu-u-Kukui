@@ -33,22 +33,22 @@ def main():
 
     # Extract relevant rows and columns for each county
     locations = {
-        "Hawaii Total": internet_df.iloc[2, 2],  # Column 2 for "Total households", row 2 for Hawaii Total
-        "Hawaii County": internet_df.iloc[2, 6], # Column 6 for "Total households" of Hawaii County, row 2
-        "Honolulu County": internet_df.iloc[2, 10], # Column 10 for "Total households" of Honolulu, row 2
-        "Kalawao County": internet_df.iloc[2, 14], # Column 14 for "Total households" of Kalawao, row 2
-        "Kauai County": internet_df.iloc[2, 18], # Column 18 for "Total households" of Kauai, row 2
-        "Maui County": internet_df.iloc[2, 22] # Column 22 for "Total households" of Maui, row 2
+        "Hawaii Total": internet_df.iloc[0, 2],  # Column 2 for "Total households", row 2 for Hawaii Total
+        "Hawaii County": internet_df.iloc[0, 6], # Column 6 for "Total households" of Hawaii County, row 2
+        "Honolulu County": internet_df.iloc[0, 10], # Column 10 for "Total households" of Honolulu, row 2
+        "Kalawao County": internet_df.iloc[0, 14], # Column 14 for "Total households" of Kalawao, row 2
+        "Kauai County": internet_df.iloc[0, 18], # Column 18 for "Total households" of Kauai, row 2
+        "Maui County": internet_df.iloc[0, 22] # Column 22 for "Total households" of Maui, row 2
     }
     
     # "With a computer" values for each county
     computer_users = {
-        "Hawaii Total": internet_df.iloc[3, 2], 
-        "Hawaii County": internet_df.iloc[3, 6],
-        "Honolulu County": internet_df.iloc[3, 10],
-        "Kalawao County": internet_df.iloc[3, 14],
-        "Kauai County": internet_df.iloc[3, 18],
-        "Maui County": internet_df.iloc[3, 22]
+        "Hawaii Total": internet_df.iloc[1, 2], 
+        "Hawaii County": internet_df.iloc[1, 6],
+        "Honolulu County": internet_df.iloc[1, 10],
+        "Kalawao County": internet_df.iloc[1, 14],
+        "Kauai County": internet_df.iloc[1, 18],
+        "Maui County": internet_df.iloc[1, 22]
     }
     
     # Create progress bars
