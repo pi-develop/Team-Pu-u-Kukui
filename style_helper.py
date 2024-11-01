@@ -32,6 +32,7 @@ def apply_custom_style():
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      align-items: flex-start;
   }
   .e2_22 { 
       color:rgba(255, 255, 255, 1);
