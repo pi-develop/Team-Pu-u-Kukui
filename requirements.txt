@@ -12,3 +12,4 @@ owslib
 matplotlib
 SQLAlchemy 
 mysqlclient
+openpyxl
