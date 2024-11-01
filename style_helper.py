@@ -82,12 +82,9 @@ def apply_custom_style():
   </style>
   
   <div class="e2_21">
-    <div>
-      <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
-      <div class="e2_23"></div>
-      <span class="e2_22">HAWAII</span>
-    </div>
-    <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Hawaii Map" class="header-image">
+    <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
+    <div class="e2_23"></div>
+    <span class="e2_22">HAWAII</span>
   </div>
   """
   
