@@ -104,8 +104,9 @@ def apply_custom_style():
       st.button("Device Access")
           
   with col3:
-      st.button("Broadband Connectivity")
-          
+      if st.button("Broadband Connectivity"):
+          switch_page("app")
+        
   # Second row of buttons
   with col1:
       if st.button("Open Data"):
