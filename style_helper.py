@@ -14,6 +14,19 @@ def apply_custom_style():
   body {
       font-family: 'Montserrat', sans-serif;
   }
+  .e1_8 { 
+  	width:281px;
+  	height:281px;
+  	position:absolute;
+  }
+  .e1_9 { 
+  	background-color:rgba(255, 255, 255, 1);
+  	width:259.046875px;
+  	height:166.84375px;
+  	position:absolute;
+  	left:10.9765625px;
+  	top:57.078125px;
+  }
   .e1_15 { 
       color:rgba(255, 255, 255, 1);
       width:727px;
@@ -85,6 +98,9 @@ def apply_custom_style():
     <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
     <div class="e2_23"></div>
     <span class="e2_22">HAWAII</span>
+    <div class=e1_8>
+      <div class="e1_9"></div>
+    </div>
   </div>
   """
   
