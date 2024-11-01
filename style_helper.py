@@ -57,13 +57,17 @@ def apply_custom_style():
       right: 20px;
   }
   .e1_9 { 
-    	background-color:rgba(255, 255, 255, 1);
     	width:259.046875px;
     	height:166.84375px;
     	position:absolute;
     	left:10.9765625px;
     	top:57.078125px;
   }
+  .e1_9 img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+  }
   .stButton > button {
       background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
       color: rgba(255, 255, 255, 1);
