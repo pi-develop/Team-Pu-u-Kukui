@@ -31,7 +31,6 @@ def apply_custom_style():
       display: flex;
       flex-direction: row;
       justify-content: center;
-      align-items: center;
       align-items: flex-start;
       padding-left: 20px;
   }
