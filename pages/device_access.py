@@ -1,10 +1,17 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import matplotlib.pyplot as plt
 
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 
 from style_helper import apply_custom_style
+
+# Function to plot pie chart
+def plot_pie_chart(data, title):
+    fig, ax = plt.subplots()
+    ax.pie(data['Values'], labels=data['County'], autopct='%1.1f%%', startangle=90)
+    ax.set_title(title)
+    st.pyplot(fig)
 
 def main():
     apply_custom_style()
@@ -24,6 +31,23 @@ def main():
               'Maui_County_Total', 'Maui_County_MOE', 'Maui_County_Percent', 'Maui_County_Percent_MOE']
 
 
+    total_households_df = df[df['Computers and Internet Use'] == 'Total households']
+    # Data for Total Households pie chart
+    total_households = {
+        'County': ['Hawaii County', 'Honolulu County', 'Kalawao County', 'Kauai County', 'Maui County'],
+        'Values': [
+            total_households_df['Hawaii_County_Total'].values[0],
+            total_households_df['Honolulu_County_Total'].values[0],
+            total_households_df['Kalawao_County_Total'].values[0],
+            total_households_df['Kauai_County_Total'].values[0],
+            total_households_df['Maui_County_Total'].values[0]
+        ]
+    }
+
+    # Plot each pie chart
+    st.subheader("Total Households")
+    plot_pie_chart(total_households, "Total Households by County")
+    
     filtered_df = dataframe_explorer(internet_df, case=False)
     st.dataframe(internet_df, use_container_width=True)
     
