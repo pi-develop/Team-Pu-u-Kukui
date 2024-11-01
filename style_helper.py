@@ -87,7 +87,7 @@ def apply_custom_style():
       <div class="e2_23"></div>
       <span class="e2_22">HAWAII</span>
     </div>
-    
+    <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Hawaii Map" class="header-image">
   </div>
   """
   
