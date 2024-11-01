@@ -21,7 +21,7 @@ def main():
             # Convert the table into a DataFrame
             table_df = pd.DataFrame(table[1:], columns=table[0])
             st.write("Table extracted successfully:")
-            st.write(table_df)
+            st.write(table_df.columns)
         else:
             st.write("No table found on page 20.")
 
