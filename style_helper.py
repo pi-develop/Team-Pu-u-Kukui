@@ -123,7 +123,8 @@ def apply_custom_style():
       st.button("Digital Literacy")
           
   with col2:
-      st.button("Device Access")
+      if st.button("Device Access"):
+          switch_page("device_access")
           
   with col3:
       if st.button("Broadband Connectivity"):
