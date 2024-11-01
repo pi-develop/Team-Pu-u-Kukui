@@ -31,59 +31,38 @@ def main():
               'Maui_County_Total', 'Maui_County_MOE', 'Maui_County_Percent', 'Maui_County_Percent_MOE']
 
 
-    # Extract rows for each metric
-    total_households_df = internet_df[internet_df['Computers and Internet Use'] == 'Total households']
-    with_computer_df = internet_df[internet_df['Computers and Internet Use'] == 'With a computer']
-    with_broadband_df = internet_df[internet_df['Computers and Internet Use'] == 'With a broadband Internet subscription']
-    
-    # Data for Total Households pie chart
-    total_households = {
-        'County': ['Hawaii County', 'Honolulu County', 'Kalawao County', 'Kauai County', 'Maui County'],
-        'Values': [
-            total_households_df['Hawaii_County_Total'].values[0],
-            total_households_df['Honolulu_County_Total'].values[0],
-            total_households_df['Kalawao_County_Total'].values[0],
-            total_households_df['Kauai_County_Total'].values[0],
-            total_households_df['Maui_County_Total'].values[0]
-        ]
-    }
-
-    # Data for With a Computer pie chart
-    with_computer = {
-        'County': ['Hawaii County', 'Honolulu County', 'Kalawao County', 'Kauai County', 'Maui County'],
-        'Values': [
-            with_computer_df['Hawaii_County_Total'].values[0],
-            with_computer_df['Honolulu_County_Total'].values[0],
-            with_computer_df['Kalawao_County_Total'].values[0],
-            with_computer_df['Kauai_County_Total'].values[0],
-            with_computer_df['Maui_County_Total'].values[0]
-        ]
+    # Extract relevant rows and columns for each county
+    locations = {
+        "Hawaii Total": internet_df.iloc[2, 2],  # Column 2 for "Total households", row 2 for Hawaii Total
+        "Hawaii County": internet_df.iloc[2, 6], # Column 6 for "Total households" of Hawaii County, row 2
+        "Honolulu County": internet_df.iloc[2, 10], # Column 10 for "Total households" of Honolulu, row 2
+        "Kalawao County": internet_df.iloc[2, 14], # Column 14 for "Total households" of Kalawao, row 2
+        "Kauai County": internet_df.iloc[2, 18], # Column 18 for "Total households" of Kauai, row 2
+        "Maui County": internet_df.iloc[2, 22] # Column 22 for "Total households" of Maui, row 2
     }
     
-    # Data for With Broadband Subscription pie chart
-    with_broadband = {
-        'County': ['Hawaii County', 'Honolulu County', 'Kalawao County', 'Kauai County', 'Maui County'],
-        'Values': [
-            with_broadband_df['Hawaii_County_Total'].values[0],
-            with_broadband_df['Honolulu_County_Total'].values[0],
-            with_broadband_df['Kalawao_County_Total'].values[0],
-            with_broadband_df['Kauai_County_Total'].values[0],
-            with_broadband_df['Maui_County_Total'].values[0]
-        ]
-}
-
-    # Create three columns for the pie charts
-    col1, col2, col3 = st.columns(3)
+    # "With a computer" values for each county
+    computer_users = {
+        "Hawaii Total": internet_df.iloc[3, 2], 
+        "Hawaii County": internet_df.iloc[3, 6],
+        "Honolulu County": internet_df.iloc[3, 10],
+        "Kalawao County": internet_df.iloc[3, 14],
+        "Kauai County": internet_df.iloc[3, 18],
+        "Maui County": internet_df.iloc[3, 22]
+    }
     
-    # Plot each pie chart in its respective column
-    with col1:
-        plot_pie_chart(total_households, "Total Households")
+    # Create progress bars
+    st.title("Computer Usage in Hawaii Counties")
     
-    with col2:
-        plot_pie_chart(with_computer, "Households with a Computer")
-    
-    with col3:
-        plot_pie_chart(with_broadband, "Households with Broadband Internet")
+    for county, total_households in locations.items():
+        with_computer = computer_users[county]
+        
+        # Calculate percentage of households with a computer
+        percentage = with_computer / total_households
+        
+        # Display progress bar with the computed percentage
+        st.subheader(f"{county}")
+        st.progress(percentage)
     
     st.dataframe(internet_df, use_container_width=True)
     
