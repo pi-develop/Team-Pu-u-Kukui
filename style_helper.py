@@ -29,8 +29,8 @@ def apply_custom_style():
       width:100%; /* Set width to 100% for responsiveness */
       height:256px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      flex-direction: row;
+      justify-content: center;
       align-items: center;
       align-items: flex-start;
       padding-left: 20px;
