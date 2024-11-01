@@ -64,8 +64,8 @@ def apply_custom_style():
     	top:57.078125px;
   }
   .e1_9 img {
-      max-width: 100%;
-      max-height: 100%;
+      max-width: 281px;
+      max-height: 281px;
       object-fit: contain;
   }
   .stButton > button {
