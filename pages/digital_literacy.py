@@ -22,7 +22,7 @@ def main():
             table_df = pd.DataFrame(table[1:], columns=table[0])
             table_df.columns = ["Category", "Unprepared", "Old Guard", "Social Users", "Technical DIYers", "Digital Learners"]
             st.write("Table extracted successfully:")
-            st.write(table_df.columns)
+            st.dataframe(table_df)
         else:
             st.write("No table found on page 20.")
 
