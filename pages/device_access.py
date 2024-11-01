@@ -34,21 +34,21 @@ def main():
     # Extract relevant rows and columns for each county
     locations = {
         "Hawaii Total": internet_df.iloc[0, 1],  # Column 2 for "Total households", row 2 for Hawaii Total
-        "Hawaii County": internet_df.iloc[0, 6], # Column 6 for "Total households" of Hawaii County, row 2
-        "Honolulu County": internet_df.iloc[0, 10], # Column 10 for "Total households" of Honolulu, row 2
-        "Kalawao County": internet_df.iloc[0, 14], # Column 14 for "Total households" of Kalawao, row 2
-        "Kauai County": internet_df.iloc[0, 18], # Column 18 for "Total households" of Kauai, row 2
-        "Maui County": internet_df.iloc[0, 22] # Column 22 for "Total households" of Maui, row 2
+        "Hawaii County": internet_df.iloc[0, 5], # Column 6 for "Total households" of Hawaii County, row 2
+        "Honolulu County": internet_df.iloc[0, 9], # Column 10 for "Total households" of Honolulu, row 2
+        "Kalawao County": internet_df.iloc[0, 13], # Column 14 for "Total households" of Kalawao, row 2
+        "Kauai County": internet_df.iloc[0, 17], # Column 18 for "Total households" of Kauai, row 2
+        "Maui County": internet_df.iloc[0, 21] # Column 22 for "Total households" of Maui, row 2
     }
     
     # "With a computer" values for each county
     computer_users = {
         "Hawaii Total": internet_df.iloc[1, 1], 
-        "Hawaii County": internet_df.iloc[1, 6],
-        "Honolulu County": internet_df.iloc[1, 10],
-        "Kalawao County": internet_df.iloc[1, 14],
-        "Kauai County": internet_df.iloc[1, 18],
-        "Maui County": internet_df.iloc[1, 22]
+        "Hawaii County": internet_df.iloc[1, 5],
+        "Honolulu County": internet_df.iloc[1, 9],
+        "Kalawao County": internet_df.iloc[1, 13],
+        "Kauai County": internet_df.iloc[1, 17],
+        "Maui County": internet_df.iloc[1, 21]
     }
     
     # Create progress bars
@@ -58,12 +58,11 @@ def main():
         with_computer = computer_users[county]
         
         # Calculate percentage of households with a computer
-        st.write(with_computer) 
-        st.write(total_households)
+        percentage = with_computer / total_households
         
         # Display progress bar with the computed percentage
-        # st.subheader(f"{county}")
-        # st.progress(percentage)
+        st.subheader(f"{county}")
+        st.progress(percentage)
     
     st.dataframe(internet_df, use_container_width=True)
     
