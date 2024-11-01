@@ -66,7 +66,6 @@ def apply_custom_style():
   .header-img {
       max-width: 140px;
       max-height: 140px;
-      object-fit: contain;
   }
   .stButton > button {
       background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
