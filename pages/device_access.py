@@ -45,7 +45,6 @@ def main():
     }
 
     # Plot each pie chart
-    st.subheader("Total Households")
     plot_pie_chart(total_households, "Total Households by County")
     
     filtered_df = dataframe_explorer(internet_df, case=False)
