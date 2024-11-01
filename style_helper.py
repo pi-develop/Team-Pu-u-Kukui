@@ -64,8 +64,8 @@ def apply_custom_style():
     	top:57.078125px;
   }
   .header-img {
-      max-width: 281px;
-      max-height: 281px;
+      max-width: 100%;
+      max-height: 100%;
       object-fit: contain;
   }
   .stButton > button {
