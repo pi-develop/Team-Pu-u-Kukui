@@ -20,6 +20,7 @@ def main():
         if table:
             # Convert the table into a DataFrame
             table_df = pd.DataFrame(table[1:], columns=table[0])
+            table_df.columns = ["Category", "Unprepared", "Old Guard", "Social Users", "Technical DIYers", "Digital Learners"]
             st.write("Table extracted successfully:")
             st.write(table_df.columns)
         else:
