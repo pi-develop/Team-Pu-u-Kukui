@@ -1,5 +1,7 @@
 import streamlit as st
 
+from streamlit_extras.switch_page_button import switch_page
+
 def apply_custom_style():
   st.set_page_config(layout="wide")
     
