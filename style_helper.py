@@ -86,22 +86,18 @@ def apply_custom_style():
   .stButton > button:hover {
       opacity: 0.9;  /* Slightly transparent on hover */
   }
-
-  .header-image {
-      height: 100px; /* Set image height */
-      width: auto; /* Maintain aspect ratio */
-      padding-right: 20px;
-  }
   </style>
   
   <div class="e2_21">
     <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
     <div class="e2_23"></div>
     <span class="e2_22">HAWAII</span>
+
+    <div class=e1_8>
+      <div class="e1_9">test</div>
+    </div>
   </div>
-  <div class=e1_8>
-    <div class="e1_9">test</div>
-  </div>
+  
   """
   
   # Insert the HTML and CSS into the Streamlit app
