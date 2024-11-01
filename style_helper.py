@@ -54,6 +54,7 @@ def apply_custom_style():
     	width:281px;
     	height:281px;
     	position: absolute;
+      right: 20px;
   }
   .e1_9 { 
     	background-color:rgba(255, 255, 255, 1);
