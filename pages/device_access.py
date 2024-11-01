@@ -13,10 +13,10 @@ def main():
 
     df = pd.read_excel("data/acs2022_5yr_counties_hi.xlsx")
 
-    internet_df = df.iloc[169:174]
+    internet_df = df.iloc[170:174]
 
     # Rename columns for clarity (based on your provided data)
-    internet_df.columns = ['Label', 'Hawaii_Total', 'Hawaii_MOE', 'Hawaii_Percent', 'Hawaii_Percent_MOE',
+    internet_df.columns = ['Computers and Internet Use', 'Hawaii_Total', 'Hawaii_MOE', 'Hawaii_Percent', 'Hawaii_Percent_MOE',
               'Hawaii_County_Total', 'Hawaii_County_MOE', 'Hawaii_County_Percent', 'Hawaii_County_Percent_MOE',
               'Honolulu_County_Total', 'Honolulu_County_MOE', 'Honolulu_County_Percent', 'Honolulu_County_Percent_MOE',
               'Kalawao_County_Total', 'Kalawao_County_MOE', 'Kalawao_County_Percent', 'Kalawao_County_Percent_MOE',
