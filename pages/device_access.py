@@ -50,19 +50,46 @@ def main():
         "Kauai County": internet_df.iloc[1, 17],
         "Maui County": internet_df.iloc[1, 21]
     }
-    
-    # Create progress bars
-    st.title("Computer Usage in Hawaii Counties")
-    
-    for county, total_households in locations.items():
-        with_computer = computer_users[county]
+
+    # "With broadband" values for each county
+    broadband_users = {
+        "Hawaii Total": internet_df.iloc[2, 1], 
+        "Hawaii County": internet_df.iloc[2, 5],
+        "Honolulu County": internet_df.iloc[2, 9],
+        "Kalawao County": internet_df.iloc[2, 13],
+        "Kauai County": internet_df.iloc[2, 17],
+        "Maui County": internet_df.iloc[2, 21]
+    }
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        # Create progress bars
+        st.title("Computer Usage in Hawaii Counties")
         
-        # Calculate percentage of households with a computer
-        percentage = with_computer / total_households
+        for county, total_households in locations.items():
+            with_computer = computer_users[county]
+            
+            # Calculate percentage of households with a computer
+            percentage = with_computer / total_households
+            
+            # Display progress bar with the computed percentage
+            st.subheader(f"{county}")
+            st.progress(percentage)
+
+    with col2:
+        # Create progress bars
+        st.title("Broadband Usage in Hawaii Counties")
         
-        # Display progress bar with the computed percentage
-        st.subheader(f"{county}")
-        st.progress(percentage)
+        for county, total_households in locations.items():
+            with_broadband = broadband_users[county]
+            
+            # Calculate percentage of households with broadband
+            percentage = with_broadband / total_households
+            
+            # Display progress bar with the computed percentage
+            st.subheader(f"{county}")
+            st.progress(percentage)
     
     st.dataframe(internet_df, use_container_width=True)
     
