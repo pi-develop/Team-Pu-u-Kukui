@@ -58,11 +58,12 @@ def main():
         with_computer = computer_users[county]
         
         # Calculate percentage of households with a computer
-        percentage = with_computer / total_households
+        st.write(with_computer) 
+        st.write(total_households)
         
         # Display progress bar with the computed percentage
         # st.subheader(f"{county}")
-        st.progress(percentage)
+        # st.progress(percentage)
     
     st.dataframe(internet_df, use_container_width=True)
     
