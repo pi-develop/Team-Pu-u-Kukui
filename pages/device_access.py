@@ -85,8 +85,7 @@ def main():
     with col3:
         plot_pie_chart(with_broadband, "Households with Broadband Internet")
     
-    filtered_df = dataframe_explorer(internet_df, case=False)
-    st.dataframe(filtered_df, use_container_width=True)
+    st.dataframe(internet_df, use_container_width=True)
     
 if __name__ == "__main__":
     main()
