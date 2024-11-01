@@ -8,7 +8,7 @@ def main():
             
     st.header("Open Data")
 
-    components.iframe("https://opendata.hawaii.gov/organization/hbdeo", height=1000)
+    components.iframe("https://opendata.hawaii.gov/organization/hbdeo", height=1200)
 
 if __name__ == "__main__":
     main()
