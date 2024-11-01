@@ -77,16 +77,13 @@ def main():
     
     # Plot each pie chart in its respective column
     with col1:
-        fig1 = plot_pie_chart(total_households, "Total Households")
-        st.pyplot(fig1)
+        plot_pie_chart(total_households, "Total Households")
     
     with col2:
-        fig2 = plot_pie_chart(with_computer, "Households with a Computer")
-        st.pyplot(fig2)
+        plot_pie_chart(with_computer, "Households with a Computer")
     
     with col3:
-        fig3 = plot_pie_chart(with_broadband, "Households with Broadband Internet")
-        st.pyplot(fig3)
+        plot_pie_chart(with_broadband, "Households with Broadband Internet")
     
     filtered_df = dataframe_explorer(internet_df, case=False)
     st.dataframe(filtered_df, use_container_width=True)
