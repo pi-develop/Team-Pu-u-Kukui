@@ -78,6 +78,7 @@ def apply_custom_style():
   .header-image {
       height: 100px; /* Set image height */
       width: auto; /* Maintain aspect ratio */
+      padding-right: 20px;
   }
   </style>
   
