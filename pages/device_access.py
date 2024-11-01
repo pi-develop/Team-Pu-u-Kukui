@@ -65,7 +65,7 @@ def main():
 
     with col1:
         # Create progress bars
-        st.title("Computer Usage in Hawaii Counties")
+        st.title("Computer Usage")
         
         for county, total_households in locations.items():
             with_computer = computer_users[county]
@@ -79,7 +79,7 @@ def main():
 
     with col2:
         # Create progress bars
-        st.title("Broadband Usage in Hawaii Counties")
+        st.title("Broadband Usage")
         
         for county, total_households in locations.items():
             with_broadband = broadband_users[county]
