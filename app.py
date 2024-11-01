@@ -8,7 +8,7 @@ from style_helper import apply_custom_style
 def main():
     apply_custom_style()
             
-    st.header("Heatmap")
+    st.header("Broadband Connectivity Heatmap")
 
     # Load data
     data_file = "data/BroadBandCover_by_City.csv"
