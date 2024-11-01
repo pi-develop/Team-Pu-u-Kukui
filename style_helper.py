@@ -63,7 +63,7 @@ def apply_custom_style():
     	left:10.9765625px;
     	top:57.078125px;
   }
-  .e1_9 img {
+  .header-img {
       max-width: 281px;
       max-height: 281px;
       object-fit: contain;
@@ -98,7 +98,7 @@ def apply_custom_style():
     <span class="e2_22">HAWAII</span>
 
     <div class=e1_8>
-      <div class="e1_9"><img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png"/></div>
+      <div class="e1_9"><img class="header-img" src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png"/></div>
     </div>
   </div>
   
