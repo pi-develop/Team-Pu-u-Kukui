@@ -137,7 +137,8 @@ def apply_custom_style():
           switch_page("open_data")
           
   with col2:
-      st.button("Initiatives Impact")
+      if st.button("Initiatives Impact"):
+          switch_page("impact")
           
   with col3:
       st.button("User Feedback")
