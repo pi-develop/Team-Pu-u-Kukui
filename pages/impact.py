@@ -47,7 +47,7 @@ def main():
             continue  # Skip if coordinates already exist
         
         try:
-            location = geocode(row['Street Address'])
+            # location = geocode(row['Street Address'])
             attempt_count += 1  # Increment attempt count regardless of success
 
             if location:
