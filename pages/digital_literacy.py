@@ -3,6 +3,7 @@ import streamlit as st
 import pdfplumber
 import pandas as pd
 
+from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 
 from style_helper import apply_custom_style
@@ -34,6 +35,7 @@ def main():
         st.subheader("Demographic Characteristics Of Digital Readiness Groups (Statewide)")
         extract_table(pdf, 20, columns)
 
+        add_vertical_space(1)
         st.subheader("Employment Characteristics Of Digital Readiness Groups (Statewide)")
         extract_table(pdf, 21, columns)
         
