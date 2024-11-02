@@ -40,7 +40,7 @@ def main():
     for index, row in df.iterrows():
         # Stop if max geocoding attempts have been reached
         if attempt_count >= max_attempts:
-            st.write("Reached maximum geocoding attempts. Stopping geocoding.")
+            # st.write("Reached maximum geocoding attempts. Stopping geocoding.")
             break
         
         if pd.notnull(row['Latitude']) and pd.notnull(row['Longitude']):
