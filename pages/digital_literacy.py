@@ -31,7 +31,10 @@ def main():
 
     with pdfplumber.open("data/WDC Digital Literacy Report FINAL Post Client Input R111021 (003) Inc Appendices.pdf") as pdf:
         columns = ["Category", "Unprepared", "Old Guard", "Social Users", "Technical DIYers", "Digital Learners"]
+        st.subheader("Demographic Characteristics Of Digital Readiness Groups (Statewide)")
         extract_table(pdf, 20, columns)
+
+        st.subheader("Employment Characteristics Of Digital Readiness Groups (Statewide)")
         extract_table(pdf, 21, columns)
         
 if __name__ == "__main__":
