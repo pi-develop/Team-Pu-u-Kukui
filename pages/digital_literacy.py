@@ -7,8 +7,8 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 
 from style_helper import apply_custom_style
 
-def extract_table(pdf, page_number, columns)
-    # Select page 20
+def extract_table(pdf, page_number, columns):
+    # Select page number
     page = pdf.pages[page_number]
     
     # Extract the table
@@ -17,7 +17,7 @@ def extract_table(pdf, page_number, columns)
     if table:
         # Convert the table into a DataFrame
         table_df = pd.DataFrame(table[1:], columns=table[0])
-        demographic_df.columns = columns
+        table_df.columns = columns
 
         filtered_df = dataframe_explorer(table_df, case=False)
         st.dataframe(filtered_df, use_container_width=True)
