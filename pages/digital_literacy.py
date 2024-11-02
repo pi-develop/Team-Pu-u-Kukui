@@ -35,7 +35,7 @@ def main():
         st.subheader("Demographic Characteristics Of Digital Readiness Groups (Statewide)")
         extract_table(pdf, 20, columns)
 
-        add_vertical_space(1)
+        add_vertical_space(2)
         st.subheader("Employment Characteristics Of Digital Readiness Groups (Statewide)")
         extract_table(pdf, 21, columns)
         
