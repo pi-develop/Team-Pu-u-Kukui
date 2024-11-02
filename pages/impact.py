@@ -50,9 +50,9 @@ def main():
             # location = geocode(row['Street Address'])
             attempt_count += 1  # Increment attempt count regardless of success
 
-            if location:
-                df.at[index, 'Latitude'] = location.latitude
-                df.at[index, 'Longitude'] = location.longitude
+            # if location:
+            #    df.at[index, 'Latitude'] = location.latitude
+            #    df.at[index, 'Longitude'] = location.longitude
         except Exception as e:
             st.error(f"Error geocoding address at index {index}: {e}")
 
