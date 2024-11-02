@@ -30,6 +30,16 @@ def main():
     df['Latitude'] = None
     df['Longitude'] = None
 
+    # Geocode each address
+    for index, row in df.iterrows():
+        try:
+            location = geocode(row['Street Address'])
+            if location:
+                df.at[index, 'Latitude'] = location.latitude
+                df.at[index, 'Longitude'] = location.longitude
+        except Exception as e:
+            st.error(f"Error geocoding address at index {index}: {e}")
+
     filtered_df = dataframe_explorer(df, case=False)
     st.dataframe(filtered_df, use_container_width=True)
 
