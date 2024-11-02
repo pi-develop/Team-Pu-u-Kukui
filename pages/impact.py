@@ -26,14 +26,30 @@ def main():
     if 'Street Address' not in df.columns:
         raise ValueError("The CSV file must have a 'Street Address' column")
     
-    # Create new columns for latitude and longitude
-    df['Latitude'] = None
-    df['Longitude'] = None
+    # Create new columns for latitude and longitude if they don’t exist
+    if 'Latitude' not in df.columns:
+        df['Latitude'] = None
+    if 'Longitude' not in df.columns:
+        df['Longitude'] = None
 
+    # Counter to limit the number of geocoding attempts
+    max_attempts = 5
+    attempt_count = 0    
+    
     # Geocode each address
     for index, row in df.iterrows():
+        # Stop if max geocoding attempts have been reached
+        if attempt_count >= max_attempts:
+            st.write("Reached maximum geocoding attempts. Stopping geocoding.")
+            break
+        
+        if pd.notnull(row['Latitude']) and pd.notnull(row['Longitude']):
+            continue  # Skip if coordinates already exist
+        
         try:
             location = geocode(row['Street Address'])
+            attempt_count += 1  # Increment attempt count regardless of success
+
             if location:
                 df.at[index, 'Latitude'] = location.latitude
                 df.at[index, 'Longitude'] = location.longitude
