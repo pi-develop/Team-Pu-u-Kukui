@@ -1,20 +1,15 @@
 import streamlit as st
-import socket
 
-def print_server_info():
-  hostname = socket.gethostname()
-  server_ip = socket.gethostbyname(hostname)
-  st.write("Server Host:", hostname)
-  st.write("Server IP:", server_ip)
+#Tiger testing mysql connection11/2 
+conn = st.connection('mysql', type='sql') 
 
-print_server_info()
+st.write("Testing connection ok") 
 
-# Initialize connection.
-conn = st.connection('mysql', type='sql')
+# Perform query. 
+df = conn.query('SELECT * from population_cover;', ttl=6) 
 
-# Perform query.
-df = conn.query('SELECT * from broadbcover_by_city;', ttl=600)
+st.write("query ok") 
 
-# Print results.
-for row in df.itertuples():
-  st.write(f"{row.City} has a :{row.BroadbandCoverage}:")
+# Print results. 
+for row in df.itertuples(): 
+  st.write(row.County + " population " + str(row.Population))
