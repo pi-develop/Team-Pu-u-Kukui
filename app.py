@@ -116,5 +116,45 @@ def main():
       """
     )
 
+    # Set up a blue header style for the card
+    header_style = """
+        <style>
+            .card-header {
+                background-color: #007bff;
+                color: white;
+                padding: 10px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                border-radius: 0.5rem 0.5rem 0 0;
+                text-align: center;
+            }
+            .card {
+                border: 1px solid #d3d3d3;
+                border-radius: 0.5rem;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+        </style>
+    """
+    
+    # Display the custom styles in Streamlit
+    st.markdown(header_style, unsafe_allow_html=True)
+    
+    # Create a card layout with a blue header
+    st.markdown("""
+        <div class="card">
+            <div class="card-header">Broadband Connectivity</div>
+            <div>
+    """, unsafe_allow_html=True)
+    
+    # Create a Leaflet map centered at an example location
+    m = folium.Map(location=[37.7749, -122.4194], zoom_start=10)  # Centered on San Francisco, for example
+    
+    # Display the map in Streamlit
+    st_folium(m, width=700, height=400)
+    
+    # Close the card div
+    st.markdown("</div></div>", unsafe_allow_html=True)
+
 if __name__ == "__main__":
     main()
