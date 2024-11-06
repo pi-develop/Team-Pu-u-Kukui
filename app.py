@@ -9,7 +9,7 @@ def fetch_broadband_data():
     df = conn.query('SELECT BroadbandCoverage, Latitude, Longitude FROM broadbcover_by_city', ttl=6)
     return df
 
-def show_broadband_card()
+def show_broadband_card():
     # Set up a blue header style for the card
     header_style = """
         <style>
