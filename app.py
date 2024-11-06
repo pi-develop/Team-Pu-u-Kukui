@@ -140,7 +140,6 @@ def main():
                 justify-content: space-between;
                 align-items: center;
                 padding: 10px 20px;
-                background-color: #f1f1f1;
                 border-top: 1px solid #ddd;
             }
         
