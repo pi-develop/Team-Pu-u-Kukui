@@ -167,8 +167,8 @@ def main():
 
             .card-footer-button .arrow-icon {
                 margin-left: 8px;
-                width: 12px;
-                height: 12px;
+                width: 16px;
+                height: 16px;
                 fill: #fff;
             }
         
