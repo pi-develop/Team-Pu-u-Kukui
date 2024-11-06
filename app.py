@@ -120,7 +120,7 @@ def main():
     header_style = """
         <style>
             .card-header {
-                background-color: #007bff;
+                background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
                 color: white;
                 padding: 10px;
                 font-size: 1.2rem;
