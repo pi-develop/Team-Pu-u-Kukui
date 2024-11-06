@@ -3,9 +3,9 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from style_helper import apply_custom_style
-
 def main():
+    st.set_page_config(layout="wide")
+  
     # Define the HTML and CSS
     html_content = """
     <style>
