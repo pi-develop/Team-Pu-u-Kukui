@@ -202,14 +202,13 @@ def main():
             <div class="card-footer">
                 <span class="card-footer-text">Read more about it</span>
                 <a href="#" class="card-footer-button">
-                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 2L10.59 3.41 17.17 10H2v2h15.17l-6.58 6.59L12 22l10-10z"/>
-                    </svg>
-                </a>
     """, unsafe_allow_html=True)
+
+    st.button("Learn More")
     
     # Close the card footer and card div
     st.markdown("""
+                </a>
             </div>
         </div>
     """, unsafe_allow_html=True)
