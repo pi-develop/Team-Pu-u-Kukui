@@ -134,24 +134,37 @@ def main():
                 box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
                 margin-bottom: 20px;
             }
+            /* Footer container styling */
             .card-footer {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 10px;
-                border-top: 1px solid #d3d3d3;
-                font-size: 0.9rem;
+                padding: 10px 20px;
+                background-color: #f1f1f1;
+                border-top: 1px solid #ddd;
+            }
+        
+            /* Text styling for "Read more about it" */
+            .card-footer-text {
+                font-size: 16px;
                 color: #333;
             }
-            .read-more {
-                margin: 0;
+        
+            /* Button styling */
+            .card-footer-button {
+                padding: 8px 16px;
+                font-size: 16px;
+                color: #fff;
+                background-color: #007BFF;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                text-decoration: none;
             }
-            .button-container {
-                margin: 0;
-            }
-            .stButton button {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
+        
+            /* Button hover effect */
+            .card-footer-button:hover {
+                background-color: #0056b3;
             }
         </style>
     """
@@ -179,12 +192,9 @@ def main():
     st.markdown("""
             </div>
             <div class="card-footer">
-                <p class="read-more">Read more about it</p>
-                <div class="button-container">
+                <span class="card-footer-text">Read more about it</span>
+                <a href="#" class="card-footer-button">
     """, unsafe_allow_html=True)
-    
-    # Create the button in Streamlit and display it in the footer
-    st.button("Learn More")
     
     # Close the card footer and card div
     st.markdown("""
