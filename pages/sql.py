@@ -8,3 +8,6 @@ st.write(df)
 
 df = conn.query('select * from broadbcover_by_city limit 5', ttl=6) 
 st.write(df)
+
+df = conn.query('select * from population_cover limit 5', ttl=6)
+st.write(df)
