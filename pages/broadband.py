@@ -10,7 +10,7 @@ from style_helper import apply_custom_style
 @st.cache_data
 def fetch_broadband_data():
     conn = st.connection('mysql', type='sql')
-    df = conn.query('SELECT City, County, BroadbandCoverage, Latitude, Longitude FROM broadbcover_by_city', ttl=6)
+    df = conn.query('SELECT City, County, Providers, BroadbandCoverage, Latitude, Longitude FROM broadbcover_by_city', ttl=6)
     return df
 
 def main():
