@@ -1,7 +1,9 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 import pandas as pd
-import matplotlib.pyplot as plt
+
+from streamlit_extras.add_vertical_space import add_vertical_space
+from streamlit_extras.dataframe_explorer import dataframe_explorer
 
 from style_helper import apply_custom_style
 
@@ -23,9 +25,6 @@ def main():
     # Create Leafmap map
     m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
 
-    # Prepare data for heatmap
-    # data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
-
     # Add heatmap layer
     m.add_heatmap(data=data,
                   latitude="Latitude",
@@ -37,6 +36,11 @@ def main():
                   max_val=100)
     
     m.to_streamlit(height=500)
+
+    add_vertical_space(2)
+
+    filtered_df = dataframe_explorer(data, case=False)
+    st.dataframe(filtered_df, use_container_width=True)
 
 if __name__ == "__main__":
     main()
