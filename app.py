@@ -134,6 +134,25 @@ def main():
                 box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
                 margin-bottom: 20px;
             }
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                border-top: 1px solid #d3d3d3;
+                font-size: 0.9rem;
+                color: #333;
+            }
+            .read-more {
+                margin: 0;
+            }
+            .button-container {
+                margin: 0;
+            }
+            .stButton button {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
         </style>
     """
     
@@ -156,7 +175,23 @@ def main():
     m.to_streamlit(height=500)
     
     # Close the card div
-    st.markdown("</div></div>", unsafe_allow_html=True)
+    # Add the footer with "Read more about it" and a button
+    st.markdown("""
+            </div>
+            <div class="card-footer">
+                <p class="read-more">Read more about it</p>
+                <div class="button-container">
+    """, unsafe_allow_html=True)
+    
+    # Create the button in Streamlit and display it in the footer
+    st.button("Learn More")
+    
+    # Close the card footer and card div
+    st.markdown("""
+                </div>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
