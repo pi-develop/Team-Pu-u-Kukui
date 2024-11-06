@@ -148,10 +148,10 @@ def main():
     """, unsafe_allow_html=True)
     
     # Create a Leaflet map centered at an example location
-    m = folium.Map(location=[37.7749, -122.4194], zoom_start=10)  # Centered on San Francisco, for example
+    m = leafmap.Map(location=[37.7749, -122.4194], zoom_start=10)  # Centered on San Francisco, for example
     
     # Display the map in Streamlit
-    st_folium(m, width=700, height=400)
+    m.to_streamlit(height=500)
     
     # Close the card div
     st.markdown("</div></div>", unsafe_allow_html=True)
