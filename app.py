@@ -3,6 +3,132 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
 
+@st.cache_data
+def fetch_broadband_data():
+    conn = st.connection('mysql', type='sql')
+    df = conn.query('SELECT BroadbandCoverage, Latitude, Longitude FROM broadbcover_by_city', ttl=6)
+    return df
+
+def show_broadband_card()
+    # Set up a blue header style for the card
+    header_style = """
+        <style>
+            .card-header {
+                background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
+                color: white;
+                padding: 10px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                border-radius: 0.5rem 0.5rem 0 0;
+                text-align: left;
+            }
+            .card {
+                border: 1px solid #d3d3d3;
+                border-radius: 0.5rem;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+            /* Footer container styling */
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                border-top: 1px solid #ddd;
+            }
+        
+            /* Text styling for "Read more about it" */
+            .card-footer-text {
+                font-size: 16px;
+                color: #333;
+            }
+        
+            /* Button styling */
+            .card-footer-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;  /* Center the content inside the circle */
+                width: 50px;  /* Set a fixed width */
+                height: 50px;  /* Set a fixed height */
+                font-size: 16px;
+                color: #fff;
+                background-color: #007BFF;
+                border: none;
+                border-radius: 50%;  /* Make the button circular */
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .card-footer-button .arrow-icon {
+                margin-left: 8px;
+                width: 16px;
+                height: 16px;
+                fill: #fff;
+            }
+        
+            /* Button hover effect */
+            .card-footer-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    """
+    
+    # Display the custom styles in Streamlit
+    st.markdown(header_style, unsafe_allow_html=True)
+    
+    # Create a card layout with a blue header
+    st.markdown("""
+        <div class="card">
+            <div class="card-header">Broadband Connectivity</div>
+            <div>
+    """, unsafe_allow_html=True)
+
+    st.subheader("State of Hawaii Broadband Connectivity Map")
+    
+    # Create a Leaflet map centered at an example location
+    # Drop rows where coordinates couldn't be found
+    data = fetch_broadband_data()
+    data.dropna(subset=['Latitude', 'Longitude'], inplace=True)
+
+    # Create Leafmap map
+    m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
+
+    # Prepare data for heatmap
+    # data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
+
+    # Add heatmap layer
+    m.add_heatmap(data=data,
+                  latitude="Latitude",
+                  longitude="Longitude",
+                  value="BroadbandCoverage",
+                  name="Heat map",
+                  radius=15,
+                  blur=10, 
+                  max_val=100)
+        
+    # Display the map in Streamlit
+    m.to_streamlit(height=500)
+    
+    # Close the card div
+    # Add the footer with "Read more about it" and a button
+    st.markdown("""
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Read more about it</span>
+                <a href="/broadband" target="_self" class="card-footer-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                    </svg>
+                </a>
+    """, unsafe_allow_html=True)
+    
+    # Close the card footer and card div
+    st.markdown("""
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+
 def main():
     st.set_page_config(layout="wide")
   
@@ -116,105 +242,7 @@ def main():
       """
     )
 
-    # Set up a blue header style for the card
-    header_style = """
-        <style>
-            .card-header {
-                background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
-                color: white;
-                padding: 10px;
-                font-size: 1.2rem;
-                font-weight: bold;
-                border-radius: 0.5rem 0.5rem 0 0;
-                text-align: left;
-            }
-            .card {
-                border: 1px solid #d3d3d3;
-                border-radius: 0.5rem;
-                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-                margin-bottom: 20px;
-            }
-            /* Footer container styling */
-            .card-footer {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                border-top: 1px solid #ddd;
-            }
-        
-            /* Text styling for "Read more about it" */
-            .card-footer-text {
-                font-size: 16px;
-                color: #333;
-            }
-        
-            /* Button styling */
-            .card-footer-button {
-                display: flex;
-                align-items: center;
-                justify-content: center;  /* Center the content inside the circle */
-                width: 50px;  /* Set a fixed width */
-                height: 50px;  /* Set a fixed height */
-                font-size: 16px;
-                color: #fff;
-                background-color: #007BFF;
-                border: none;
-                border-radius: 50%;  /* Make the button circular */
-                cursor: pointer;
-                text-decoration: none;
-            }
-
-            .card-footer-button .arrow-icon {
-                margin-left: 8px;
-                width: 16px;
-                height: 16px;
-                fill: #fff;
-            }
-        
-            /* Button hover effect */
-            .card-footer-button:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    """
-    
-    # Display the custom styles in Streamlit
-    st.markdown(header_style, unsafe_allow_html=True)
-    
-    # Create a card layout with a blue header
-    st.markdown("""
-        <div class="card">
-            <div class="card-header">Broadband Connectivity</div>
-            <div>
-    """, unsafe_allow_html=True)
-
-    st.subheader("State of Hawaii Broadband Connectivity Map")
-    
-    # Create a Leaflet map centered at an example location
-    m = leafmap.Map(location=[37.7749, -122.4194], zoom_start=10)  # Centered on San Francisco, for example
-    
-    # Display the map in Streamlit
-    m.to_streamlit(height=500)
-    
-    # Close the card div
-    # Add the footer with "Read more about it" and a button
-    st.markdown("""
-            </div>
-            <div class="card-footer">
-                <span class="card-footer-text">Read more about it</span>
-                <a href="/broadband" target="_self" class="card-footer-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
-                    </svg>
-                </a>
-    """, unsafe_allow_html=True)
-    
-    # Close the card footer and card div
-    st.markdown("""
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
+    show_broadband_card()
 
 if __name__ == "__main__":
     main()
