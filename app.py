@@ -126,7 +126,7 @@ def main():
                 font-size: 1.2rem;
                 font-weight: bold;
                 border-radius: 0.5rem 0.5rem 0 0;
-                text-align: center;
+                text-align: left;
             }
             .card {
                 border: 1px solid #d3d3d3;
