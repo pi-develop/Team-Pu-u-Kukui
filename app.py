@@ -146,6 +146,8 @@ def main():
             <div class="card-header">Broadband Connectivity</div>
             <div>
     """, unsafe_allow_html=True)
+
+    st.subheader("State of Hawaii Broadband Connectivity Map")
     
     # Create a Leaflet map centered at an example location
     m = leafmap.Map(location=[37.7749, -122.4194], zoom_start=10)  # Centered on San Francisco, for example
