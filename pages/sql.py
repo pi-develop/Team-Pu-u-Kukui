@@ -6,10 +6,6 @@ conn = st.connection('mysql', type='sql')
 st.write("Testing connection ok") 
 
 # Perform query. 
-df = conn.query('SELECT * from population_cover;', ttl=6) 
+df = conn.query('SELECT * from population_cover limit 5;', ttl=6) 
 
-st.write("query ok") 
-
-# Print results. 
-for row in df.itertuples(): 
-  st.write(row.County + " population " + str(row.Population))
+st.write(df)
