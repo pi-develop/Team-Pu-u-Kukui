@@ -201,7 +201,7 @@ def main():
             </div>
             <div class="card-footer">
                 <span class="card-footer-text">Read more about it</span>
-                <a href="#" class="card-footer-button">Learn More</a>
+                <a href="/broadband" class="card-footer-button">Learn More</a>
     """, unsafe_allow_html=True)
     
     # Close the card footer and card div
