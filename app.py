@@ -201,14 +201,11 @@ def main():
             </div>
             <div class="card-footer">
                 <span class="card-footer-text">Read more about it</span>
-                <a href="#" class="card-footer-button">
+                <a href="#" class="card-footer-button">Learn More</a>
     """, unsafe_allow_html=True)
-
-    st.button("Learn More")
     
     # Close the card footer and card div
     st.markdown("""
-                </a>
             </div>
         </div>
     """, unsafe_allow_html=True)
