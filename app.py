@@ -152,14 +152,23 @@ def main():
         
             /* Button styling */
             .card-footer-button {
-                padding: 8px 16px;
+                display: flex;
+                align-items: center;
+                padding: 10px 20px;
                 font-size: 16px;
                 color: #fff;
                 background-color: #007BFF;
                 border: none;
-                border-radius: 4px;
+                border-radius: 50px;
                 cursor: pointer;
                 text-decoration: none;
+            }
+
+            .card-footer-button .arrow-icon {
+                margin-left: 8px;
+                width: 12px;
+                height: 12px;
+                fill: #fff;
             }
         
             /* Button hover effect */
@@ -193,7 +202,11 @@ def main():
             </div>
             <div class="card-footer">
                 <span class="card-footer-text">Read more about it</span>
-                <a href="#" class="card-footer-button">Read More</a>
+                <a href="#" class="card-footer-button">
+                    <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2L10.59 3.41 17.17 10H2v2h15.17l-6.58 6.59L12 22l10-10z"/>
+                    </svg>
+                </a>
     """, unsafe_allow_html=True)
     
     # Close the card footer and card div
