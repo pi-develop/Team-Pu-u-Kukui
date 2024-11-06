@@ -24,7 +24,7 @@ def main():
     m = leafmap.Map(center=[20.5, -157.5], zoom=7)  # Center on Hawaii
 
     # Prepare data for heatmap
-    data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
+    # data['BroadbandCoverage'] = data['BroadbandCoverage'].str.replace('%', '').astype(float)
 
     # Add heatmap layer
     m.add_heatmap(data=data,
