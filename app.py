@@ -153,12 +153,14 @@ def main():
             .card-footer-button {
                 display: flex;
                 align-items: center;
-                padding: 10px 20px;
+                justify-content: center;  /* Center the content inside the circle */
+                width: 50px;  /* Set a fixed width */
+                height: 50px;  /* Set a fixed height */
                 font-size: 16px;
                 color: #fff;
                 background-color: #007BFF;
                 border: none;
-                border-radius: 50px;
+                border-radius: 50%;  /* Make the button circular */
                 cursor: pointer;
                 text-decoration: none;
             }
