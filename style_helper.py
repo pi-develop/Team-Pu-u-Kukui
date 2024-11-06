@@ -129,7 +129,7 @@ def apply_custom_style():
           
   with col3:
       if st.button("Broadband Connectivity"):
-          switch_page("app")
+          switch_page("broadband")
         
   # Second row of buttons
   with col1:
