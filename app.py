@@ -102,62 +102,44 @@ def show_device_access_card(col):
         # Extract relevant rows and columns for each county
         locations = {
             "Hawaii Total": internet_df.iloc[0, 1],  # Column 2 for "Total households", row 2 for Hawaii Total
-            "Hawaii County": internet_df.iloc[0, 5], # Column 6 for "Total households" of Hawaii County, row 2
-            "Honolulu County": internet_df.iloc[0, 9], # Column 10 for "Total households" of Honolulu, row 2
-            "Kalawao County": internet_df.iloc[0, 13], # Column 14 for "Total households" of Kalawao, row 2
-            "Kauai County": internet_df.iloc[0, 17], # Column 18 for "Total households" of Kauai, row 2
-            "Maui County": internet_df.iloc[0, 21] # Column 22 for "Total households" of Maui, row 2
         }
         
         # "With a computer" values for each county
         computer_users = {
-            "Hawaii Total": internet_df.iloc[1, 1], 
-            "Hawaii County": internet_df.iloc[1, 5],
-            "Honolulu County": internet_df.iloc[1, 9],
-            "Kalawao County": internet_df.iloc[1, 13],
-            "Kauai County": internet_df.iloc[1, 17],
-            "Maui County": internet_df.iloc[1, 21]
+            "Hawaii Total": internet_df.iloc[1, 1]
         }
     
         # "With broadband" values for each county
         broadband_users = {
-            "Hawaii Total": internet_df.iloc[2, 1], 
-            "Hawaii County": internet_df.iloc[2, 5],
-            "Honolulu County": internet_df.iloc[2, 9],
-            "Kalawao County": internet_df.iloc[2, 13],
-            "Kauai County": internet_df.iloc[2, 17],
-            "Maui County": internet_df.iloc[2, 21]
+            "Hawaii Total": internet_df.iloc[2, 1]
         }
     
-        col1, col2 = st.columns(2)
-    
-        with col1:
-            # Create progress bars
-            st.title("Computer Usage")
+        
+        # Create progress bars
+        st.subheader("Computer Usage")
+        
+        for county, total_households in locations.items():
+            with_computer = computer_users[county]
             
-            for county, total_households in locations.items():
-                with_computer = computer_users[county]
-                
-                # Calculate percentage of households with a computer
-                percentage = with_computer / total_households
-                
-                # Display progress bar with the computed percentage
-                st.subheader(f"{county}")
-                st.progress(percentage)
+            # Calculate percentage of households with a computer
+            percentage = with_computer / total_households
+            
+            # Display progress bar with the computed percentage
+            st.subheader(f"{county}")
+            st.progress(percentage)
 
-        with col2:
-            # Create progress bars
-            st.title("Broadband Usage")
+        # Create progress bars
+        st.subheader("Broadband Usage")
+        
+        for county, total_households in locations.items():
+            with_broadband = broadband_users[county]
             
-            for county, total_households in locations.items():
-                with_broadband = broadband_users[county]
-                
-                # Calculate percentage of households with broadband
-                percentage = with_broadband / total_households
-                
-                # Display progress bar with the computed percentage
-                st.subheader(f"{county}")
-                st.progress(percentage)
+            # Calculate percentage of households with broadband
+            percentage = with_broadband / total_households
+            
+            # Display progress bar with the computed percentage
+            st.subheader(f"{county}")
+            st.progress(percentage)
         
         # Close the card div
         # Add the footer with "Read more about it" and a button
