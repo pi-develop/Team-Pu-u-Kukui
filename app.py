@@ -80,12 +80,10 @@ def show_device_access_card(col):
         # Create a card layout with a blue header
         st.markdown("""
             <div class="card">
-                <div class="card-header">Broadband Connectivity</div>
+                <div class="card-header">Device Access</div>
                 <div>
         """, unsafe_allow_html=True)
-    
-        st.subheader("Device Access")
-        
+            
         df = pd.read_excel("data/acs2022_5yr_counties_hi.xlsx")
 
         internet_df = df.iloc[170:174]
@@ -116,7 +114,7 @@ def show_device_access_card(col):
     
         
         # Create progress bars
-        st.write("Computer Usage")
+        st.subheader("Computer Usage")
         
         for county, total_households in locations.items():
             with_computer = computer_users[county]
@@ -128,7 +126,7 @@ def show_device_access_card(col):
             st.progress(percentage)
 
         # Create progress bars
-        st.write("Broadband Usage")
+        st.subheader("Broadband Usage")
         
         for county, total_households in locations.items():
             with_broadband = broadband_users[county]
