@@ -243,7 +243,11 @@ def main():
     )
 
     col1, col2 = st.columns(2)
-        show_broadband_card(col2)
+
+    with col1:
+        st.write("Left column")
+        
+    show_broadband_card(col2)
 
 if __name__ == "__main__":
     main()
