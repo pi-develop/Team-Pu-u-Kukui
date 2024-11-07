@@ -116,7 +116,7 @@ def show_device_access_card(col):
     
         
         # Create progress bars
-        st.subheader("Computer Usage")
+        st.write("Computer Usage")
         
         for county, total_households in locations.items():
             with_computer = computer_users[county]
@@ -128,7 +128,7 @@ def show_device_access_card(col):
             st.progress(percentage)
 
         # Create progress bars
-        st.subheader("Broadband Usage")
+        st.write("Broadband Usage")
         
         for county, total_households in locations.items():
             with_broadband = broadband_users[county]
