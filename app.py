@@ -125,7 +125,6 @@ def show_device_access_card(col):
             percentage = with_computer / total_households
             
             # Display progress bar with the computed percentage
-            st.subheader(f"{county}")
             st.progress(percentage)
 
         # Create progress bars
@@ -138,7 +137,6 @@ def show_device_access_card(col):
             percentage = with_broadband / total_households
             
             # Display progress bar with the computed percentage
-            st.subheader(f"{county}")
             st.progress(percentage)
         
         # Close the card div
