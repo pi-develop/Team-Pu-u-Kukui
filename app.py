@@ -388,6 +388,16 @@ def main():
     .stButton > button:hover {
       opacity: 0.9;  /* Slightly transparent on hover */
     }
+
+    /*center metric label*/
+    [data-testid="stMetricLabel"] > div:nth-child(1) {
+        justify-content: center;
+    }
+    
+    /*center metric value*/
+    [data-testid="stMetricValue"] > div:nth-child(1) {
+        justify-content: center;
+    }
     </style>
     
     <div class="e2_21">
