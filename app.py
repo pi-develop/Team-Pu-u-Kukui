@@ -325,10 +325,10 @@ def main():
     }
     .e2_21 { 
       background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
-      width:100%; /* Set width to 100% for responsiveness */
-      height:256px;
+      width: 100%;
+      height: 256px;
       display: flex;
-      flex-direction: column;
+      /* flex-direction: column; */
       justify-content: space-between;
       align-items: center;
       padding-left: 20px;
@@ -392,11 +392,11 @@ def main():
     
     <div class="e2_21">
         <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
-            <div class="e2_23"></div>
+        <div class="e2_23"></div>
         <span class="e2_22">HAWAII</span>
-    </div>
-    <div class="header-image">
-        <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
+        <div class="header-image">
+            <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
+        </div>
     </div>
     """
     
