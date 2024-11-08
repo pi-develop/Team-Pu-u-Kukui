@@ -391,9 +391,9 @@ def main():
     </style>
     
     <div class="e2_21">
-        <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
-        <div class="e2_23"></div>
-        <span class="e2_22">HAWAII</span>
+        <div class="e1_15">DIGITAL EQUITY DASHBOARD</span>
+            <div class="e2_23"></div>
+        <div class="e2_22">HAWAII</span>
     </div>
     <div class="header-image">
         <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
