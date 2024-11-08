@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -59,6 +60,42 @@ def get_header_style():
         </style>
     """
     return header_style
+
+def show_digital_equity_card():
+    # Set up a blue header style for the card
+    header_style = get_header_style()
+
+    # Display the custom styles in Streamlit
+    st.markdown(header_style, unsafe_allow_html=True)
+    
+    # Create a card layout with a blue header
+    st.markdown("""
+        <div class="card">
+            <div class="card-header">Digital Equity</div>
+            <div>
+    """, unsafe_allow_html=True)
+
+    components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
+                      height=1200)
+    
+    # Close the card div
+    # Add the footer with "Read more about it" and a button
+    st.markdown("""
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Read more about it</span>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9" target="_blank" class="card-footer-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                    </svg>
+                </a>
+    """, unsafe_allow_html=True)
+    
+    # Close the card footer and card div
+    st.markdown("""
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
 
 def show_device_access_card(col):
     # Set up a blue header style for the card
