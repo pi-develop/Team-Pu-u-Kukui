@@ -329,7 +329,7 @@ def main():
       height:256px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: flex-start;
       padding-left: 20px;
     }
@@ -391,9 +391,9 @@ def main():
     </style>
     
     <div class="e2_21">
-        <div class="e1_15">DIGITAL EQUITY DASHBOARD</span>
+        <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
             <div class="e2_23"></div>
-        <div class="e2_22">HAWAII</span>
+        <span class="e2_22">HAWAII</span>
     </div>
     <div class="header-image">
         <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
