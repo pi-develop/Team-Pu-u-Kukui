@@ -360,6 +360,7 @@ def main():
     col1, col2 = st.columns(2)
     show_device_access_card(col1)
     show_broadband_card(col2)
+    show_digital_equity_card()
 
 if __name__ == "__main__":
     main()
