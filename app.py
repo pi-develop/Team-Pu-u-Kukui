@@ -395,7 +395,11 @@ def main():
         <div class="e2_23"></div>
         <span class="e2_22">HAWAII</span>
     </div>
-    
+    <div class="e1_8">
+      <div class="e1_9">
+          <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
+      </div>
+    </div>
     """
     
     # Insert the HTML and CSS into the Streamlit app
