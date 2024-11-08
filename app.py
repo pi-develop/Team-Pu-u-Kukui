@@ -10,6 +10,12 @@ def fetch_broadband_data():
     df = conn.query('SELECT BroadbandCoverage, Latitude, Longitude FROM broadbcover_by_city', ttl=6)
     return df
 
+@st.cache_data
+def fetch_readiness_data():
+    conn = st.connection('mysql', type='sql')
+    df = conn.query('SELECT Dimension, Details, Unprepared, Old_Guard, Social_Users, Technical, Digital FROM readiness_by_dimensions', ttl=6)
+    return df
+
 def get_header_style():
     # Define the style for the card and header
     header_style = """
