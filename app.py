@@ -391,13 +391,9 @@ def main():
     </style>
     
     <div class="e2_21">
-    <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
-    <div class="e2_23"></div>
-    <span class="e2_22">HAWAII</span>
-    <div class="e1_8">
-      <div class="e1_9">
-      </div>
-    </div>
+        <span class="e1_15">DIGITAL EQUITY DASHBOARD</span>
+        <div class="e2_23"></div>
+        <span class="e2_22">HAWAII</span>
     </div>
     
     """
