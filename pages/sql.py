@@ -14,3 +14,6 @@ st.write(df)
 
 df = conn.query('select * from use_pc_internet_by_county limit 5', ttl=6)
 st.write(df)
+
+df = conn.query('select * from readiness_by_dimensions limit 5', ttl=6)
+st.write(df)
