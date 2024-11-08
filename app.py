@@ -330,7 +330,7 @@ def main():
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       padding-left: 20px;
     }
     .e2_22 { 
