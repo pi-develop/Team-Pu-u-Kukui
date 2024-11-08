@@ -362,9 +362,9 @@ def main():
         left:10.9765625px;
         top:57.078125px;
     }
-    .header-img {
-      max-width: 140px;
-      max-height: 140px;
+    .header-image {
+      width: 100px;
+      height: auto;
     }
     .stButton > button {
       background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
@@ -395,10 +395,8 @@ def main():
         <div class="e2_23"></div>
         <span class="e2_22">HAWAII</span>
     </div>
-    <div class="e1_8">
-      <div class="e1_9">
-          <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
-      </div>
+    <div class="header-image">
+        <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
     </div>
     """
     
