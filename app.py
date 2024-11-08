@@ -9,12 +9,12 @@ def fetch_broadband_data():
     df = conn.query('SELECT BroadbandCoverage, Latitude, Longitude FROM broadbcover_by_city', ttl=6)
     return df
 
-def show_device_access_card(col):
-    # Set up a blue header style for the card
+def get_header_style():
+    # Define the style for the card and header
     header_style = """
         <style>
             .card-header {
-                background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
+                background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 1) 100%);
                 color: white;
                 padding: 10px;
                 font-size: 1.2rem;
@@ -28,7 +28,6 @@ def show_device_access_card(col):
                 box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
                 margin-bottom: 20px;
             }
-            /* Footer container styling */
             .card-footer {
                 display: flex;
                 justify-content: space-between;
@@ -36,43 +35,35 @@ def show_device_access_card(col):
                 padding: 10px 20px;
                 border-top: 1px solid #ddd;
             }
-        
-            /* Text styling for "Read more about it" */
             .card-footer-text {
                 font-size: 16px;
                 color: #333;
             }
-        
-            /* Button styling */
             .card-footer-button {
                 display: flex;
                 align-items: center;
-                justify-content: center;  /* Center the content inside the circle */
-                width: 50px;  /* Set a fixed width */
-                height: 50px;  /* Set a fixed height */
+                justify-content: center;
+                width: 50px;
+                height: 50px;
                 font-size: 16px;
                 color: #fff;
                 background-color: #007BFF;
                 border: none;
-                border-radius: 50%;  /* Make the button circular */
+                border-radius: 50%;
                 cursor: pointer;
                 text-decoration: none;
             }
-
-            .card-footer-button .arrow-icon {
-                margin-left: 8px;
-                width: 16px;
-                height: 16px;
-                fill: #fff;
-            }
-        
-            /* Button hover effect */
             .card-footer-button:hover {
                 background-color: #0056b3;
             }
         </style>
     """
+    return header_style
 
+def show_device_access_card(col):
+    # Set up a blue header style for the card
+    header_style = get_header_style()
+    
     with col:
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
@@ -158,67 +149,7 @@ def show_device_access_card(col):
 
 def show_broadband_card(col):
     # Set up a blue header style for the card
-    header_style = """
-        <style>
-            .card-header {
-                background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
-                color: white;
-                padding: 10px;
-                font-size: 1.2rem;
-                font-weight: bold;
-                border-radius: 0.5rem 0.5rem 0 0;
-                text-align: left;
-            }
-            .card {
-                border: 1px solid #d3d3d3;
-                border-radius: 0.5rem;
-                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-                margin-bottom: 20px;
-            }
-            /* Footer container styling */
-            .card-footer {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                border-top: 1px solid #ddd;
-            }
-        
-            /* Text styling for "Read more about it" */
-            .card-footer-text {
-                font-size: 16px;
-                color: #333;
-            }
-        
-            /* Button styling */
-            .card-footer-button {
-                display: flex;
-                align-items: center;
-                justify-content: center;  /* Center the content inside the circle */
-                width: 50px;  /* Set a fixed width */
-                height: 50px;  /* Set a fixed height */
-                font-size: 16px;
-                color: #fff;
-                background-color: #007BFF;
-                border: none;
-                border-radius: 50%;  /* Make the button circular */
-                cursor: pointer;
-                text-decoration: none;
-            }
-
-            .card-footer-button .arrow-icon {
-                margin-left: 8px;
-                width: 16px;
-                height: 16px;
-                fill: #fff;
-            }
-        
-            /* Button hover effect */
-            .card-footer-button:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    """
+    header_style = get_header_style()
 
     with col:
         # Display the custom styles in Streamlit
