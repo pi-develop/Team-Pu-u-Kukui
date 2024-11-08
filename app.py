@@ -4,6 +4,8 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from streamlit_extras.metric_cards import style_metric_cards
+
 @st.cache_data
 def fetch_broadband_data():
     conn = st.connection('mysql', type='sql')
@@ -261,10 +263,23 @@ def show_digital_literacy_card(col):
         # Create a card layout with a blue header
         st.markdown("""
             <div class="card">
-                <div class="card-header">Broadband Connectivity</div>
+                <div class="card-header">Digital Literacy</div>
                 <div>
         """, unsafe_allow_html=True)
 
+        df = fetch_readiness_data()
+        # Select the first row where Dimension is 'Overall' and specific columns
+        overall_row = df.loc[df['Dimension'] == 'Overall', ['Unprepared', 'Old_Guard', 'Social_Users', 'Technical', 'Digital']]
+
+        col1, col2, col3 = st.columns(3)
+        col1.metric(label="Unprepared", value=overall_row['Unprepared'].values[0])
+        col2.metric(label="Old Guard", value=overall_row['Old_Guard'].values[0])
+        col3.metric(label="Social Users", value=overall_row['Social_Users'].values[0])
+        
+        col1, col2 = st.columns(2)
+        col1.metric(label="Technical", value=overall_row['Technical'].values[0])
+        col2.metric(label="Digital", value=overall_row['Digital'].values[0])
+        
         # Close the card div
         # Add the footer with "Read more about it" and a button
         st.markdown("""
