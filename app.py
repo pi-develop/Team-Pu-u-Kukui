@@ -280,7 +280,7 @@ def show_digital_literacy_card(col):
         col1.metric(label="Technical", value=overall_row['Technical'].values[0])
         col2.metric(label="Digital", value=overall_row['Digital'].values[0])
 
-        style_metric_cards()
+        # style_metric_cards()
 
         # Close the card div
         # Add the footer with "Read more about it" and a button
