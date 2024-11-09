@@ -35,6 +35,12 @@ def main():
         st.subheader("The Unprepared")
         st.write(overall_row['Unprepared'].values[0])
 
+        st.markdown("""
+        * Limited tech adoption
+        * Resistant to learning (online & traditional)
+        * Low computer confidence
+        """)
+
     with col2:
         st.subheader("Old Guard")
         st.write(overall_row['Old_Guard'].values[0])
