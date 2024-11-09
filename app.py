@@ -331,17 +331,18 @@ def main():
       /* flex-direction: column; */
       justify-content: space-between;
       align-items: center;
-      padding-left: 20px;
+      /* padding-left: 20px; */
+      padding: 10px 20px;
     }
     .e2_22 { 
-      color:rgba(255, 255, 255, 1);
-      width:177px;
-      height:52px;
-      font-family:Montserrat;
-      text-align:left;
-      font-size:45.37845230102539px;
-      letter-spacing:0;
-      line-height:52px; /* Adjusted for consistency */
+      color: #f0f8ff;
+      width: 177px;
+      height: 52px;
+      font-family: Montserrat;
+      text-align: left;
+      font-size: 45.37845230102539px;
+      letter-spacing: 0;
+      line-height: 52px; /* Adjusted for consistency */
     }
     .e2_23 { 
       transform: rotate(-2.4848083448933725e-17deg);
@@ -367,7 +368,7 @@ def main():
       flex-direction: column;
     }
     .header-image {
-      width: 100px;
+      width: 50px;
       height: auto;
     }
     .stButton > button {
