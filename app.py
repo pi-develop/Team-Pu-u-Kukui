@@ -315,10 +315,9 @@ def main():
     }
     .e1_15 { 
       color:rgba(255, 255, 255, 1);
-      width:727px;
+      /* width:727px; */
       height:52px;
       font-family:Montserrat;
-      /* text-align:left; */
       font-size:45.37845230102539px;
       letter-spacing:0;
       line-height:52px; /* Adjusted to give line height a specific value */
