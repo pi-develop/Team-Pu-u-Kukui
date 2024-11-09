@@ -30,6 +30,9 @@ def main():
             
     st.header("Digital Literacy")
 
+    st.subheader("First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.")
+    
+
     with pdfplumber.open("data/WDC Digital Literacy Report FINAL Post Client Input R111021 (003) Inc Appendices.pdf") as pdf:
         columns = ["Category", "Unprepared", "Old Guard", "Social Users", "Technical DIYers", "Digital Learners"]
         st.subheader("Demographic Characteristics Of Digital Readiness Groups (Statewide)")
