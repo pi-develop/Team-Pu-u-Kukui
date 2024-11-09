@@ -400,7 +400,9 @@ def main():
             <div class="e2_22">Hawaii</div>
         </div>
         <div class="header-image">
-            <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/hawaii.png" alt="Header Image">
+            <a href="app" target="_self">
+                <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/hawaii.png" alt="Header Image">
+            </a>
         </div>
     </div>
     """
