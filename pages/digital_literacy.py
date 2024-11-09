@@ -34,6 +34,24 @@ def main():
     with col1:
         st.subheader("The Unprepared")
         st.write(overall_row['Unprepared'].values[0])
+
+    with col2:
+        st.subheader("Old Guard")
+        st.write(overall_row['Old_Guard'].values[0])
+
+
+    with col3:
+        st.subheader("Social Users")
+        st.write(overall_row['Social_Users'].values[0])
+
+    col1, col2 = st.columns()
+    with col1:
+        st.subheader("Technical DIYers")
+        st.write(overall_row['Technical'].values[0])
+
+    with col2:
+        st.subheader("Digital Learners")
+        st.write(overall_row['Digital'].values[0])
         
 if __name__ == "__main__":
     main()
