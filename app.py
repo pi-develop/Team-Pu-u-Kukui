@@ -332,7 +332,6 @@ def main():
     }
     .e2_22 { 
       color: #f0f8ff;
-      /* width: 177px; */
       height: 52px;
       font-family: Montserrat;
       text-align: left;
@@ -350,7 +349,7 @@ def main():
         width:281px;
         height:281px;
         position: absolute;
-      right: 20px;
+        right: 20px;
     }
     .e1_9 { 
         width:259.046875px;
