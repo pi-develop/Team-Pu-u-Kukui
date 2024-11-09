@@ -1,29 +1,16 @@
 import streamlit as st
 
-import pdfplumber
 import pandas as pd
 
 from streamlit_extras.add_vertical_space import add_vertical_space
-from streamlit_extras.dataframe_explorer import dataframe_explorer
 
 from style_helper import apply_custom_style
 
-def extract_table(pdf, page_number, columns):
-    # Select page number
-    page = pdf.pages[page_number]
-    
-    # Extract the table
-    table = page.extract_table()
-    
-    if table:
-        # Convert the table into a DataFrame
-        table_df = pd.DataFrame(table[1:], columns=table[0])
-        table_df.columns = columns
-
-        filtered_df = dataframe_explorer(table_df, case=False)
-        st.dataframe(filtered_df, use_container_width=True)
-    else:
-        st.write(f"No table found on page {page_number}.")
+@st.cache_data
+def fetch_readiness_data():
+    conn = st.connection('mysql', type='sql')
+    df = conn.query('SELECT Dimension, Details, Unprepared, Old_Guard, Social_Users, Technical, Digital FROM readiness_by_dimensions', ttl=6)
+    return df
 
 def main():            
     st.header("Digital Literacy")
@@ -36,6 +23,8 @@ def main():
       including **device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage**.
       """
     )
+
+    st.subheader("Users in Hawaii were Divided in 5 Categories.")
         
 if __name__ == "__main__":
     main()
