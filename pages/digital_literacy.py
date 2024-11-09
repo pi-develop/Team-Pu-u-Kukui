@@ -41,8 +41,7 @@ def main():
         """)
 
     with col2:
-        st.subheader("Old Guard")
-        st.write(overall_row['Old_Guard'].values[0])
+        st.metric(label="Old Guard", value=overall_row['Old_Guard'].values[0])
 
         st.markdown("""
         * Traditional learners with lowest tech adoption/ownership
@@ -51,8 +50,7 @@ def main():
         """)
 
     with col3:
-        st.subheader("Social Users")
-        st.write(overall_row['Social_Users'].values[0])
+        st.metric(label="Social Users", value=overall_row['Social_Users'].values[0])
 
         st.markdown("""
         * Digitally adept but not focused on online learning/development
@@ -62,8 +60,7 @@ def main():
 
     col1, col2 = st.columns(2)
     with col1:
-        st.subheader("Technical DIYers")
-        st.write(overall_row['Technical'].values[0])
+        st.metric(label="Technical DIYers", value=overall_row['Technical'].values[0])
 
         st.markdown("""
         * Confident with tech and digital info
@@ -72,8 +69,7 @@ def main():
         """)
 
     with col2:
-        st.subheader("Digital Learners")
-        st.write(overall_row['Digital'].values[0])
+        st.metric(label="Digital Learners", value=overall_row['Digital'].values[0])
 
         st.markdown("""
         * Eager online learners; tech-confident and productive
