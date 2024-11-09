@@ -44,7 +44,7 @@ def main():
         st.subheader("Social Users")
         st.write(overall_row['Social_Users'].values[0])
 
-    col1, col2 = st.columns()
+    col1, col2 = st.columns(2)
     with col1:
         st.subheader("Technical DIYers")
         st.write(overall_row['Technical'].values[0])
