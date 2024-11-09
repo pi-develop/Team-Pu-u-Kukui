@@ -315,7 +315,7 @@ def main():
     }
     .e1_15 { 
       color:rgba(255, 255, 255, 1);
-      /* width:727px; */
+      width:727px;
       height:52px;
       font-family:Montserrat;
       /* text-align:left; */
@@ -362,6 +362,10 @@ def main():
         left:10.9765625px;
         top:57.078125px;
     }
+    .header-text-container {
+      display: flex;
+      flex-direction: column;
+    }
     .header-image {
       width: 100px;
       height: auto;
@@ -391,7 +395,10 @@ def main():
     </style>
     
     <div class="e2_21">
-        <div class="e1_15">DIGITAL EQUITY DASHBOARD</div>
+        <div class="header-text-container">
+            <div class="e1_15">DIGITAL EQUITY DASHBOARD</div>
+            <div class="e2_23"></div>
+        </div>
         <div class="header-image">
             <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
         </div>
