@@ -328,10 +328,8 @@ def main():
       width: 100%;
       height: 256px;
       display: flex;
-      /* flex-direction: column; */
       justify-content: space-between;
       align-items: center;
-      /* padding-left: 20px; */
       padding: 10px 20px;
     }
     .e2_22 { 
@@ -368,7 +366,7 @@ def main():
       flex-direction: column;
     }
     .header-image {
-      width: 50px;
+      width: 100px;
       height: auto;
     }
     .stButton > button {
