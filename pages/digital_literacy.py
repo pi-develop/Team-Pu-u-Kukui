@@ -25,9 +25,7 @@ def extract_table(pdf, page_number, columns):
     else:
         st.write(f"No table found on page {page_number}.")
 
-def main():
-    apply_custom_style()
-            
+def main():            
     st.header("Digital Literacy")
 
     st.subheader("First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.")
