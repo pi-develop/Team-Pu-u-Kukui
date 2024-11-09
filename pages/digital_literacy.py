@@ -32,8 +32,7 @@ def main():
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.subheader("The Unprepared")
-        st.write(overall_row['Unprepared'].values[0])
+        st.metric(label="The Unprepared", value=overall_row['Unprepared'].values[0])
 
         st.markdown("""
         * Limited tech adoption
