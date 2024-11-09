@@ -315,7 +315,6 @@ def main():
     }
     .e1_15 { 
       color:rgba(255, 255, 255, 1);
-      /* width:727px; */
       height:52px;
       font-family:Montserrat;
       font-size:45.37845230102539px;
@@ -333,7 +332,7 @@ def main():
     }
     .e2_22 { 
       color: #f0f8ff;
-      width: 177px;
+      /* width: 177px; */
       height: 52px;
       font-family: Montserrat;
       text-align: left;
