@@ -25,6 +25,15 @@ def main():
     )
 
     st.subheader("Users in Hawaii were Divided in 5 Categories.")
+
+    df = fetch_readiness_data()
+    # Select the first row where Dimension is 'Overall' and specific columns
+    overall_row = df.loc[df['Dimension'] == 'Overall', ['Unprepared', 'Old_Guard', 'Social_Users', 'Technical', 'Digital']]
+
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.subheader("The Unprepared")
+        st.write(overall_row['Unprepared'].values[0])
         
 if __name__ == "__main__":
     main()
