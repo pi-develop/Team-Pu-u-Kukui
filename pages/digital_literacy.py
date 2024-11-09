@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 
 from streamlit_extras.add_vertical_space import add_vertical_space
+from streamlit_extras.metric_cards import style_metric_cards
 
 from style_helper import apply_custom_style
 
@@ -76,6 +77,8 @@ def main():
         * Mostly on O'ahu; educated, high-income professionals
         * Skilled in digital creativity
         """)
-        
+
+    style_metric_cards()
+    
 if __name__ == "__main__":
     main()
