@@ -30,15 +30,12 @@ def main():
 
     st.subheader("First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.")
     
-
-    with pdfplumber.open("data/WDC Digital Literacy Report FINAL Post Client Input R111021 (003) Inc Appendices.pdf") as pdf:
-        columns = ["Category", "Unprepared", "Old Guard", "Social Users", "Technical DIYers", "Digital Learners"]
-        st.subheader("Demographic Characteristics Of Digital Readiness Groups (Statewide)")
-        extract_table(pdf, 20, columns)
-
-        add_vertical_space(2)
-        st.subheader("Employment Characteristics Of Digital Readiness Groups (Statewide)")
-        extract_table(pdf, 21, columns)
+    st.markdown(
+      """
+      The Digital Literacy and Readiness Study (DLRS) evaluates Hawaii residents' digital preparedness across seven key areas,
+      including **device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage**.
+      """
+    )
         
 if __name__ == "__main__":
     main()
