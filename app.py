@@ -345,9 +345,9 @@ def main():
     }
     .e2_23 { 
       transform: rotate(-2.4848083448933725e-17deg);
-      width:281.00177001953125px;
-      height:0px;
-      border:2px solid rgba(255, 255, 255, 1);
+      width: 100%;
+      height: 0px;
+      border: 2px solid rgba(255, 255, 255, 1);
     }
     .e1_8 { 
         width:281px;
