@@ -392,8 +392,7 @@ def main():
     
     <div class="e2_21">
         <div class="e1_15">DIGITAL EQUITY DASHBOARD</div>
-        <div class="e2_23"></div>
-        <div class="e2_22">HAWAII</div>
+
         <div class="header-image">
             <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Header Image">
         </div>
