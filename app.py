@@ -22,7 +22,7 @@ def fetch_readiness_data():
 @st.cache_data
 def fetch_campaign_fund_data():
     conn = st.connection('mysql', type='sql')
-    df = conn.query('SELECT Name, Aggregated_Amount FROM campaign_fund ORDER BY Aggregated_Amount DESC LIMIT 3', ttl=6)
+    df = conn.query('SELECT Name, `Aggregated Amount` FROM campaign_fund ORDER BY `Aggregated Amount` DESC LIMIT 3', ttl=6)
     return df
 
 def get_header_style():
@@ -325,7 +325,7 @@ def show_open_data_card(col):
         df = fetch_campaign_fund_data()
         
         # Create a horizontal bar chart
-        fig = px.bar(df, x="Aggregated_Amount", y="Name", orientation='h',
+        fig = px.bar(df, x="Aggregated Amount", y="Name", orientation='h',
                      title="Top 3 Campaign Contributions",
                      labels={"Aggregated Amount": "Amount ($)", "Name": "Contributor Name"})
 
