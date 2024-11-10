@@ -67,7 +67,7 @@ def get_header_style():
             }
         </style>
     """
-    return header_style
+    return header_style
 
 def show_digital_equity_card():
     # Set up a blue header style for the card
