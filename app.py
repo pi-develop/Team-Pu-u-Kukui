@@ -320,7 +320,18 @@ def show_open_data_card(col):
                 <div class="card-header">Open Data</div>
                 <div>
         """, unsafe_allow_html=True)
-    
+
+        # Create a horizontal bar chart
+        fig = px.bar(df, x="Aggregated_Amount", y="Name", orientation='h',
+                     title="Top 3 Campaign Contributions",
+                     labels={"Aggregated Amount": "Amount ($)", "Name": "Contributor Name"})
+
+        # Customize layout for better readability with long names
+        fig.update_layout(yaxis_tickangle=0, margin=dict(l=200, r=20, t=50, b=20))
+        
+        # Display the chart in Streamlit
+        st.plotly_chart(fig)
+        
         # Close the card div
         # Add the footer with "Read more about it" and a button
         st.markdown("""
