@@ -89,7 +89,9 @@ def show_digital_equity_card():
     # Create a card layout with a blue header
     st.markdown("""
         <div class="card">
-            <div class="card-header">Digital Equity</div>
+            <div class="card-header">
+                <div>Digital Equity</div>
+            </div>
             <div>
     """, unsafe_allow_html=True)
 
