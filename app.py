@@ -40,7 +40,7 @@ def get_header_style():
                 justify-content: space-between;
                 align-items: center;
             }
-            .card-header .header-image img {
+            .card-header .card-header-image img {
                 height: 25px;
                 width: auto;
             }
@@ -87,7 +87,7 @@ def create_card_header(title, image_link):
         <div class="card">
             <div class="card-header">
                 <div>{title}</div>
-                <div class="header-image">
+                <div class="card-header-image">
                     <img src="{image_link}" alt="Card Header Image">
                 </div>
             </div>
