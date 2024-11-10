@@ -20,7 +20,7 @@ def fetch_readiness_data():
 
 def get_header_style():
     # Define the style for the card and header
-    header_style = """
+    header_style = """
         <style>
             .card-header {
                 background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 1) 100%);
