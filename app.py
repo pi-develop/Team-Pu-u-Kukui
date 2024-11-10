@@ -32,20 +32,20 @@ def get_header_style():
             .card-header {
                 background-image: linear-gradient(0deg, rgba(5, 96.7, 181, 1) 0%, rgba(2.2, 42.2, 1) 100%);
                 color: white;
-                padding: 10px;
+                padding: 10px 20px;
                 font-size: 1.2rem;
                 font-weight: bold;
                 border-radius: 0.5rem 0.5rem 0 0;
                 text-align: left;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
             .card {
                 border: 1px solid #d3d3d3;
                 border-radius: 0.5rem;
                 box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
                 margin-bottom: 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
             }
             .card-footer {
                 display: flex;
