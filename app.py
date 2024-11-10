@@ -70,7 +70,7 @@ def get_header_style():
     return header_style
 
 def show_digital_equity_card():
-    # Set up a blue header style for the card
+    # Set up a blue header style for the card
     header_style = get_header_style()
 
     # Display the custom styles in Streamlit
