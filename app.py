@@ -21,52 +21,52 @@ def fetch_readiness_data():
 def get_header_style():
     # Define the style for the card and header
     header_style = """
-        <style>
-            .card-header {
-                background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 1) 100%);
-                color: white;
-                padding: 10px;
-                font-size: 1.2rem;
-                font-weight: bold;
-                border-radius: 0.5rem 0.5rem 0 0;
-                text-align: left;
-            }
-            .card {
-                border: 1px solid #d3d3d3;
-                border-radius: 0.5rem;
-                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-                margin-bottom: 20px;
-            }
-            .card-footer {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px 20px;
-                border-top: 1px solid #ddd;
-            }
-            .card-footer-text {
-                font-size: 16px;
-                color: #333;
-            }
-            .card-footer-button {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 50px;
-                height: 50px;
-                font-size: 16px;
-                color: #fff;
-                background-color: #007BFF;
-                border: none;
-                border-radius: 50%;
-                cursor: pointer;
-                text-decoration: none;
-            }
-            .card-footer-button:hover {
-                background-color: #0056b3;
-            }
-        </style>
-    """
+        <style>
+            .card-header {
+                background-image: linear-gradient(0deg, rgba(5, 96.7, 181, 1) 0%, rgba(2.2, 42.2, 1) 100%);
+                color: white;
+                padding: 10px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                border-radius: 0.5rem 0.5rem 0 0;
+                text-align: left;
+            }
+            .card {
+                border: 1px solid #d3d3d3;
+                border-radius: 0.5rem;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+            .card-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 20px;
+                border-top: 1px solid #ddd;
+            }
+            .card-footer-text {
+                font-size: 16px;
+                color: #333;
+            }
+            .card-footer-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 50px;
+                height: 50px;
+                font-size: 16px;
+                color: #fff;
+                background-color: #007BFF;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                text-decoration: none;
+            }
+            .card-footer-button:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    """
     return header_style
 
 def show_digital_equity_card():
