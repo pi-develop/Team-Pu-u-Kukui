@@ -18,6 +18,12 @@ def fetch_readiness_data():
     df = conn.query('SELECT Dimension, Details, Unprepared, Old_Guard, Social_Users, Technical, Digital FROM readiness_by_dimensions', ttl=6)
     return df
 
+@st.cache_data
+def fetch_campaign_fund_data():
+    conn = st.connection('mysql', type='sql')
+    df = conn.query('SELECT Name, Aggregated_Amount FROM campaign_fund ORDER BY Aggregated_Amount DESC LIMIT 3', ttl=6)
+    return df
+
 def get_header_style():
     # Define the style for the card and header
     header_style = """
@@ -299,6 +305,40 @@ def show_digital_literacy_card(col):
             </div>
         """, unsafe_allow_html=True)
 
+def show_open_data_card(col):
+    # Set up a blue header style for the card
+    header_style = get_header_style()
+
+    with col:
+        # Display the custom styles in Streamlit
+        st.markdown(header_style, unsafe_allow_html=True)
+        
+        # Create a card layout with a blue header
+        st.markdown("""
+            <div class="card">
+                <div class="card-header">Open Data</div>
+                <div>
+        """, unsafe_allow_html=True)
+    
+        # Close the card div
+        # Add the footer with "Read more about it" and a button
+        st.markdown("""
+                </div>
+                <div class="card-footer">
+                    <span class="card-footer-text">Read more about it</span>
+                    <a href="/open_data" target="_self" class="card-footer-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                        </svg>
+                    </a>
+        """, unsafe_allow_html=True)
+        
+        # Close the card footer and card div
+        st.markdown("""
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+
 def main():
     st.set_page_config(layout="wide")
     
@@ -417,6 +457,7 @@ def main():
     col1, col2 = st.columns(2)
     show_device_access_card(col1)
     show_digital_literacy_card(col1)
+    show_open_data_card(col1)
     show_broadband_card(col2)
     show_digital_equity_card()
 
