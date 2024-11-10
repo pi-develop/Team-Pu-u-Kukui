@@ -354,6 +354,57 @@ def show_open_data_card(col):
             </div>
         """, unsafe_allow_html=True)
 
+def show_user_feedback_card(col):
+    # Set up a blue header style for the card
+    header_style = get_header_style()
+
+    with col:
+        # Display the custom styles in Streamlit
+        st.markdown(header_style, unsafe_allow_html=True)
+        
+        # Create a card layout with a blue header
+        st.markdown("""
+            <div class="card">
+                <div class="card-header">User Feedback</div>
+                <div>
+        """, unsafe_allow_html=True)
+
+        # Sample data - replace this with your actual data source
+        data = {
+            "feedback": ["Yes", "No", "Yes", "Yes", "No", "Yes", "No", "Yes", "Yes", "No"]
+        }
+        df = pd.DataFrame(data)
+        
+        # Count the "Yes" and "No" responses
+        feedback_counts = df['feedback'].value_counts().reset_index()
+        feedback_counts.columns = ['Response', 'Count']
+        
+        # Display the feedback distribution in a pie chart
+        fig = px.pie(feedback_counts, values='Count', names='Response', title="User Satisfaction Feedback",
+                     color_discrete_sequence=['#34A853', '#EA4335'],  # Customize colors for Yes/No
+                     labels={'Count': 'Number of Responses'})
+        
+        st.plotly_chart(fig)
+        
+        # Close the card div
+        # Add the footer with "Read more about it" and a button
+        st.markdown("""
+                </div>
+                <div class="card-footer">
+                    <span class="card-footer-text">Read more about it</span>
+                    <a href="#" target="_self" class="card-footer-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                        </svg>
+                    </a>
+        """, unsafe_allow_html=True)
+        
+        # Close the card footer and card div
+        st.markdown("""
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+
 def main():
     st.set_page_config(layout="wide")
     
@@ -474,6 +525,7 @@ def main():
     show_digital_literacy_card(col1)
     show_open_data_card(col1)
     show_broadband_card(col2)
+    show_user_feedback_card(col2)
     show_digital_equity_card()
 
 if __name__ == "__main__":
