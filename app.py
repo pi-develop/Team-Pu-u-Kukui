@@ -98,7 +98,7 @@ def show_digital_equity_card():
                     </svg>
                 </a>
     """, unsafe_allow_html=True)
-    
+    
     # Close the card footer and card div
     st.markdown("""
             </div>
