@@ -41,6 +41,10 @@ def get_header_style():
                 justify-content: space-between;
                 align-items: center;
             }
+            .card-header .header-image img {
+                height: 50px;
+                width: auto;
+            }
             .card {
                 border: 1px solid #d3d3d3;
                 border-radius: 0.5rem;
@@ -91,6 +95,9 @@ def show_digital_equity_card():
         <div class="card">
             <div class="card-header">
                 <div>Digital Equity</div>
+                <div class="header-image">
+                    <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Card Header Image">
+                </div>
             </div>
             <div>
     """, unsafe_allow_html=True)
