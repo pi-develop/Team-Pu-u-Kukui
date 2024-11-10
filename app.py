@@ -76,7 +76,7 @@ def show_digital_equity_card():
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
     
-    # Create a card layout with a blue header
+    # Create a card layout with a blue header
     st.markdown("""
         <div class="card">
             <div class="card-header">Digital Equity</div>
