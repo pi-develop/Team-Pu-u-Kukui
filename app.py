@@ -3,6 +3,7 @@ import streamlit.components.v1 as components
 import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 from streamlit_extras.metric_cards import style_metric_cards
 
