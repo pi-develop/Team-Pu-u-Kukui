@@ -1,0 +1,16 @@
+streamlit
+streamlit_extras
+requests
+clarifai-grpc==10.9.7
+clarifai
+pdfplumber
+regex
+geopy
+geopandas
+leafmap
+owslib
+matplotlib
+SQLAlchemy 
+mysqlclient
+openpyxl
+setuptools
