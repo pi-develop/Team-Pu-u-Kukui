@@ -224,12 +224,8 @@ def show_broadband_card(col):
         st.markdown(header_style, unsafe_allow_html=True)
         
         # Create a card layout with a blue header
-        st.markdown("""
-            <div class="card">
-                <div class="card-header">Broadband Connectivity</div>
-                <div>
-        """, unsafe_allow_html=True)
-    
+        create_card_header("Broadband Connectivity", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/cloud-connection.png")
+        
         st.subheader("State of Hawaii Broadband Connectivity Map")
         
         # Create a Leaflet map centered at an example location
@@ -284,11 +280,7 @@ def show_digital_literacy_card(col):
         st.markdown(header_style, unsafe_allow_html=True)
         
         # Create a card layout with a blue header
-        st.markdown("""
-            <div class="card">
-                <div class="card-header">Digital Literacy</div>
-                <div>
-        """, unsafe_allow_html=True)
+        create_card_header("Digital Literacy", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/book.png")
 
         df = fetch_readiness_data()
         # Select the first row where Dimension is 'Overall' and specific columns
