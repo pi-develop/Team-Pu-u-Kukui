@@ -321,6 +321,9 @@ def show_open_data_card(col):
                 <div>
         """, unsafe_allow_html=True)
 
+        # Get data from the MySQL table
+        df = fetch_campaign_fund_data()
+        
         # Create a horizontal bar chart
         fig = px.bar(df, x="Aggregated_Amount", y="Name", orientation='h',
                      title="Top 3 Campaign Contributions",
