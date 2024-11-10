@@ -82,6 +82,18 @@ def get_header_style():
     """
     return header_style
 
+def create_card_header(title, image_link):
+    st.markdown(f"""
+        <div class="card">
+            <div class="card-header">
+                <div>{title}</div>
+                <div class="header-image">
+                    <img src="{image_link}" alt="Card Header Image">
+                </div>
+            </div>
+            <div>
+    """, unsafe_allow_html=True)
+
 def show_digital_equity_card():
     # Set up a blue header style for the card
     header_style = get_header_style()
@@ -131,12 +143,7 @@ def show_device_access_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         
-        # Create a card layout with a blue header
-        st.markdown("""
-            <div class="card">
-                <div class="card-header">Device Access</div>
-                <div>
-        """, unsafe_allow_html=True)
+        create_card_header("Device Access", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/monitor-mobbile.png")
             
         df = pd.read_excel("data/acs2022_5yr_counties_hi.xlsx")
 
