@@ -19,7 +19,7 @@ def fetch_readiness_data():
     return df
 
 def get_header_style():
-    # Define the style for the card and header
+    # Define the style for the card and header
     header_style = """
         <style>
             .card-header {
