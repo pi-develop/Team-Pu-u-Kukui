@@ -436,7 +436,7 @@ def main():
         background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
         width: 100%;
         /* height: 256px; */
-        height: auto;
+        height: 200px;
         display: flex;
         justify-content: space-between;
         align-items: center;
