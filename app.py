@@ -41,7 +41,7 @@ def get_header_style():
                 align-items: center;
             }
             .card-header .header-image img {
-                height: 50px;
+                height: 25px;
                 width: auto;
             }
             .card {
