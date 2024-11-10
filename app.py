@@ -106,9 +106,6 @@ def show_digital_equity_card():
         <div class="card">
             <div class="card-header">
                 <div>Digital Equity</div>
-                <div class="header-image">
-                    <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png" alt="Card Header Image">
-                </div>
             </div>
             <div>
     """, unsafe_allow_html=True)
