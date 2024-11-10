@@ -77,13 +77,13 @@ def show_digital_equity_card():
     st.markdown(header_style, unsafe_allow_html=True)
     
     # Create a card layout with a blue header
-    st.markdown("""
+    st.markdown("""
         <div class="card">
             <div class="card-header">Digital Equity</div>
             <div>
     """, unsafe_allow_html=True)
 
-    components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
+    components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
                       height=500)
     
     # Close the card div
