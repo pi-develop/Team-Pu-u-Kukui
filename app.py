@@ -43,6 +43,9 @@ def get_header_style():
                 border-radius: 0.5rem;
                 box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
                 margin-bottom: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
             .card-footer {
                 display: flex;
