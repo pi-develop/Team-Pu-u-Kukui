@@ -74,7 +74,7 @@ def show_digital_equity_card():
     header_style = get_header_style()
 
     # Display the custom styles in Streamlit
-    st.markdown(header_style, unsafe_allow_html=True)
+    st.markdown(header_style, unsafe_allow_html=True)
     
     # Create a card layout with a blue header
     st.markdown("""
