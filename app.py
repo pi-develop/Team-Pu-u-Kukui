@@ -84,11 +84,11 @@ def show_digital_equity_card():
     """, unsafe_allow_html=True)
 
     components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
-                      height=500)
+                      height=500)
     
-    # Close the card div
-    # Add the footer with "Read more about it" and a button
-    st.markdown("""
+    # Close the card div
+    # Add the footer with "Read more about it" and a button
+    st.markdown("""
             </div>
             <div class="card-footer">
                 <span class="card-footer-text">Read more about it</span>
@@ -97,10 +97,10 @@ def show_digital_equity_card():
                         <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
                     </svg>
                 </a>
-    """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
     
-    # Close the card footer and card div
-    st.markdown("""
+    # Close the card footer and card div
+    st.markdown("""
             </div>
         </div>
     """, unsafe_allow_html=True)
