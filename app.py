@@ -413,7 +413,7 @@ def show_user_feedback_card(col):
 def show_test_card():
     header_style = get_header_style()
     with ui.card(key="test-card"):
-        st.markdown(header_style, unsafe_allow_html=True)
+        ui.markdown(header_style, unsafe_allow_html=True)
 
         # Create a card layout with a blue header
         st.markdown("""
