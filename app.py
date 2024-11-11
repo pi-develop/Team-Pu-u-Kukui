@@ -410,6 +410,19 @@ def show_user_feedback_card(col):
             </div>
         """, unsafe_allow_html=True)
 
+def show_test_card():
+    header_style = get_header_style()
+    with ui.card(key="test-card"):
+        st.markdown(header_style, unsafe_allow_html=True)
+
+        # Create a card layout with a blue header
+        st.markdown("""
+            <div class="card">
+                <div class="card-header">Test Card</div>
+                <div>
+        """, unsafe_allow_html=True)
+
+
 def main():
     apply_custom_style()
     
@@ -429,6 +442,7 @@ def main():
     show_broadband_card(col2)
     show_user_feedback_card(col2)
     show_digital_equity_card()
+    show_test_card()
 
 if __name__ == "__main__":
     main()
