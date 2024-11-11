@@ -105,7 +105,7 @@ def show_digital_equity_card():
     st.markdown("""
         <div class="card">
             <div class="card-header">
-                <div>Digital Equity</div>
+                <div>Geographical Breakdown</div>
             </div>
             <div>
     """, unsafe_allow_html=True)
