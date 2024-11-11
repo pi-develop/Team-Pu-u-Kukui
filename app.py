@@ -290,10 +290,12 @@ def show_digital_literacy_card(col):
             ui.metric_card(title="Unprepared", content=f"{int(percent_value)}%", key="unprepared-card")
 
         with col2:
-            ui.metric_card(title="Old Guard", content=overall_row['Old_Guard'].values[0], key="old-guard-card")
+            percent_value = overall_row['Old_Guard'].values[0]
+            ui.metric_card(title="Old Guard", content=f"{int(percent_value)}%", key="old-guard-card")
 
         with col3:
-            ui.metric_card(title="Social Users", content=overall_row['Social_Users'].values[0], key="social-users-card")
+            percent_value = overall_row['Social_Users'].values[0]
+            ui.metric_card(title="Social Users", content=f"{int(percent_value)}%", key="social-users-card")
         
         col1, col2 = st.columns(2)
         with col1:
