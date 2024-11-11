@@ -77,7 +77,7 @@ with ui.card(key="card1"):
   header_style = get_header_style()
 
   # Display the custom styles in Streamlit
-  st.markdown(header_style, unsafe_allow_html=True)
+  ui.markdown(header_style, unsafe_allow_html=True)
     
   ui.element("span", children=["Email"], className="text-gray-400 text-sm font-medium m-1", key="label1")
   ui.element("input", key="email_input", placeholder="Your email")
