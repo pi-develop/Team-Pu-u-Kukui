@@ -4,6 +4,7 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
+import streamlit_shadcn_ui as ui
 
 from streamlit_extras.metric_cards import style_metric_cards
 
