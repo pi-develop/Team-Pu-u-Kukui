@@ -298,10 +298,10 @@ def show_digital_literacy_card(col):
         
         col1, col2 = st.columns(2)
         with col1:
-            ui.metric_card(title="Technical", value=overall_row['Technical'].values[0], key="technical-card")
+            ui.metric_card(title="Technical", content=overall_row['Technical'].values[0], key="technical-card")
 
         with col2:    
-            ui.metric_card(title="Digital", value=overall_row['Digital'].values[0], key="digital-card")
+            ui.metric_card(title="Digital", content=overall_row['Digital'].values[0], key="digital-card")
 
         # style_metric_cards()
 
