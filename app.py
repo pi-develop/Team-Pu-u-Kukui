@@ -475,7 +475,7 @@ def main():
         flex-direction: column;
     }
     .header-image {
-        max-width: 200px;
+        max-width: 150px;
         height: auto;
     }
     .stButton > button {
