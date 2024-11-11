@@ -3,9 +3,17 @@
 <img align="left" width="250" src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png">
 Hawaii Digital Equity Dashboard
 
-<h2>Inspiration</h2>
+<div id="toc">
+  <ul align="left" style="list-style: none">
+    <summary>
+      <h2>Inspiration</h2>
+    </summary>
+  </ul>
+</div>
 
 We set out to create a digital dashboard that helps bridge Hawaii's digital equity gap. Our vision was to build an intuitive platform that presents key data visually, allowing users to understand Hawaii's digital equity landscape at a glance. To accomplish our vision, we want to make an open source, simple yet effective tool to view the state of digital equity in Hawaii, for policy decision makers and the general public.
+
+<br/>
 
 ## Solution
 
