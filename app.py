@@ -297,10 +297,13 @@ def show_digital_literacy_card(col):
             ui.metric_card(title="Social Users", content=overall_row['Social_Users'].values[0], key="social-users-card")
         
         col1, col2 = st.columns(2)
-        col1.metric(label="Technical", value=overall_row['Technical'].values[0])
-        col2.metric(label="Digital", value=overall_row['Digital'].values[0])
+        with col1:
+            ui.metric_card(title="Technical", value=overall_row['Technical'].values[0], key="technical-card")
 
-        style_metric_cards()
+        with col2:    
+            ui.metric_card(title="Digital", value=overall_row['Digital'].values[0], key="digital-card")
+
+        # style_metric_cards()
 
         # Close the card div
         # Add the footer with "Read more about it" and a button
