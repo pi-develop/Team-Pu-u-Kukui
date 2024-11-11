@@ -13,3 +13,4 @@ openpyxl
 setuptools
 streamlit-shadcn-ui
 pygwalker
+st-circular-progress
