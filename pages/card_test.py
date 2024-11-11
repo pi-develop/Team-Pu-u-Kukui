@@ -88,8 +88,7 @@ with ui.card(key="card1"):
         <div>
   """, unsafe_allow_html=True)
     
-  components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
-                  height=500)
+  st.write("Somethig here")
     
   # Close the card div
   # Add the footer with "Read more about it" and a button
