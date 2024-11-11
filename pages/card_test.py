@@ -72,7 +72,7 @@ def create_card_header(title, image_link):
             <div>
     """, unsafe_allow_html=True)
 
-with ui.card(key="card1"):
+with st.container():
   # Set up a blue header style for the card
   header_style = get_header_style()
 
