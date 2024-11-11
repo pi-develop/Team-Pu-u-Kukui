@@ -287,12 +287,14 @@ def show_digital_literacy_card(col):
         overall_row = df.loc[df['Dimension'] == 'Overall', ['Unprepared', 'Old_Guard', 'Social_Users', 'Technical', 'Digital']]
 
         col1, col2, col3 = st.columns(3)
-        #col1.metric(label="Unprepared", value=overall_row['Unprepared'].values[0])
         with col1:
             ui.metric_card(title="Unprepared", content=overall_row['Unprepared'].values[0], key="unprepared-card")
-        
-        col2.metric(label="Old Guard", value=overall_row['Old_Guard'].values[0])
-        col3.metric(label="Social Users", value=overall_row['Social_Users'].values[0])
+
+        with col2:
+            ui.metric_card(title="Old Guard", content=overall_row['Old_Guard'].values[0], key="old-guard-card")
+
+        with col3:
+            ui.metric_card(title="Social Users", content=overall_row['Social_Users'].values[0], key="social-users-card")
         
         col1, col2 = st.columns(2)
         col1.metric(label="Technical", value=overall_row['Technical'].values[0])
