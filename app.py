@@ -172,7 +172,7 @@ def show_device_access_card(col):
         }
     
         # Create progress bars
-        st.subheader("Computer Usage")
+        # st.subheader("Computer Usage")
         
         for county, total_households in locations.items():
             with_computer = computer_users[county]
@@ -181,7 +181,12 @@ def show_device_access_card(col):
             percentage = with_computer / total_households
             
             # Display progress bar with the computed percentage
-            st.progress(percentage)
+            # st.progress(percentage)
+
+            my_circular_progress = CircularProgress(
+                label="Computer Usage",
+                value=percentage,
+                key="my_circular_progress").st_circular_progress()
 
         # Create progress bars
         st.subheader("Broadband Usage")
