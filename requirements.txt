@@ -11,3 +11,5 @@ SQLAlchemy
 mysqlclient
 openpyxl
 setuptools
+streamlit-shadcn-ui
+pygwalker
