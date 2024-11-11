@@ -185,7 +185,7 @@ def show_device_access_card(col):
 
             my_circular_progress = CircularProgress(
                 label="Computer Usage",
-                value=percentage,
+                value=percentage * 100,
                 key="my_circular_progress").st_circular_progress()
 
         # Create progress bars
