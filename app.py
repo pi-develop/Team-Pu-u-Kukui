@@ -6,8 +6,6 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import streamlit_shadcn_ui as ui
 
-from streamlit_extras.metric_cards import style_metric_cards
-
 from style_helper import apply_custom_style
 
 @st.cache_data
@@ -302,8 +300,6 @@ def show_digital_literacy_card(col):
 
         with col2:    
             ui.metric_card(title="Digital", content=overall_row['Digital'].values[0], key="digital-card")
-
-        # style_metric_cards()
 
         # Close the card div
         # Add the footer with "Read more about it" and a button
