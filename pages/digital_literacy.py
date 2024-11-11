@@ -13,7 +13,9 @@ def fetch_readiness_data():
     df = conn.query('SELECT Dimension, Details, Unprepared, Old_Guard, Social_Users, Technical, Digital FROM readiness_by_dimensions', ttl=6)
     return df
 
-def main():            
+def main():          
+    apply_custom_style()
+    
     st.header("Digital Literacy")
 
     st.subheader("First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.")
