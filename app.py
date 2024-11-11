@@ -406,10 +406,6 @@ def show_user_feedback_card(col):
                             <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
                         </svg>
                     </a>
-        """, unsafe_allow_html=True)
-        
-        # Close the card footer and card div
-        st.markdown("""
                 </div>
             </div>
         """, unsafe_allow_html=True)
