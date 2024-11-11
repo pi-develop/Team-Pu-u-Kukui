@@ -286,7 +286,7 @@ def show_digital_literacy_card(col):
 
         col1, col2, col3 = st.columns(3)
         with col1:
-            percent_value = overall_row['Unprepared'].values[0] * 100
+            percent_value = overall_row['Unprepared'].values[0] / 100
             ui.metric_card(title="Unprepared", content=f"{int(percent_value)}%", key="unprepared-card")
 
         with col2:
