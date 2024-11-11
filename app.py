@@ -299,10 +299,12 @@ def show_digital_literacy_card(col):
         
         col1, col2 = st.columns(2)
         with col1:
-            ui.metric_card(title="Technical", content=overall_row['Technical'].values[0], key="technical-card")
+            percent_value = overall_row['Technical'].values[0]
+            ui.metric_card(title="Technical", content=f"{int(percent_value)}%", key="technical-card")
 
         with col2:    
-            ui.metric_card(title="Digital", content=overall_row['Digital'].values[0], key="digital-card")
+            percent_value = overall_row['Digital'].values[0]
+            ui.metric_card(title="Digital", content=f"{int(percent_value)}%", key="digital-card")
 
         # Close the card div
         # Add the footer with "Read more about it" and a button
