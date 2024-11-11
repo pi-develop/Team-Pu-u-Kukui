@@ -1,6 +1,6 @@
 # Team-Pu-u-Kukui
 
-<img align="left" width="200" src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png">
+<img align="left" width="250" src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/logo.png">
 Hawaii Digital Equity Dashboard
 
 ## Inspiration
