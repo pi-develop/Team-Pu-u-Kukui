@@ -79,11 +79,27 @@ with ui.card(key="card1"):
   # Display the custom styles in Streamlit
   st.markdown(header_style, unsafe_allow_html=True)
 
-  ui.element("div", className="card")
+  # Create a card layout with a blue header
+    st.markdown("""
+        <div class="card">
+            <div class="card-header">
+                <div>Geographical Breakdown</div>
+            </div>
+            <div>
+    """, unsafe_allow_html=True)
+
+    components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
+                      height=500)
     
-  #ui.element("span", children=["Email"], className="text-gray-400 text-sm font-medium m-1", key="label1")
-  #ui.element("input", key="email_input", placeholder="Your email")
-  
-  #ui.element("span", children=["User Name"], className="text-gray-400 text-sm font-medium m-1", key="label2")
-  #ui.element("input", key="username_input", placeholder="Create a User Name")
-  #ui.element("button", text="Submit", key="button", className="m-1")
+    # Close the card div
+    # Add the footer with "Read more about it" and a button
+    st.markdown("""
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Read more about it</span>
+                <a href="https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9" target="_blank" class="card-footer-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                    </svg>
+                </a>
+    """, unsafe_allow_html=True)
