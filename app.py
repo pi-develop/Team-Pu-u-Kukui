@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import streamlit_shadcn_ui as ui
 
+from st_circular_progress import CircularProgress
 from style_helper import apply_custom_style
 
 @st.cache_data
