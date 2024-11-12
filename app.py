@@ -426,7 +426,7 @@ def show_income_distribution_card():
     """, unsafe_allow_html=True)
 
     components.iframe("https://uhero.hawaii.edu/analytics-dashboards/hawaii-income-distribution-map/", 
-                      height=700)
+                      height=800)
     
     # Close the card div
     # Add the footer with "Read more about it" and a button
