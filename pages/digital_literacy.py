@@ -49,7 +49,7 @@ def main():
       </div>
       """, unsafe_allow_html=True)
 
-    st.markdown('#')
+    add_vertical_space()
     
     st.markdown(
       """
