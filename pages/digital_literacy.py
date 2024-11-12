@@ -2,8 +2,8 @@ import streamlit as st
 
 import pandas as pd
 
+import streamlit_shadcn_ui as ui
 from streamlit_extras.add_vertical_space import add_vertical_space
-from streamlit_extras.metric_cards import style_metric_cards
 from pygwalker.api.streamlit import StreamlitRenderer
 
 from style_helper import apply_custom_style
@@ -60,7 +60,8 @@ def main():
 
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.metric(label="The Unprepared", value=overall_row['Unprepared'].values[0])
+        percent_value = overall_row['Unprepared'].values[0]
+        ui.metric_card(title="The Unprepared", content=f"{int(percent_value)}%", key="technical-card")
 
         st.markdown("""
         * Limited tech adoption
@@ -69,7 +70,8 @@ def main():
         """)
 
     with col2:
-        st.metric(label="Old Guard", value=overall_row['Old_Guard'].values[0])
+        percent_value = overall_row['Old_Guard'].values[0]
+        ui.metric_card(title="Old Guard", content=f"{int(percent_value)}%", key="old-guard-card")
 
         st.markdown("""
         * Traditional learners with lowest tech adoption/ownership
@@ -78,7 +80,8 @@ def main():
         """)
 
     with col3:
-        st.metric(label="Social Users", value=overall_row['Social_Users'].values[0])
+        percent_value = overall_row['Social_Users'].values[0]
+        ui.metric_card(title="Social Users", content=f"{int(percent_value)}%", key="social-card")
 
         st.markdown("""
         * Digitally adept but not focused on online learning/development
@@ -88,7 +91,8 @@ def main():
 
     col1, col2 = st.columns(2)
     with col1:
-        st.metric(label="Technical DIYers", value=overall_row['Technical'].values[0])
+        percent_value = overall_row['Technical'].values[0]
+        ui.metric_card(title="Technical DIYers", content=f"{int(percent_value)}%", key="technical-card")
 
         st.markdown("""
         * Confident with tech and digital info
@@ -97,7 +101,8 @@ def main():
         """)
 
     with col2:
-        st.metric(label="Digital Learners", value=overall_row['Digital'].values[0])
+        percent_value = overall_row['Digital'].values[0]
+        ui.metric_card(title="Digital Learners", content=f"{int(percent_value)}%", key="digital-card")
 
         st.markdown("""
         * Eager online learners; tech-confident and productive
