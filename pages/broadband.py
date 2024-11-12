@@ -43,5 +43,10 @@ def main():
     filtered_df = dataframe_explorer(data, case=False)
     st.dataframe(filtered_df, use_container_width=True)
 
+    renderer = StreamlitRenderer(data, spec="./gw_config.json")
+    renderer.explorer()
+
+
+
 if __name__ == "__main__":
     main()
