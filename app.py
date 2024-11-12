@@ -197,7 +197,7 @@ def show_device_access_card(col):
 
             cp = CircularProgress(
                 label=county,
-                value=55,
+                value=percentage * 100,
                 key="broadband_progress")
             cp.st_circular_progress()
         
