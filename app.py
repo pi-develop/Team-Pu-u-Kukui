@@ -468,7 +468,5 @@ def main():
     show_digital_equity_card()
     show_income_distribution_card()
 
-    st.write("force refresh")
-
 if __name__ == "__main__":
     main()
