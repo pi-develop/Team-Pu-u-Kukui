@@ -199,7 +199,7 @@ def show_device_access_card(col):
                 label=county,
                 value=0,
                 key=f"{county}_progress").st_circular_progress()
-            
+            county_progress.update_values(progress=90)
         
         # Close the card div
         # Add the footer with "Read more about it" and a button
