@@ -356,6 +356,7 @@ def show_open_data_card(col):
         # Create a horizontal bar chart
         fig = px.bar(df, x="CampaignTotal", y="CandidateName", orientation='h',
                      title="Top 5 Campaign Funds",
+                     color="#0778DF",
                      labels={"CampaignTotal": "Total ($)", "CandidateName": "Candidate"})
 
         # Customize layout for better readability with long names
