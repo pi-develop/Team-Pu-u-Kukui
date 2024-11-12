@@ -42,6 +42,8 @@ def main():
     apply_custom_style()
     st.markdown(get_page_style(), unsafe_allow_html=True)
 
+    add_vertical_space()
+    
     st.markdown(
       """
       <div class="heading">
