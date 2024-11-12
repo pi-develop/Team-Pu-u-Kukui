@@ -61,7 +61,7 @@ def main():
     col1, col2, col3 = st.columns(3)
     with col1:
         percent_value = overall_row['Unprepared'].values[0]
-        ui.metric_card(title="The Unprepared", content=f"{int(percent_value)}%", key="technical-card")
+        ui.metric_card(title="The Unprepared", content=f"{int(percent_value)}%", key="unprepared-card")
 
         st.markdown("""
         * Limited tech adoption
