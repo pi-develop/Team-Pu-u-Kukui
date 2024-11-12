@@ -4,6 +4,7 @@ import pandas as pd
 
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_extras.dataframe_explorer import dataframe_explorer
+from pygwalker.api.streamlit import StreamlitRenderer
 
 from style_helper import apply_custom_style
 
