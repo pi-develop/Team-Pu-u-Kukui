@@ -17,8 +17,6 @@ def main():
     apply_custom_style()
     st.header("Internet Usage by County")
 
-    st.write("force refresh")
-
     df = fetch_usage_data()
     # Filter out rows where "Use_pc_internet" is "Total households"
     df_filtered = df[df['Use_pc_internet'] != 'Total households']
