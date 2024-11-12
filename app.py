@@ -410,7 +410,7 @@ def show_user_feedback_card(col):
         
         # Display the feedback distribution in a pie chart
         fig = px.pie(feedback_counts, values='Count', names='Response', title="User Satisfaction Feedback",
-                     color_discrete_sequence=['#34A853', '#EA4335'],  # Customize colors for Yes/No
+                     color_discrete_sequence=['#0778DF', '#FF3583'],  # Customize colors for Yes/No
                      labels={'Count': 'Number of Responses'})
         
         st.plotly_chart(fig)
