@@ -42,12 +42,13 @@ def main():
             percentage = int(row['Estimate_Perccent'] * 100)
 
             # Display the type of internet usage and the progress bar
-            cp = CircularProgress(
-                    label=row['Use_pc_internet'],
-                    value=percentage,
-                    color="#0778DF",
-                    key=f"cell_{i}_{col}")
-            cp.st_circular_progress()
+            with col:
+                cp = CircularProgress(
+                        label=row['Use_pc_internet'],
+                        value=percentage,
+                        color="#0778DF",
+                        key=f"cell_{i}_{col}")
+                cp.st_circular_progress()
 
     st.dataframe(df, use_container_width=True)
     
