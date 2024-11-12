@@ -195,9 +195,10 @@ def show_device_access_card(col):
             # Display progress bar with the computed percentage
             st.progress(percentage)
 
+            st.write(int(percentage * 100))
             cp = CircularProgress(
                 label=county,
-                value=percentage * 100,
+                value=int(percentage * 100),
                 key="broadband_progress")
             cp.st_circular_progress()
         
