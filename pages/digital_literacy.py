@@ -17,8 +17,6 @@ def fetch_readiness_data():
 def main():          
     apply_custom_style()
     
-    st.header("Digital Literacy")
-
     st.subheader("First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.")
     
     st.markdown(
