@@ -5,6 +5,8 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 
 from style_helper import apply_custom_style
 
+from st_circular_progress import CircularProgress
+
 @st.cache_data
 def fetch_usage_data():
     conn = st.connection('mysql', type='sql')
@@ -36,10 +38,16 @@ def main():
                 col = col1
             else:
                 col = col2
-            
+
+            percentage = int(row['Estimate_Perccent'] * 100)
+
             # Display the type of internet usage and the progress bar
-            col.write(f"{row['Use_pc_internet']}")
-            col.progress(row['Estimate_Perccent'])
+            cp = CircularProgress(
+                    label=row['Use_pc_internet'],
+                    value=percentage,
+                    color="#0778DF",
+                    key=f"cell_{i}_{col}")
+            cp.st_circular_progress()
 
     st.dataframe(df, use_container_width=True)
     
