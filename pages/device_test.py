@@ -21,6 +21,11 @@ def main():
     # Filter out rows where County is 'Total households'
     filtered_data = df[df['Use_pc_internet'] != 'Total households']
 
+    st.write("Internet Usage by County")
+    for index, row in df_filtered.iterrows():
+        st.write(f"{row['County']} - {row['Use_pc_internet']}")
+        st.progress(row['Estimate_Percent'])
+
     st.dataframe(filtered_data, use_container_width=True)
     
 if __name__ == "__main__":
