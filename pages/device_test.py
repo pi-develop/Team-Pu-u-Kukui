@@ -12,7 +12,7 @@ def fetch_usage_data():
     return df
 
 def main():
-    # apply_custom_style()
+    apply_custom_style()
             
     st.header("Device Access")
 
@@ -22,7 +22,7 @@ def main():
     filtered_data = df[df['Use_pc_internet'] != 'Total households']
 
     st.write("Internet Usage by County")
-    for index, row in df_filtered.iterrows():
+    for index, row in filtered_data.iterrows():
         st.write(f"{row['County']} - {row['Use_pc_internet']}")
         st.progress(row['Estimate_Percent'])
 
