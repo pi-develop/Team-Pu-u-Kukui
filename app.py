@@ -170,37 +170,37 @@ def show_device_access_card(col):
         broadband_users = {
             "Hawaii Total": internet_df.iloc[2, 1]
         }
+
+        col1, col2 = st.columns(2)
+        with col1:
+            st.subheader("Computer Usage")
+
+            for county, total_households in locations.items():
+                with_computer = computer_users[county]
+                
+                # Calculate percentage of households with a computer
+                percentage = int(with_computer * 100 / total_households)
+
+                cp = CircularProgress(
+                    label=county,
+                    value=percentage,
+                    key="computer_progress")
+                cp.st_circular_progress()
+            
+        with col2:
+            st.subheader("Broadband Usage")
+            
+            for county, total_households in locations.items():
+                with_broadband = broadband_users[county]
+                
+                # Calculate percentage of households with broadband
+                percentage = int(with_broadband * 100 / total_households)
     
-        # Create progress bars
-        st.subheader("Computer Usage")
-        
-        for county, total_households in locations.items():
-            with_computer = computer_users[county]
-            
-            # Calculate percentage of households with a computer
-            percentage = with_computer / total_households
-            
-            # Display progress bar with the computed percentage
-            st.progress(percentage)
-
-        # Create progress bars
-        st.subheader("Broadband Usage")
-        
-        for county, total_households in locations.items():
-            with_broadband = broadband_users[county]
-            
-            # Calculate percentage of households with broadband
-            percentage = with_broadband / total_households
-            
-            # Display progress bar with the computed percentage
-            st.progress(percentage)
-
-            st.write(int(percentage * 100))
-            cp = CircularProgress(
-                label=county,
-                value=int(percentage * 100),
-                key="broadband_progress")
-            cp.st_circular_progress()
+                cp = CircularProgress(
+                    label=county,
+                    value=percentage,
+                    key="broadband_progress")
+                cp.st_circular_progress()    
         
         # Close the card div
         # Add the footer with "Read more about it" and a button
