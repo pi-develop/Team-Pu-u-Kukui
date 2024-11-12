@@ -3,7 +3,7 @@ import leafmap.foliumap as leafmap
 import pandas as pd
 
 from streamlit_extras.add_vertical_space import add_vertical_space
-from streamlit_extras.dataframe_explorer import dataframe_explorer
+from pygwalker.api.streamlit import StreamlitRenderer
 
 from style_helper import apply_custom_style
 
@@ -39,8 +39,8 @@ def main():
 
     add_vertical_space(2)
 
-    filtered_df = dataframe_explorer(data, case=False)
-    st.dataframe(filtered_df, use_container_width=True)
+    renderer = StreamlitRenderer(data, spec="./gw_config.json")
+    renderer.explorer()
 
 if __name__ == "__main__":
     main()
