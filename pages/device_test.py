@@ -9,8 +9,7 @@ from style_helper import apply_custom_style
 def fetch_usage_data():
     conn = st.connection('mysql', type='sql')
     df = conn.query("""SELECT Use_pc_internet, County, Estimate, Estimate_Perccent, Margin_Error, Margin_Error_Percent 
-        FROM use_pc_internet_by_county
-        WHERE Use_pc_internet <> 'Total households'""", ttl=6)
+        FROM use_pc_internet_by_county""", ttl=6)
     return df
 
 def main():
@@ -19,11 +18,13 @@ def main():
     st.header("Device Access")
 
     df = fetch_usage_data()
+    # Filter out rows where "Use_pc_internet" is "Total households"
+    df_filtered = df[df['Use_pc_internet'] != 'Total households']
 
     st.write("Internet Usage by County")
 
     # Group by county and display each type in two columns for each county
-    for county, group in df.groupby("County"):
+    for county, group in df_filtered.groupby("County"):
         st.write(f"### {county}")  # Display the county name as a section header
     
         # Create two columns for displaying progress bars side by side
