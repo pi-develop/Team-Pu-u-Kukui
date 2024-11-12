@@ -197,6 +197,7 @@ def show_device_access_card(col):
 
             county_progress = CircularProgress(
                 label=county,
+                value=0,
                 key=f"{county}_progress").st_circular_progress()
             
         
