@@ -28,7 +28,7 @@ def main():
     ])
 
     # Group by county and display each type in two columns for each county
-    for county, group in df_filtered.groupby("County"):
+    for county, group in df_filtered.groupby("County", sort=False):
         st.write(f"### {county}")  # Display the county name as a section header
     
         # Create two columns for displaying progress bars side by side
