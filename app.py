@@ -173,7 +173,7 @@ def show_device_access_card(col):
 
         col1, col2 = st.columns(2)
         with col1:
-            st.subheader("Computer Usage")
+            st.markdown("<h2 style='text-align: center;'>Computer Usage</h2>", unsafe_allow_html=True)
 
             for county, total_households in locations.items():
                 with_computer = computer_users[county]
@@ -188,7 +188,7 @@ def show_device_access_card(col):
                 cp.st_circular_progress()
             
         with col2:
-            st.subheader("Broadband Usage")
+            st.markdown("<h2 style='text-align: center;'>Broadband Usage</h2>", unsafe_allow_html=True)
             
             for county, total_households in locations.items():
                 with_broadband = broadband_users[county]
