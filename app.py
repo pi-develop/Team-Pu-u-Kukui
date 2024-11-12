@@ -194,6 +194,8 @@ def show_device_access_card(col):
             
             # Display progress bar with the computed percentage
             st.progress(percentage)
+
+            st.write(percentage)
         
         # Close the card div
         # Add the footer with "Read more about it" and a button
