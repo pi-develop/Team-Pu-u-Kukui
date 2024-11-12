@@ -58,6 +58,7 @@ def apply_custom_style():
   .header-text-container {
       display: flex;
       flex-direction: column;
+      align-items: center;
   }
   .header-image {
       max-width: 150px;
