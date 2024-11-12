@@ -21,6 +21,12 @@ def main():
     # Filter out rows where "Use_pc_internet" is "Total households"
     df_filtered = df[df['Use_pc_internet'] != 'Total households']
 
+    # Reorder df_filtered so "HawaiiState" appears first in the "County" column
+    df_filtered = pd.concat([
+        df_filtered[df_filtered['County'] == "HawaiiState"],
+        df_filtered[df_filtered['County'] != "HawaiiState"]
+    ])
+
     # Group by county and display each type in two columns for each county
     for county, group in df_filtered.groupby("County"):
         st.write(f"### {county}")  # Display the county name as a section header
