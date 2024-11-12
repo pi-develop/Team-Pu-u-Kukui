@@ -20,15 +20,27 @@ def main():
 
     df = fetch_usage_data()
 
-    # Filter out rows where County is 'Total households'
-    filtered_data = df[df['Use_pc_internet'] != 'Total households']
-
     st.write("Internet Usage by County")
-    for index, row in filtered_data.iterrows():
-        st.write(f"{row['County']} - {row['Use_pc_internet']}")
-        st.progress(row['Estimate_Perccent'])
 
-    st.dataframe(filtered_data, use_container_width=True)
+    # Group by county and display each type in two columns for each county
+    for county, group in df.groupby("County"):
+        st.write(f"### {county}")  # Display the county name as a section header
+    
+        # Create two columns for displaying progress bars side by side
+        col1, col2 = st.columns(2)
+        
+        for i, (_, row) in enumerate(group.iterrows()):
+            # Alternate between columns for each type of internet usage
+            if i % 2 == 0:
+                col = col1
+            else:
+                col = col2
+            
+            # Display the type of internet usage and the progress bar
+            col.write(f"{row['Use_pc_internet']}")
+            col.progress(row['Estimate_Perccent'])
+
+    st.dataframe(df, use_container_width=True)
     
 if __name__ == "__main__":
     main()
