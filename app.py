@@ -27,6 +27,14 @@ def fetch_campaign_fund_data():
     df = conn.query('SELECT CandidateName, CampaignTotal FROM Campaign_Fund ORDER BY CampaignTotal DESC LIMIT 5', ttl=6)
     return df
 
+@st.cache_data
+def fetch_usage_data():
+    conn = st.connection('mysql', type='sql')
+    df = conn.query("""SELECT Use_pc_internet, County, Estimate_Perccent AS Estimate_Percent 
+        FROM use_pc_internet_by_county
+        WHERE County = 'HawaiiState' AND Use_pc_internet != 'Total households'""", ttl=6)
+    return df
+
 def get_header_style():
     # Define the style for the card and header
     header_style = """
@@ -143,66 +151,35 @@ def show_device_access_card(col):
         st.markdown(header_style, unsafe_allow_html=True)
         
         create_card_header("Device Access", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/monitor-mobbile.png")
-            
-        df = pd.read_excel("data/acs2022_5yr_counties_hi.xlsx")
 
-        internet_df = df.iloc[170:174]
-    
-        # Rename columns for clarity (based on your provided data)
-        internet_df.columns = ['Computers and Internet Use', 'Hawaii_Total', 'Hawaii_MOE', 'Hawaii_Percent', 'Hawaii_Percent_MOE',
-                      'Hawaii_County_Total', 'Hawaii_County_MOE', 'Hawaii_County_Percent', 'Hawaii_County_Percent_MOE',
-                      'Honolulu_County_Total', 'Honolulu_County_MOE', 'Honolulu_County_Percent', 'Honolulu_County_Percent_MOE',
-                      'Kalawao_County_Total', 'Kalawao_County_MOE', 'Kalawao_County_Percent', 'Kalawao_County_Percent_MOE',
-                      'Kauai_County_Total', 'Kauai_County_MOE', 'Kauai_County_Percent', 'Kauai_County_Percent_MOE',
-                      'Maui_County_Total', 'Maui_County_MOE', 'Maui_County_Percent', 'Maui_County_Percent_MOE']
-    
-        # Extract relevant rows and columns for each county
-        locations = {
-            "Hawaii Total": internet_df.iloc[0, 1],  # Column 2 for "Total households", row 2 for Hawaii Total
-        }
+        df = fetch_usage_data()
+            
+        # Group by county and display each type in two columns for each county
+        for county, group in df.groupby("County", sort=False):
+            st.write(f"### {county}")  # Display the county name as a section header
         
-        # "With a computer" values for each county
-        computer_users = {
-            "Hawaii Total": internet_df.iloc[1, 1]
-        }
-    
-        # "With broadband" values for each county
-        broadband_users = {
-            "Hawaii Total": internet_df.iloc[2, 1]
-        }
-
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown("<h3 style='text-align: center;'>Computer Usage</h3>", unsafe_allow_html=True)
-
-            for county, total_households in locations.items():
-                with_computer = computer_users[county]
-                
-                # Calculate percentage of households with a computer
-                percentage = int(with_computer * 100 / total_households)
-
-                cp = CircularProgress(
-                    label=county,
-                    value=percentage,
-                    color="#0778DF",
-                    key="computer_progress")
-                cp.st_circular_progress()
+            # Create two columns for displaying progress bars side by side
+            col1, col2 = st.columns(2)
             
-        with col2:
-            st.markdown("<h3 style='text-align: center;'>Broadband Usage</h3>", unsafe_allow_html=True)
-            
-            for county, total_households in locations.items():
-                with_broadband = broadband_users[county]
-                
-                # Calculate percentage of households with broadband
-                percentage = int(with_broadband * 100 / total_households)
+            for i, (_, row) in enumerate(group.iterrows()):
+                # Alternate between columns for each type of internet usage
+                if i % 2 == 0:
+                    col = col1
+                    color = "#0778DF"
+                else:
+                    col = col2
+                    color = "#FF3583"
     
-                cp = CircularProgress(
-                    label=county,
-                    value=percentage,
-                    color="#FF3583",
-                    key="broadband_progress")
-                cp.st_circular_progress()    
+                percentage = int(row['Estimate_Percent'] * 100)
+    
+                # Display the type of internet usage and the progress bar
+                with col:
+                    cp = CircularProgress(
+                            label=row['Use_pc_internet'],
+                            value=percentage,
+                            color=color,
+                            key=f"cell_{i}_{col}")
+                    cp.st_circular_progress()  
         
         # Close the card div
         # Add the footer with "Read more about it" and a button
