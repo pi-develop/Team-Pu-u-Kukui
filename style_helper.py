@@ -30,12 +30,12 @@ def apply_custom_style():
   }
   .e2_22 { 
       color: #f0f8ff;
-      height: 52px;
       font-family: Montserrat;
       text-align: left;
-      font-size: 45.37845230102539px;
+      font-size: 3.5vw; /* Responsive font size */
       letter-spacing: 0;
-      line-height: 52px; /* Adjusted for consistency */
+      line-height: 1.2em;
+      margin-top: 0.5em;
   }
   .e2_23 { 
       transform: rotate(-2.4848083448933725e-17deg);
