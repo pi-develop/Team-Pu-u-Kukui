@@ -85,6 +85,17 @@ def apply_custom_style():
   .stButton > button:hover {
       opacity: 0.9;  /* Slightly transparent on hover */
   }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .e1_15, .e2_22 {
+        font-size: 5vw;
+    }
+  
+    .header-image {
+        max-width: 80px;
+    }
+  }
   </style>
   
   <div class="e2_21">
