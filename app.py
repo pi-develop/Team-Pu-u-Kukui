@@ -184,6 +184,7 @@ def show_device_access_card(col):
                 cp = CircularProgress(
                     label=county,
                     value=percentage,
+                    color="#0778DF",
                     key="computer_progress")
                 cp.st_circular_progress()
             
