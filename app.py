@@ -197,7 +197,7 @@ def show_device_access_card(col):
 
             CircularProgress(
                 label=county,
-                value=percentage * 100,
+                value=55,
                 key=f"{county}_progress").st_circular_progress()
         
         # Close the card div
