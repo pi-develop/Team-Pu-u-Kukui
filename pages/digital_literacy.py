@@ -26,8 +26,8 @@ def main():
       """
     )
 
-    st.subheader("Users in Hawaii were Divided in 5 Categories.")
     st.divider()
+    st.subheader("Users in Hawaii were Divided in 5 Categories.")
 
     df = fetch_readiness_data()
     # Select the first row where Dimension is 'Overall' and specific columns
