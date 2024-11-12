@@ -41,12 +41,16 @@ def get_page_style():
 def main():          
     apply_custom_style()
     st.markdown(get_page_style(), unsafe_allow_html=True)
-        
+
     st.markdown(
       """
       <div class="heading">
       First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.
       </div>
+      """, unsafe_allow_html=True)
+    
+    st.markdown(
+      """
       <div class="subheading">
       The Digital Literacy and Readiness Study (DLRS) evaluates Hawaii residents' digital preparedness across seven key areas,
       including **device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage**.
