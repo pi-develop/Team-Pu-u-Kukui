@@ -4,6 +4,7 @@ import pandas as pd
 
 from streamlit_extras.add_vertical_space import add_vertical_space
 from streamlit_extras.metric_cards import style_metric_cards
+from pygwalker.api.streamlit import StreamlitRenderer
 
 from style_helper import apply_custom_style
 
@@ -81,6 +82,18 @@ def main():
         """)
 
     style_metric_cards()
+
+    renderer = StreamlitRenderer(df, spec="./gw_config.json")
+    tab1, tab2, tab3, tab4 = st.tabs(["graphic walker", "data profiling", "table"])
+    
+    with tab1:
+        renderer.explorer()
+    
+    with tab2:
+        renderer.viewer()
+    
+    with tab3:
+        renderer.table()
     
 if __name__ == "__main__":
     main()
