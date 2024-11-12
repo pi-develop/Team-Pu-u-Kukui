@@ -24,7 +24,7 @@ def main():
     st.write("Internet Usage by County")
     for index, row in filtered_data.iterrows():
         st.write(f"{row['County']} - {row['Use_pc_internet']}")
-        st.progress(row['Estimate_Percent'])
+        st.progress(row['Estimate_Perccent'])
 
     st.dataframe(filtered_data, use_container_width=True)
     
