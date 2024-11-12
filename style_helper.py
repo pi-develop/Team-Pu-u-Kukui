@@ -13,17 +13,15 @@ def apply_custom_style():
       font-family: 'Montserrat', sans-serif;
   }
   .e1_15 { 
-      color:rgba(255, 255, 255, 1);
-      height:52px;
-      font-family:Montserrat;
-      font-size:45.37845230102539px;
-      letter-spacing:0;
-      line-height:52px; /* Adjusted to give line height a specific value */
+      color: rgba(255, 255, 255, 1);
+      font-family: Montserrat;
+      font-size: 3vw; /* Use vw for responsive font size */
+      letter-spacing: 0;
+      line-height: 1.2em; /* Adjusted for consistent line height */
   }
   .e2_21 { 
       background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
       width: 100%;
-      /* height: 256px; */
       height: 200px;
       display: flex;
       justify-content: space-between;
@@ -32,12 +30,11 @@ def apply_custom_style():
   }
   .e2_22 { 
       color: #f0f8ff;
-      height: 52px;
       font-family: Montserrat;
       text-align: left;
-      font-size: 45.37845230102539px;
+      font-size: 3.5vw; /* Responsive font size */
       letter-spacing: 0;
-      line-height: 52px; /* Adjusted for consistency */
+      line-height: 1.2em;
   }
   .e2_23 { 
       transform: rotate(-2.4848083448933725e-17deg);
@@ -87,6 +84,17 @@ def apply_custom_style():
   /* Hover effect */
   .stButton > button:hover {
       opacity: 0.9;  /* Slightly transparent on hover */
+  }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    .e1_15, .e2_22 {
+        font-size: 5vw;
+    }
+  
+    .header-image {
+        max-width: 80px;
+    }
   }
   </style>
   
