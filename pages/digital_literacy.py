@@ -48,6 +48,8 @@ def main():
       First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.
       </div>
       """, unsafe_allow_html=True)
+
+    st.markdown('#')
     
     st.markdown(
       """
