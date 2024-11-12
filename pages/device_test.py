@@ -12,7 +12,7 @@ def fetch_usage_data():
     return df
 
 def main():
-    apply_custom_style()
+    # apply_custom_style()
             
     st.header("Device Access")
 
