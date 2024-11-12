@@ -360,6 +360,8 @@ def show_open_data_card(col):
 
         # Customize layout for better readability with long names
         fig.update_layout(yaxis_tickangle=0, margin=dict(l=200, r=20, t=50, b=20))
+
+        fig.update_traces(marker_color="#0778DF")
         
         # Display the chart in Streamlit
         st.plotly_chart(fig)
