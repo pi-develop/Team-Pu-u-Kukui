@@ -14,15 +14,43 @@ def fetch_readiness_data():
     df = conn.query('SELECT Dimension, Details, Unprepared, Old_Guard, Social_Users, Technical, Digital FROM readiness_by_dimensions', ttl=6)
     return df
 
+def get_page_style():
+    # Define the style for the page
+    page_style = """
+        <style>
+            .heading {
+                font-weight: 700;
+                font-size: 48px;
+                line-height: 60px;
+                display: flex;
+                align-items: flex-end;
+                color: #022A4F;
+            }
+            .subheading {
+                font-weight: 400;
+                font-size: 24px;
+                line-height: 41px;
+                display: flex;
+                align-items: flex-end;
+                color: #022A4F;
+            }
+        </style>
+    """
+    return page_style
+
 def main():          
     apply_custom_style()
-    
-    st.subheader("First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.")
-    
+    st.markdown(get_page_style(), unsafe_allow_html=True)
+        
     st.markdown(
       """
+      <div class="heading">
+      First-of-its-kind study assessing Hawaii residents' digital literacy and preparedness for the digital economy.
+      </div>
+      <div class="subheading">
       The Digital Literacy and Readiness Study (DLRS) evaluates Hawaii residents' digital preparedness across seven key areas,
       including **device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage**.
+      </div>
       """
     )
 
