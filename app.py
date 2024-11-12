@@ -195,10 +195,11 @@ def show_device_access_card(col):
             # Display progress bar with the computed percentage
             st.progress(percentage)
 
-            county_progress = CircularProgress(
+            cp = CircularProgress(
                 label=county,
-                value=0,
-                key=f"{county}_progress").st_circular_progress()
+                value=55,
+                key="broadband_progress")
+            cp.st_circular_progress()
         
         # Close the card div
         # Add the footer with "Read more about it" and a button
