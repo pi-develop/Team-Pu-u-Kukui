@@ -8,7 +8,9 @@ from style_helper import apply_custom_style
 @st.cache_data
 def fetch_usage_data():
     conn = st.connection('mysql', type='sql')
-    df = conn.query('SELECT Use_pc_internet, County, Estimate, Estimate_Perccent, Margin_Error, Margin_Error_Percent FROM use_pc_internet_by_county', ttl=6)
+    df = conn.query("""SELECT Use_pc_internet, County, Estimate, Estimate_Perccent, Margin_Error, Margin_Error_Percent 
+        FROM use_pc_internet_by_county
+        WHERE Use_pc_internet <> 'Total households'""", ttl=6)
     return df
 
 def main():
