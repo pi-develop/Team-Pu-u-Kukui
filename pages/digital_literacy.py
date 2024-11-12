@@ -57,7 +57,12 @@ def main():
       """
       <div class="subheading">
       The Digital Literacy and Readiness Study (DLRS) evaluates Hawaii residents' digital preparedness across seven key areas,
-      including <b>device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage</b>.
+      including  
+      """, unsafe_allow_html=True)
+
+    st.markdown(
+      """
+      <b>device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage</b>.
       </div>
       """, unsafe_allow_html=True)
 
