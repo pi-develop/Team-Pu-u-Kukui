@@ -24,7 +24,6 @@ def apply_custom_style():
       width: 100%;
       height: 200px;
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
