@@ -84,16 +84,7 @@ def main():
     style_metric_cards()
 
     renderer = StreamlitRenderer(df, spec="./gw_config.json")
-    tab1, tab2, tab3 = st.tabs(["graphic walker", "data profiling", "table"])
-    
-    with tab1:
-        renderer.explorer()
-    
-    with tab2:
-        renderer.viewer()
-    
-    with tab3:
-        renderer.table()
+    renderer.explorer()
     
 if __name__ == "__main__":
     main()
