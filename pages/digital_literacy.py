@@ -26,14 +26,6 @@ def get_page_style():
                 align-items: flex-end;
                 color: #022A4F;
             }
-            .subheading {
-                font-weight: 400;
-                font-size: 24px;
-                line-height: 41px;
-                display: flex;
-                align-items: flex-end;
-                color: #022A4F;
-            }
         </style>
     """
     return page_style
@@ -55,16 +47,9 @@ def main():
     
     st.markdown(
       """
-      <div class="subheading">
       The Digital Literacy and Readiness Study (DLRS) evaluates Hawaii residents' digital preparedness across seven key areas,
-      including  
-      """, unsafe_allow_html=True)
-
-    st.markdown(
-      """
-      <b>device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage</b>.
-      </div>
-      """, unsafe_allow_html=True)
+      including **device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage.**
+      """)
 
     st.divider()
     st.subheader("Users in Hawaii were Divided in 5 Categories")
