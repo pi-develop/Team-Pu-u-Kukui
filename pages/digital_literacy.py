@@ -110,8 +110,6 @@ def main():
         * Skilled in digital creativity
         """)
 
-    style_metric_cards()
-
     renderer = StreamlitRenderer(df, spec="./gw_config.json")
     renderer.explorer()
     
