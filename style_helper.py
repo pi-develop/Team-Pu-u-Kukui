@@ -14,7 +14,6 @@ def apply_custom_style():
   }
   .e1_15 { 
       color: rgba(255, 255, 255, 1);
-      /* height: 52px; */
       font-family: Montserrat;
       font-size: 3vw; /* Use vw for responsive font size */
       letter-spacing: 0;
@@ -23,9 +22,9 @@ def apply_custom_style():
   .e2_21 { 
       background-image:linear-gradient(0deg, rgba(4.999259691685438, 96.68749898672104, 180.9985300898552, 1) 0%, rgba(2.1819744911044836, 42.20017835497856, 78.99852856993675, 1) 100%);
       width: 100%;
-      /* height: 256px; */
       height: 200px;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
