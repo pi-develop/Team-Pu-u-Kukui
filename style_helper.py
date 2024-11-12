@@ -35,7 +35,6 @@ def apply_custom_style():
       font-size: 3.5vw; /* Responsive font size */
       letter-spacing: 0;
       line-height: 1.2em;
-      margin-top: 0.5em;
   }
   .e2_23 { 
       transform: rotate(-2.4848083448933725e-17deg);
