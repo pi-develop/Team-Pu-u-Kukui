@@ -36,8 +36,10 @@ def main():
             # Alternate between columns for each type of internet usage
             if i % 2 == 0:
                 col = col1
+                color = "#0778DF"
             else:
                 col = col2
+                color = "#FF3583"
 
             percentage = int(row['Estimate_Perccent'] * 100)
 
@@ -46,7 +48,7 @@ def main():
                 cp = CircularProgress(
                         label=row['Use_pc_internet'],
                         value=percentage,
-                        color="#0778DF",
+                        color=color,
                         key=f"cell_{i}_{col}")
                 cp.st_circular_progress()
 
