@@ -57,12 +57,12 @@ def main():
       """
       <div class="subheading">
       The Digital Literacy and Readiness Study (DLRS) evaluates Hawaii residents' digital preparedness across seven key areas,
-      including **device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage**.
+      including <strong>device confidence, tech adaptation, digital productivity, online information litereacy, and educational technology usage</strong>.
       </div>
       """, unsafe_allow_html=True)
 
     st.divider()
-    st.subheader("Users in Hawaii were Divided in 5 Categories.")
+    st.subheader("Users in Hawaii were Divided in 5 Categories")
 
     df = fetch_readiness_data()
     # Select the first row where Dimension is 'Overall' and specific columns
