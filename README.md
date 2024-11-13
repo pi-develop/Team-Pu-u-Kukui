@@ -36,7 +36,7 @@ This project revealed the complexity and potential of visualizing digital equity
 2. Sign up for Streamlit account at https://streamlit.io/ using GitHub account.
 3. Create an app and select the option to deploy a public app from GitHub.
 4. Select the repo and enter app.py as the main file path.
-5. Click addvanced settings and enter the MySQL configuration.
+5. Click advanced settings and enter the MySQL configuration.
 ```
 [connections.mysql]
 dialect = "mysql"
