@@ -130,5 +130,3 @@ def apply_custom_style(suppress_anchor=False):
     </div>
     """
     st.markdown(image_anchor, unsafe_allow_html=True)
-
-    st.write("app refresh")
