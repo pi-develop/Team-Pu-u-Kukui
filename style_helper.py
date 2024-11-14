@@ -2,14 +2,6 @@ import streamlit as st
 
 def apply_custom_style(return_anchor=False):
   st.set_page_config(layout="wide")
-
-  image_anchor = ""
-  if return_anchor:
-    image_anchor = """
-    <a href="app.py" class="bottom-left-image">
-      <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
-    </a>
-    """
   
   # Define the HTML and CSS
   html_content = """
@@ -122,11 +114,16 @@ def apply_custom_style(return_anchor=False):
               <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/hawaii.png" alt="Header Image">
           </a>
       </div>
-      <a href="app.py" class="bottom-left-image">
-        <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
-      </a>
   </div>
   """
   
   # Insert the HTML and CSS into the Streamlit app
   st.markdown(html_content, unsafe_allow_html=True)
+
+  if return_anchor:
+    image_anchor = """
+    <a href="app.py" class="bottom-left-image">
+      <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
+    </a>
+    """
+    st.markdown(return_anchor, unsafe_allow_html=True)
