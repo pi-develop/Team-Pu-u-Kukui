@@ -65,7 +65,7 @@ def main():
     st.header("Submit New Feedback")
     with st.form(key="feedback_form"):
         email = st.text_input("Email (required)", value="", help="Please enter your email address.")
-        satisfied = st.radio("Are you satisfied?", options=["", "Yes", "No"], index=0, help="Select 'Yes' for satisfied or 'No' for unsatisfied.")
+        satisfied = st.radio("Are you satisfied (required)?", options=["", "Yes", "No"], index=0, help="Select 'Yes' for satisfied or 'No' for unsatisfied.")
         comments = st.text_area("Comments (optional)", help="Enter any additional comments.")
         
         # Submit button
