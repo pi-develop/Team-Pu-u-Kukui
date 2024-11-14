@@ -12,13 +12,12 @@ def fetch_feedback_data():
             SUM(Satisfied) AS Satisfied,
             SUM(Unsatisfied) AS Unsatisfied
         FROM user_feedback;
-        """, ttl=0)
+        """, ttl=6)
     return df
 
 # Function to insert feedback into the database
 def insert_feedback(email, comments, satisfied):
     connection = st.connection('mysql', type='sql')
-    cursor = connection.cursor()
     
     # Map satisfied input to binary values
     satisfied_val = 1 if satisfied == "Yes" else 0
@@ -29,9 +28,9 @@ def insert_feedback(email, comments, satisfied):
     INSERT INTO user_feedback (Email, Comments, Satisfied, Unsatisfied)
     VALUES (%s, %s, %s, %s)
     """
-    cursor.execute(insert_query, (email, comments, satisfied_val, unsatisfied_val))
+    
+    connection.execute(insert_query, (email, comments, satisfied_val, unsatisfied_val))
     connection.commit()
-    cursor.close()
     connection.close()
 
 def main():
