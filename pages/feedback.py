@@ -6,7 +6,6 @@ from sqlalchemy.sql import text
 
 from style_helper import apply_custom_style
 
-@st.cache_data
 def fetch_feedback_data():
     conn = st.connection('mysql', type='sql')
     df = conn.query("""
