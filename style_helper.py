@@ -63,10 +63,11 @@ def apply_custom_style(return_anchor=False):
       max-width: 150px;
       height: auto;
   }
-  .bottom-left-image {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
+  .bottom-left-image-container {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      padding-left: 10px;
   }
   .stButton > button {
       background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
@@ -122,8 +123,11 @@ def apply_custom_style(return_anchor=False):
 
   if return_anchor:
     image_anchor = """
-    <a href="/" class="bottom-left-image">
-      <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
-    </a>
+    <!-- Left-aligned image anchor at the bottom -->
+    <div class="bottom-left-image-container">
+        <a href="/">
+            <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
+        </a>
+    </div>
     """
     st.markdown(image_anchor, unsafe_allow_html=True)
