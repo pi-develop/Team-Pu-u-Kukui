@@ -120,6 +120,8 @@ def show_digital_equity_card():
             <div>
     """, unsafe_allow_html=True)
 
+    create_card_header("Geographical Breakdown", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/earth-line.png")
+
     components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
                       height=500)
     
