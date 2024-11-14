@@ -67,7 +67,7 @@ def apply_custom_style(return_anchor=False):
       display: block;
       margin-top: 10px;
       text-align: left;
-      padding-left: 10px;
+      /* padding-left: 10px; */
   }
   .stButton > button {
       background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
