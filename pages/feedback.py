@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
+from sqlalchemy.sql import text
+
 from style_helper import apply_custom_style
 
 @st.cache_data
