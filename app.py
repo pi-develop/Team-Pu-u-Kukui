@@ -35,6 +35,16 @@ def fetch_usage_data():
         WHERE County = 'HawaiiState' AND Use_pc_internet != 'Total households'""", ttl=6)
     return df
 
+def fetch_feedback_data():
+    conn = st.connection('mysql', type='sql')
+    df = conn.query("""
+        SELECT
+            SUM(Satisfied) AS Satisfied,
+            SUM(Unsatisfied) AS Unsatisfied
+        FROM user_feedback;
+        """, ttl=6)
+    return df
+
 def get_header_style():
     # Define the style for the card and header
     header_style = """
@@ -110,15 +120,8 @@ def show_digital_equity_card():
 
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
-    
-    # Create a card layout with a blue header
-    st.markdown("""
-        <div class="card">
-            <div class="card-header">
-                <div>Geographical Breakdown</div>
-            </div>
-            <div>
-    """, unsafe_allow_html=True)
+
+    create_card_header("Geographical Breakdown", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/earth-line.png")
 
     components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
                       height=500)
@@ -271,27 +274,28 @@ def show_digital_literacy_card(col):
         # Select the first row where Dimension is 'Overall' and specific columns
         overall_row = df.loc[df['Dimension'] == 'Overall', ['Unprepared', 'Old_Guard', 'Social_Users', 'Technical', 'Digital']]
 
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            percent_value = overall_row['Unprepared'].values[0]
-            ui.metric_card(title="Unprepared", content=f"{int(percent_value)}%", key="unprepared-card")
-
-        with col2:
-            percent_value = overall_row['Old_Guard'].values[0]
-            ui.metric_card(title="Old Guard", content=f"{int(percent_value)}%", key="old-guard-card")
-
-        with col3:
-            percent_value = overall_row['Social_Users'].values[0]
-            ui.metric_card(title="Social Users", content=f"{int(percent_value)}%", key="social-users-card")
+        # Prepare data for the pie chart
+        categories = overall_row.columns
+        values = overall_row.values[0]
         
-        col1, col2 = st.columns(2)
-        with col1:
-            percent_value = overall_row['Technical'].values[0]
-            ui.metric_card(title="Technical", content=f"{int(percent_value)}%", key="technical-card")
-
-        with col2:    
-            percent_value = overall_row['Digital'].values[0]
-            ui.metric_card(title="Digital", content=f"{int(percent_value)}%", key="digital-card")
+        # Create a DataFrame for the pie chart
+        pie_data = pd.DataFrame({
+            "Category": categories,
+            "Percentage": values
+        })
+        
+        # Plot pie chart with custom colors
+        fig = px.pie(
+            pie_data,
+            names="Category",
+            values="Percentage",
+            color="Category",
+            color_discrete_sequence=["#0778DF", "#FF3583", "#32CD32", "#FFD700", "#FF7F50"]  # Custom color palette
+        )
+        fig.update_traces(textinfo='percent+label')
+        
+        # Display the pie chart
+        st.plotly_chart(fig)
 
         # Close the card div
         # Add the footer with "Read more about it" and a button
@@ -320,12 +324,7 @@ def show_open_data_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         
-        # Create a card layout with a blue header
-        st.markdown("""
-            <div class="card">
-                <div class="card-header">Open Data</div>
-                <div>
-        """, unsafe_allow_html=True)
+        create_card_header("Open Data", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/stack-line.png")
 
         # Get data from the MySQL table
         df = fetch_campaign_fund_data()
@@ -369,28 +368,28 @@ def show_user_feedback_card(col):
     with col:
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
-        
-        # Create a card layout with a blue header
-        st.markdown("""
-            <div class="card">
-                <div class="card-header">User Feedback</div>
-                <div>
-        """, unsafe_allow_html=True)
 
-        # Sample data - replace this with your actual data source
-        data = {
-            "feedback": ["Yes", "No", "Yes", "Yes", "No", "Yes", "No", "Yes", "Yes", "No"]
-        }
-        df = pd.DataFrame(data)
+        create_card_header("User Feedback", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
+
+        df = fetch_feedback_data()
+        satisfied_count = df['Satisfied'][0]
+        unsatisfied_count = df['Unsatisfied'][0]
         
-        # Count the "Yes" and "No" responses
-        feedback_counts = df['feedback'].value_counts().reset_index()
-        feedback_counts.columns = ['Response', 'Count']
-        
-        # Display the feedback distribution in a pie chart
-        fig = px.pie(feedback_counts, values='Count', names='Response', title="User Satisfaction Feedback",
-                     color_discrete_sequence=['#0778DF', '#FF3583'],  # Customize colors for Yes/No
-                     labels={'Count': 'Number of Responses'})
+        # Prepare data for pie chart
+        feedback_data = pd.DataFrame({
+            "Feedback": ["Satisfied", "Unsatisfied"],
+            "Count": [satisfied_count, unsatisfied_count]
+        })
+    
+        # Plot pie chart
+        fig = px.pie(
+            feedback_data,
+            names="Feedback",
+            values="Count",
+            color="Feedback",
+            color_discrete_map={"Satisfied": "#0778DF", "Unsatisfied": "#FF3583"}
+        )
+        fig.update_traces(textinfo='percent+label')
         
         st.plotly_chart(fig)
         
@@ -400,7 +399,7 @@ def show_user_feedback_card(col):
                 </div>
                 <div class="card-footer">
                     <span class="card-footer-text">Read more about it</span>
-                    <a href="#" target="_self" class="card-footer-button">
+                    <a href="feedback" target="_self" class="card-footer-button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
                         </svg>
@@ -415,15 +414,8 @@ def show_income_distribution_card():
 
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
-    
-    # Create a card layout with a blue header
-    st.markdown("""
-        <div class="card">
-            <div class="card-header">
-                <div>Income Distribution Impact</div>
-            </div>
-            <div>
-    """, unsafe_allow_html=True)
+
+    create_card_header("Income Distribution Impact", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
 
     components.iframe("https://uhero.hawaii.edu/analytics-dashboards/hawaii-income-distribution-map/", 
                       height=1000)
@@ -448,7 +440,7 @@ def show_income_distribution_card():
     """, unsafe_allow_html=True)
 
 def main():
-    apply_custom_style()
+    apply_custom_style(suppress_anchor=True)
     
     st.header("Bridging Hawaii's Digital Divide")
     

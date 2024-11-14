@@ -32,11 +32,13 @@ Our main challenge was data curation. With extensive information available, we n
 This project revealed the complexity and potential of visualizing digital equity data. We learned the importance of thoughtful data selection and clear visual presentation in helping users understand Hawaii's digital equity landscape.
 
 ## Cloud Deployment
-1. Fork this GitHub repo.
-2. Sign up for Streamlit account at https://streamlit.io/ using GitHub account.
-3. Create an app and select the option to deploy a public app from GitHub.
-4. Select the repo and enter app.py as the main file path.
-5. Click advanced settings and enter the MySQL configuration.
+1. Create a MySQL database.
+2. Execute **data/Create_Insert_Tables.sql** script in this repo to create tables with data.
+3. Fork this GitHub repo.
+4. Sign up for Streamlit account at https://streamlit.io/ using GitHub account.
+5. Create an app and select the option to deploy a public app from GitHub.
+6. Select the repo and enter **app.py** as the main file path.
+7. Click advanced settings and enter the MySQL configuration.
 ```
 [connections.mysql]
 dialect = "mysql"

@@ -1,8 +1,8 @@
 import streamlit as st
 
-def apply_custom_style():
+def apply_custom_style(suppress_anchor=False):
   st.set_page_config(layout="wide")
-    
+  
   # Define the HTML and CSS
   html_content = """
   <style>
@@ -63,6 +63,11 @@ def apply_custom_style():
       max-width: 150px;
       height: auto;
   }
+  .bottom-left-image-container {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+  }
   .stButton > button {
       background-image: linear-gradient(0deg, rgba(4, 65, 121, 1) 0%, rgba(7, 119, 223, 1) 100%);
       color: rgba(255, 255, 255, 1);
@@ -114,3 +119,14 @@ def apply_custom_style():
   
   # Insert the HTML and CSS into the Streamlit app
   st.markdown(html_content, unsafe_allow_html=True)
+
+  if not suppress_anchor:
+    image_anchor = """
+    <!-- Left-aligned image anchor at the bottom -->
+    <div class="bottom-left-image-container">
+        <a href="app" target="_self">
+            <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
+        </a>
+    </div>
+    """
+    st.markdown(image_anchor, unsafe_allow_html=True)

@@ -1,11 +1,10 @@
 import streamlit as st
-
 import pandas as pd
-
 import streamlit_shadcn_ui as ui
+import plotly.express as px
+
 from streamlit_extras.add_vertical_space import add_vertical_space
 from pygwalker.api.streamlit import StreamlitRenderer
-
 from style_helper import apply_custom_style
 
 @st.cache_data
@@ -58,6 +57,29 @@ def main():
     # Select the first row where Dimension is 'Overall' and specific columns
     overall_row = df.loc[df['Dimension'] == 'Overall', ['Unprepared', 'Old_Guard', 'Social_Users', 'Technical', 'Digital']]
 
+    # Prepare data for the pie chart
+    categories = overall_row.columns
+    values = overall_row.values[0]
+    
+    # Create a DataFrame for the pie chart
+    pie_data = pd.DataFrame({
+        "Category": categories,
+        "Percentage": values
+    })
+    
+    # Plot pie chart with custom colors
+    fig = px.pie(
+        pie_data,
+        names="Category",
+        values="Percentage",
+        color="Category",
+        color_discrete_sequence=["#0778DF", "#FF3583", "#32CD32", "#FFD700", "#FF7F50"]  # Custom color palette
+    )
+    fig.update_traces(textinfo='percent+label')
+    
+    # Display the pie chart
+    st.plotly_chart(fig)
+    
     col1, col2, col3 = st.columns(3)
     with col1:
         percent_value = overall_row['Unprepared'].values[0]

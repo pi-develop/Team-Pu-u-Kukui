@@ -15,7 +15,7 @@ st.write(df)
 df = conn.query('select * from use_pc_internet_by_county limit 5', ttl=6)
 st.write(df)
 
-df = conn.query('select * from readiness_by_dimensions', ttl=6)
+df = conn.query('select * from user_feedback limit 5', ttl=6)
 st.write(df)
 
 df = conn.query('select * from Campaign_Fund limit 5', ttl=6)
