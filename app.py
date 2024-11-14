@@ -357,13 +357,6 @@ def show_user_feedback_card(col):
     with col:
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
-        
-        # Create a card layout with a blue header
-        st.markdown("""
-            <div class="card">
-                <div class="card-header">User Feedback</div>
-                <div>
-        """, unsafe_allow_html=True)
 
         create_card_header("User Feedback", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
 
@@ -405,15 +398,8 @@ def show_income_distribution_card():
 
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
-    
-    # Create a card layout with a blue header
-    st.markdown("""
-        <div class="card">
-            <div class="card-header">
-                <div>Income Distribution Impact</div>
-            </div>
-            <div>
-    """, unsafe_allow_html=True)
+
+    create_card_header("Income Distribution Impact", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
 
     components.iframe("https://uhero.hawaii.edu/analytics-dashboards/hawaii-income-distribution-map/", 
                       height=1000)
