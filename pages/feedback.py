@@ -18,19 +18,26 @@ def fetch_feedback_data():
     return df
 
 # Function to insert feedback into the database
-def insert_feedback(email, comments, satisfied):
+def insert_feedback(username, email, comments, satisfied):
     connection = st.connection('mysql', type='sql')
     
     # Map satisfied input to binary values
     satisfied_val = 1 if satisfied == "Yes" else 0
     unsatisfied_val = 1 if satisfied == "No" else 0
 
+    # Default username to "Nobody" if empty
+    username = username if username else "Nobody"
+
     # Use session for transaction management
     with connection.session as session:
-        insert_query = text("INSERT INTO user_feedback (Email, Comments, Satisfied, Unsatisfied) VALUES (:email, :comments, :satisfied_val, :unsatisfied_val);")
+        insert_query = text("""
+        INSERT INTO user_feedback (UserName, Email, Comments, Satisfied, Unsatisfied)
+        VALUES (:username, :email, :comments, :satisfied_val, :unsatisfied_val)
+        """)
         
         # Execute the query with parameters using session
         session.execute(insert_query, {
+            "username": username,
             "email": email,
             "comments": comments,
             "satisfied_val": satisfied_val,
@@ -68,6 +75,7 @@ def main():
     # Entry form for new feedback
     st.header("Submit New Feedback")
     with st.form(key="feedback_form"):
+        username = st.text_input("Name (optional)", value="", help="Enter your name.")
         email = st.text_input("Email (required)", value="", help="Please enter your email address.")
         satisfied = st.radio("Are you satisfied (required)?", options=["", "Yes", "No"], index=0, help="Select 'Yes' for satisfied or 'No' for unsatisfied.")
         comments = st.text_area("Comments (optional)", help="Enter any additional comments.")
@@ -82,7 +90,7 @@ def main():
             elif not satisfied:
                 st.error("Please select 'Yes' or 'No' to indicate if you are satisfied.")
             else:
-                insert_feedback(email, comments, satisfied)
+                insert_feedback(username, email, comments, satisfied)
                 st.success("Thank you for your feedback!")
                 st.balloons()
 
