@@ -27,7 +27,7 @@ def insert_feedback(email, comments, satisfied):
 
     # Use session for transaction management
     with connection.session as session:
-        insert_query = "INSERT INTO user_feedback (Email, Comments, Satisfied, Unsatisfied) VALUES (:email, :comments, :satisfied_val, :unsatisfied_val);"
+        insert_query = text("INSERT INTO user_feedback (Email, Comments, Satisfied, Unsatisfied) VALUES (:email, :comments, :satisfied_val, :unsatisfied_val);")
         
         # Execute the query with parameters using session
         session.execute(insert_query, {
