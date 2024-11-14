@@ -110,15 +110,6 @@ def show_digital_equity_card():
 
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
-    
-    # Create a card layout with a blue header
-    st.markdown("""
-        <div class="card">
-            <div class="card-header">
-                <div>Geographical Breakdown</div>
-            </div>
-            <div>
-    """, unsafe_allow_html=True)
 
     create_card_header("Geographical Breakdown", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/earth-line.png")
 
