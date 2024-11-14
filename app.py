@@ -274,27 +274,28 @@ def show_digital_literacy_card(col):
         # Select the first row where Dimension is 'Overall' and specific columns
         overall_row = df.loc[df['Dimension'] == 'Overall', ['Unprepared', 'Old_Guard', 'Social_Users', 'Technical', 'Digital']]
 
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            percent_value = overall_row['Unprepared'].values[0]
-            ui.metric_card(title="Unprepared", content=f"{int(percent_value)}%", key="unprepared-card")
-
-        with col2:
-            percent_value = overall_row['Old_Guard'].values[0]
-            ui.metric_card(title="Old Guard", content=f"{int(percent_value)}%", key="old-guard-card")
-
-        with col3:
-            percent_value = overall_row['Social_Users'].values[0]
-            ui.metric_card(title="Social Users", content=f"{int(percent_value)}%", key="social-users-card")
+        # Prepare data for the pie chart
+        categories = overall_row.columns
+        values = overall_row.values[0]
         
-        col1, col2 = st.columns(2)
-        with col1:
-            percent_value = overall_row['Technical'].values[0]
-            ui.metric_card(title="Technical", content=f"{int(percent_value)}%", key="technical-card")
-
-        with col2:    
-            percent_value = overall_row['Digital'].values[0]
-            ui.metric_card(title="Digital", content=f"{int(percent_value)}%", key="digital-card")
+        # Create a DataFrame for the pie chart
+        pie_data = pd.DataFrame({
+            "Category": categories,
+            "Percentage": values
+        })
+        
+        # Plot pie chart with custom colors
+        fig = px.pie(
+            pie_data,
+            names="Category",
+            values="Percentage",
+            color="Category",
+            color_discrete_sequence=["#0778DF", "#FF3583", "#32CD32", "#FFD700", "#FF7F50"]  # Custom color palette
+        )
+        fig.update_traces(textinfo='percent+label')
+        
+        # Display the pie chart
+        st.plotly_chart(fig)
 
         # Close the card div
         # Add the footer with "Read more about it" and a button
