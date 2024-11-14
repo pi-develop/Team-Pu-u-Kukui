@@ -313,12 +313,7 @@ def show_open_data_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         
-        # Create a card layout with a blue header
-        st.markdown("""
-            <div class="card">
-                <div class="card-header">Open Data</div>
-                <div>
-        """, unsafe_allow_html=True)
+        create_card_header("Open Data", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/stack-line.png")
 
         # Get data from the MySQL table
         df = fetch_campaign_fund_data()
