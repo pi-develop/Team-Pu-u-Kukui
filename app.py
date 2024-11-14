@@ -448,7 +448,7 @@ def show_income_distribution_card():
     """, unsafe_allow_html=True)
 
 def main():
-    apply_custom_style()
+    apply_custom_style(suppress_anchor=True)
     
     st.header("Bridging Hawaii's Digital Divide")
     
