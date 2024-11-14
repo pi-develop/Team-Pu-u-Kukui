@@ -365,6 +365,8 @@ def show_user_feedback_card(col):
                 <div>
         """, unsafe_allow_html=True)
 
+        create_card_header("User Feedback", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
+
         # Sample data - replace this with your actual data source
         data = {
             "feedback": ["Yes", "No", "Yes", "Yes", "No", "Yes", "No", "Yes", "Yes", "No"]
