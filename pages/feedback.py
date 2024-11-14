@@ -12,7 +12,7 @@ def fetch_feedback_data():
             SUM(Satisfied) AS Satisfied,
             SUM(Unsatisfied) AS Unsatisfied
         FROM user_feedback;
-        """, ttl=6)
+        """, ttl=0)
     return df
 
 # Function to insert feedback into the database
