@@ -22,16 +22,21 @@ def insert_feedback(email, comments, satisfied):
     # Map satisfied input to binary values
     satisfied_val = 1 if satisfied == "Yes" else 0
     unsatisfied_val = 1 if satisfied == "No" else 0
-    
-    # Insert feedback
-    insert_query = """
-    INSERT INTO user_feedback (Email, Comments, Satisfied, Unsatisfied)
-    VALUES (%s, %s, %s, %s)
-    """
-    
-    connection.execute(insert_query, (email, comments, satisfied_val, unsatisfied_val))
-    connection.commit()
-    connection.close()
+
+    # Use session for transaction management
+    with connection.session as session:
+        insert_query = """
+        INSERT INTO user_feedback (Email, Comments, Satisfied, Unsatisfied)
+        VALUES (:email, :comments, :satisfied_val, :unsatisfied_val)
+        """
+        # Execute the query with parameters using session
+        session.execute(insert_query, {
+            "email": email,
+            "comments": comments,
+            "satisfied_val": satisfied_val,
+            "unsatisfied_val": unsatisfied_val
+        })
+        session.commit()
 
 def main():
     apply_custom_style()
