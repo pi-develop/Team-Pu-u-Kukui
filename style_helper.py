@@ -115,6 +115,9 @@ def apply_custom_style(return_anchor=False):
           </a>
       </div>
   </div>
+  <a href="app.py" class="bottom-left-image">
+    <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
+  </a>
   """
   
   # Insert the HTML and CSS into the Streamlit app
