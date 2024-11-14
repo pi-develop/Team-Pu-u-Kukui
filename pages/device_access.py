@@ -14,7 +14,7 @@ def fetch_usage_data():
     return df
 
 def main():
-    apply_custom_style(True)
+    apply_custom_style()
     st.header("Internet Usage by County")
 
     df = fetch_usage_data()
