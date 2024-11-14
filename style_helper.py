@@ -131,3 +131,5 @@ def apply_custom_style(return_anchor=False):
     </div>
     """
     st.markdown(image_anchor, unsafe_allow_html=True)
+
+    st.write("force refresh")
