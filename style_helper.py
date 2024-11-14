@@ -126,4 +126,4 @@ def apply_custom_style(return_anchor=False):
       <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
     </a>
     """
-    st.markdown(return_anchor, unsafe_allow_html=True)
+    st.markdown(image_anchor, unsafe_allow_html=True)
