@@ -124,7 +124,7 @@ def apply_custom_style(suppress_anchor=False):
     image_anchor = """
     <!-- Left-aligned image anchor at the bottom -->
     <div class="bottom-left-image-container">
-        <a href="/">
+        <a href="/" target="_self">
             <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
         </a>
     </div>
