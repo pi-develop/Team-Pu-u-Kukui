@@ -1,10 +1,18 @@
 import streamlit as st
 
-def apply_custom_style():
+def apply_custom_style(return_anchor=False):
   st.set_page_config(layout="wide")
-    
+
+  image_anchor = ""
+  if return_anchor:
+    image_anchor = """
+    <a href="app.py" class="bottom-left-image">
+      <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/arrow-left-s-line.png" alt="Bottom Left Image" width="50px">
+    </a>
+    """
+  
   # Define the HTML and CSS
-  html_content = """
+  html_content = f"""
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
   
@@ -109,6 +117,7 @@ def apply_custom_style():
               <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/hawaii.png" alt="Header Image">
           </a>
       </div>
+      {image_anchor}
   </div>
   """
   
