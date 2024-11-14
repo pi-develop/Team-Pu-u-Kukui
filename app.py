@@ -35,6 +35,16 @@ def fetch_usage_data():
         WHERE County = 'HawaiiState' AND Use_pc_internet != 'Total households'""", ttl=6)
     return df
 
+def fetch_feedback_data():
+    conn = st.connection('mysql', type='sql')
+    df = conn.query("""
+        SELECT
+            SUM(Satisfied) AS Satisfied,
+            SUM(Unsatisfied) AS Unsatisfied
+        FROM user_feedback;
+        """, ttl=6)
+    return df
+
 def get_header_style():
     # Define the style for the card and header
     header_style = """
@@ -360,20 +370,25 @@ def show_user_feedback_card(col):
 
         create_card_header("User Feedback", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
 
-        # Sample data - replace this with your actual data source
-        data = {
-            "feedback": ["Yes", "No", "Yes", "Yes", "No", "Yes", "No", "Yes", "Yes", "No"]
-        }
-        df = pd.DataFrame(data)
+        df = fetch_feedback_data()
+        satisfied_count = df['Satisfied'][0]
+        unsatisfied_count = df['Unsatisfied'][0]
         
-        # Count the "Yes" and "No" responses
-        feedback_counts = df['feedback'].value_counts().reset_index()
-        feedback_counts.columns = ['Response', 'Count']
-        
-        # Display the feedback distribution in a pie chart
-        fig = px.pie(feedback_counts, values='Count', names='Response', title="User Satisfaction Feedback",
-                     color_discrete_sequence=['#0778DF', '#FF3583'],  # Customize colors for Yes/No
-                     labels={'Count': 'Number of Responses'})
+        # Prepare data for pie chart
+        feedback_data = pd.DataFrame({
+            "Feedback": ["Satisfied", "Unsatisfied"],
+            "Count": [satisfied_count, unsatisfied_count]
+        })
+    
+        # Plot pie chart
+        fig = px.pie(
+            feedback_data,
+            names="Feedback",
+            values="Count",
+            color="Feedback",
+            color_discrete_map={"Satisfied": "#0778DF", "Unsatisfied": "#FF3583"}
+        )
+        fig.update_traces(textinfo='percent+label')
         
         st.plotly_chart(fig)
         
