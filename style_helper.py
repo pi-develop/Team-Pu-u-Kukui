@@ -12,7 +12,7 @@ def apply_custom_style(return_anchor=False):
     """
   
   # Define the HTML and CSS
-  html_content = f"""
+  html_content = """
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
   
@@ -117,7 +117,6 @@ def apply_custom_style(return_anchor=False):
               <img src="https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/hawaii.png" alt="Header Image">
           </a>
       </div>
-      {image_anchor}
   </div>
   """
   
