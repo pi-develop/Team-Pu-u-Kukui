@@ -1,7 +1,9 @@
---MySQL scripts
---@author Tiger Li 2024
---Database hacc2024
-use hacc2024;
+-- MySQL scripts
+-- @author Tiger Li 2024
+-- Database hacc2024
+DROP DATABASE IF EXISTS hacc2024;
+CREATE DATABASE IF NOT EXISTS hacc2024;
+USE hacc2024;
 --  Table broadbcover_by_city
 CREATE TABLE `broadbcover_by_city` (
   `cid` INT NOT NULL PRIMARY KEY AUTO_INCREMENT ,
@@ -15,7 +17,7 @@ CREATE TABLE `broadbcover_by_city` (
   `DateUpdate` DATETIME DEFAULT now()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---Data from DBEDT
+-- Data from DBEDT
 INSERT INTO `hacc2024`.`broadbcover_by_city`
 (`cid`,
 `City`,
@@ -96,7 +98,7 @@ INSERT INTO `hacc2024`.`broadbcover_by_city`
 (67, 'Waimea', 0.968, 11, 20.0219, -155.6714, 'Hawaii', 2023 ),
 (68, 'Waipahu', 0.987, 15, 21.3867, -158.0092, 'Honolulu', 2023 );
 
---Table use_pc_internet_by_county
+-- Table use_pc_internet_by_county
 CREATE TABLE `use_pc_internet_by_county` (
   `uid` int NOT NULL PRIMARY KEY AUTO_INCREMENT ,
   `Use_pc_internet` varchar (150),
@@ -138,7 +140,7 @@ VALUES
 (17, 'With a computer', 'Maui County', 51621, 864, 0.943, 0.8, 2022 ),
 (18, 'With a broadband Internet subscription', 'Maui County', 47893, 904, 0.875, 1.1, 2022 );
 
---Table readiness_by_dimensions
+-- Table readiness_by_dimensions
 CREATE TABLE `readiness_by_dimensions` (
   `rid` int NOT NULL PRIMARY KEY AUTO_INCREMENT ,
   `Dimension` varchar (100),
