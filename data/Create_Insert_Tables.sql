@@ -15,7 +15,7 @@ CREATE TABLE `broadbcover_by_city` (
   `County` VARCHAR(25),
   `RecordYear` SMALLINT,
   `DateUpdate` DATETIME DEFAULT now()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Data from DBEDT
 INSERT INTO `hacc2024`.`broadbcover_by_city`
@@ -109,7 +109,7 @@ CREATE TABLE `use_pc_internet_by_county` (
   `Margin_Error_Percent` float,
   `YearRecord` int DEFAULT NULL,
   `DateUpdate` datetime default now()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 INSERT INTO `hacc2024`.`use_pc_internet_by_county`
 (`uid`,
@@ -152,7 +152,7 @@ CREATE TABLE `readiness_by_dimensions` (
   `Digital` float,
   `YearRecord` int DEFAULT NULL,
   `DateUpdate` datetime default now()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 #--rid	Dimension	Details	Unprepared (17%)	Old Guard 	Social Users (19%)	Technical 	Digital 	YearRecord
 #select * from `hacc2024`.`readiness_by_dimensions`
@@ -212,7 +212,7 @@ CREATE TABLE `Campaign_Fund` (
   `CampaignTotal` float,
   `YearRecord` int DEFAULT NULL,
   `DateUpdate` datetime default now()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 INSERT INTO `hacc2024`.`Campaign_Fund`
