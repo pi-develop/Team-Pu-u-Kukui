@@ -441,8 +441,8 @@ def show_income_distribution_card():
     """, unsafe_allow_html=True)
 
 def show_sample_data_table(col):
-        # Set up a blue header style for the card
-        header_style = get_header_style()
+    # Set up a blue header style for the card
+    header_style = get_header_style()
 
     # with col:
         # Display the custom styles in Streamlit
@@ -483,21 +483,20 @@ def show_blank_card(col):
         # Create a card layout with a blue header
         create_card_header("Placeholder:", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
 
-    # Close the card div
-    # Add the footer with "Read more about it" and a button
-    st.markdown("""
+        # Close the card div
+        # Add the footer with "Read more about it" and a button
+        st.markdown("""
+                </div>
+                <div class="card-footer">
+                    <span class="card-footer-text">Placeholder</span>
+                    <a href="#" target="_self" class="card-footer-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            <div class="card-footer">
-                <span class="card-footer-text">Placeholder</span>
-                <a href="#" target="_self" class="card-footer-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
-
+        """, unsafe_allow_html=True)
 
 def main():
     apply_custom_style(suppress_anchor=True)
