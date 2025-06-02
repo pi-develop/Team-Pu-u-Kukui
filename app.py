@@ -46,6 +46,17 @@ def fetch_feedback_data():
         """, ttl=6)
     return df
 
+def fetch_budget_data():
+    data = pd.read_csv("data/budget.csv")
+
+    # Clean column names
+    data.columns = data.columns.str.strip().str.replace('/', '_')
+    
+    # Filter out Total rows for per-category breakdown
+    category_data = data[data['Category'] != 'Total']
+    total_data = data[data['Category'] == 'Total']
+    return category_data, total_data
+
 def get_header_style():
     # Define the style for the card and header
     header_style = """
@@ -473,6 +484,41 @@ def show_sample_data_table(col):
             </div>
         """, unsafe_allow_html=True)
 
+def show_budget_card(col):
+    # Set up a blue header style for the card
+    header_style = get_header_style()
+
+    with col:
+        # Display the custom styles in Streamlit
+        st.markdown(header_style, unsafe_allow_html=True)
+        # Create a card layout with a blue header
+        create_card_header("Budget:", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
+
+        _, total_data = fetch_budget_data()
+
+        fig, ax = plt.subplots()
+        ax.bar(total_data['Date'], total_data['Budgeted'], label='Budgeted', alpha=0.6)
+        ax.bar(total_data['Date'], total_data['Used'], label='Used')
+        ax.set_ylabel("Amount ($)")
+        ax.set_title("Total Budget vs Used")
+        ax.legend()
+        st.pyplot(fig)
+
+    # Close the card div
+    # Add the footer with "Read more about it" and a button
+    st.markdown("""
+            </div>
+            <div class="card-footer">
+                <span class="card-footer-text">Placeholder</span>
+                <a href="#" target="_self" class="card-footer-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
 def show_blank_card(col):
     # Set up a blue header style for the card
     header_style = get_header_style()
@@ -517,7 +563,7 @@ def main():
     show_broadband_card(col2)
     show_sample_data_table(col1)
     show_user_feedback_card(col2)
-    show_blank_card(col1)
+    show_budget_card(col1)
     show_blank_card(col2)
     show_digital_equity_card()
     show_income_distribution_card()
