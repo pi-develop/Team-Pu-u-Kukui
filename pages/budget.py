@@ -6,6 +6,8 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 
 from style_helper import apply_custom_style
 
+from st_circular_progress import CircularProgress
+
 @st.cache_data
 def fetch_budget_data():
   data = pd.read_csv("data/budget.csv")
@@ -27,6 +29,12 @@ def monthly_overview(total_data):
   ax.legend()
   st.pyplot(fig)
 
+def monthly_progress(total_data):
+  st.subheader("Monthly Spend Progress")
+  for index, row in total_data.iterrows():
+    pct_used = row['Used'] / row['Budgeted']
+    st_circular_progress(label=row['Date'], value=pct_used)
+
 def category_breakdown(category_data):
   categories = category_data['Category'].unique()
   selected_category = st.selectbox("Select Category", categories)
@@ -41,6 +49,7 @@ def main():
 
   category_data, total_data = fetch_budget_data()
   monthly_overview(total_data)
+  monthly_progress(total_data)
   category_breakdown(category_data)
 
 if __name__ == "__main__":
