@@ -27,6 +27,13 @@ def monthly_overview(total_data):
   ax.legend()
   st.pyplot(fig)
 
+def category_breakdown(category_data):
+  categories = category_data['Category'].unique()
+  selected_category = st.selectbox("Select Category", categories)
+
+  filtered = category_data[category_data['Category'] == selected_category]
+  st.line_chart(filtered.set_index('Date')[['Used', 'Budgeted']])
+  
 def main():
   apply_custom_style()
             
@@ -34,6 +41,7 @@ def main():
 
   category_data, total_data = fetch_budget_data()
   monthly_overview(total_data)
+  category_breakdown(category_data)
 
 if __name__ == "__main__":
   main()
