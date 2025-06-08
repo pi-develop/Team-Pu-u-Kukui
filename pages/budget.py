@@ -33,7 +33,8 @@ def monthly_progress(total_data):
   st.subheader("Monthly Spend Progress")
   for index, row in total_data.iterrows():
     pct_used = row['Used'] / row['Budgeted']
-    st_circular_progress(label=row['Date'], value=pct_used)
+    cp = CircularProgress(label=row['Date'], value=pct_used)
+    cp.st_circular_progress()  
 
 def category_breakdown(category_data):
   categories = category_data['Category'].unique()
