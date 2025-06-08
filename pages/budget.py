@@ -48,7 +48,7 @@ def category_breakdown(category_data):
   
 def main():
   apply_custom_style()
-            
+  
   st.header("Budget Data Visualization")
 
   category_data, total_data = fetch_budget_data()
