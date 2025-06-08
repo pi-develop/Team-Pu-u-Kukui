@@ -20,7 +20,16 @@ def fetch_budget_data():
   total_data = data[data['Category'] == 'Total']
   return category_data, total_data
 
+def metrics_view(total_data):
+  st.subheader("Key Metrics Per Month")
+  for _, row in total_data.iterrows():
+    col1, col2, col3 = st.columns(3)
+    col1.metric(f"{row['Date']} Used", f"${row['Used']:,.2f}")
+    col2.metric(f"{row['Date']} Budgeted", f"${row['Budgeted']:,.2f}")
+    col3.metric(f"{row['Date']} Remaining", f"${row['Remaining']:,.2f}")
+
 def monthly_overview(total_data):
+  st.subheader("Monthly Overview")
   fig, ax = plt.subplots()
   ax.bar(total_data['Date'], total_data['Budgeted'], label='Budgeted', alpha=0.6)
   ax.bar(total_data['Date'], total_data['Used'], label='Used')
@@ -29,14 +38,8 @@ def monthly_overview(total_data):
   ax.legend()
   st.pyplot(fig)
 
-def monthly_progress(total_data):
-  st.subheader("Monthly Spend Progress")
-  for index, row in total_data.iterrows():
-    pct_used = row['Used'] / row['Budgeted']
-    cp = CircularProgress(label=row['Date'], value=pct_used)
-    cp.st_circular_progress()  
-
 def category_breakdown(category_data):
+  st.subheader("Category Breakdown")
   categories = category_data['Category'].unique()
   selected_category = st.selectbox("Select Category", categories)
 
@@ -49,8 +52,8 @@ def main():
   st.header("Budget Data Visualization")
 
   category_data, total_data = fetch_budget_data()
+  metrics_view(total_data)
   monthly_overview(total_data)
-  monthly_progress(total_data)
   category_breakdown(category_data)
 
 if __name__ == "__main__":
