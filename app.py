@@ -573,9 +573,9 @@ def main():
     show_open_data_card(col1)
     show_broadband_card(col2)
     show_sample_data_table(col1)
-    show_user_feedback_card(col2)
-    show_budget_card(col1)
+    show_budget_card(col2)
     show_blank_card(col2)
+    show_user_feedback_card(col2)
     show_digital_equity_card()
     show_income_distribution_card()
 
