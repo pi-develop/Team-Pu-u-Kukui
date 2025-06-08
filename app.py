@@ -455,7 +455,7 @@ def show_sample_data_table(col):
     # Set up a blue header style for the card
     header_style = get_header_style()
 
-    # with col:
+    with col:
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         # Create a card layout with a blue header
