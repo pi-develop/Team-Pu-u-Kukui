@@ -574,25 +574,25 @@ def show_attendance_card(col):
         ax.set_ylabel("Attend Rate")
         st.pyplot(fig)
 
-    # Add the footer with "Read more about it" and a button
-    st.markdown("""
+        # Add the footer with "Read more about it" and a button
+        st.markdown("""
+                </div>
+                <div class="card-footer">
+                    <span class="card-footer-text">Read more about it</span>
+                    <a href="/attendance" target="_self" class="card-footer-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            <div class="card-footer">
-                <span class="card-footer-text">Placeholder</span>
-                <a href="/attendance" target="_self" class="card-footer-button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
-                    </svg>
-                </a>
+        """, unsafe_allow_html=True)
+    
+        # Close the card footer and card div
+        st.markdown("""
+                </div>
             </div>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # Close the card footer and card div
-    st.markdown("""
-            </div>
-        </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
 def main():
     apply_custom_style(suppress_anchor=True)
