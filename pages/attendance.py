@@ -7,8 +7,8 @@ from streamlit_extras.add_vertical_space import add_vertical_space
 from style_helper import apply_custom_style
 
 @st.cache_data
-def load_and_clean_data(csv_path="Tbl_RegAttend.csv"):
-  df = pd.read_csv(csv_path)
+def load_and_clean_data():
+  df = pd.read_csv("data/Tbl_RegAttend.csv")
   df = df[df["Island"] == "Total"].copy()
   df.columns = df.columns.str.strip().str.replace(' ', '_').str.replace('/', '_')
   for col in ['Marketing_and_Outreach', 'Attend_Rate']:
