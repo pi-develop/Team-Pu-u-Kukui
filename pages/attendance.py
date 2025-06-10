@@ -28,7 +28,7 @@ def load_and_clean_data():
 def main():
   apply_custom_style()
   
-  st.header("Attendance Rate vs. Budget")
+  st.header("Attendance Rate Analysis")
   df_total = load_and_clean_data()
 
   # Select numeric columns only for x and y axis
