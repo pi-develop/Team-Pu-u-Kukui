@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 import streamlit_shadcn_ui as ui
+import json
 
 from st_circular_progress import CircularProgress
 from style_helper import apply_custom_style
@@ -440,7 +441,7 @@ def show_income_distribution_card():
         </div>
     """, unsafe_allow_html=True)
 
-def show_sample_data_table(col):
+def show_business_intelligence_data_table(col):
         # Set up a blue header style for the card
         header_style = get_header_style()
 
@@ -464,7 +465,42 @@ def show_sample_data_table(col):
                 </div>
                 <div class="card-footer">
                     <span class="card-footer-text">Explore Dataset</span>
-                    <a href="/sample_data_table" target="_self" class="card-footer-button">
+                    <a href="https://hpuc.my.site.com/cdms/s/reports?report=Telecommunications%20Services%20Industry%20Recent%20Filings%20Report" target="_blank" class="card-footer-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+
+def show_survey_results_card(col):
+    header_style = get_header_style()
+    with col:
+        st.markdown(header_style, unsafe_allow_html=True)
+        create_card_header("Survey Results (Digital Literacy Classes)", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/book.png")
+
+        df3 = pd.read_excel("data/SurveyClass3.xlsx", engine="openpyxl")
+        df4 = pd.read_excel("data/SurveyClass4.xlsx", engine="openpyxl")
+
+        def plot_class_line(df, class_title):
+            df_plot = df.iloc[:-1].melt(id_vars=df.columns[0], var_name="Date", value_name="Score")
+            df_plot["Date"] = pd.to_datetime(df_plot["Date"], errors="coerce")
+            df_plot = df_plot.sort_values("Date")
+            fig = px.line(df_plot, x="Date", y="Score", color=df.columns[0], markers=True,
+                          labels={df.columns[0]:"Question"}, title=class_title)
+            fig.update_layout(height=250, margin=dict(t=40, b=20), showlegend=True)
+            st.plotly_chart(fig, use_container_width=True)
+
+        plot_class_line(df3, "Class 3: Email")
+        plot_class_line(df4, "Class 4: Online Safety")
+
+        st.markdown("""</div>""", unsafe_allow_html=True)
+        st.markdown("""
+                </div>
+                <div class="card-footer">
+                    <span class="card-footer-text">See Details</span>
+                    <a href="/survey_results" target="_self" class="card-footer-button">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
                         </svg>
@@ -490,8 +526,9 @@ def main():
     show_digital_literacy_card(col1)
     show_open_data_card(col1)
     show_broadband_card(col2)
-    show_sample_data_table(col1)
-    show_user_feedback_card(col2)
+    show_survey_results_card(col1)
+    show_business_intelligence_data_table(col1)
+    # show_user_feedback_card(col2)
     show_digital_equity_card()
     show_income_distribution_card()
 
