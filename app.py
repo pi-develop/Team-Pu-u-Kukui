@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import plotly.express as px
 import streamlit_shadcn_ui as ui
+import seaborn as sns
 
 from st_circular_progress import CircularProgress
 from style_helper import apply_custom_style
@@ -56,6 +57,23 @@ def fetch_budget_data():
     category_data = data[data['Category'] != 'Total']
     total_data = data[data['Category'] == 'Total']
     return category_data, total_data
+
+def fetch_attendance_data():
+  df = pd.read_csv("data/Tbl_RegAttend.csv")
+
+  # Remove completely empty columns (extra commas at the end of CSV)
+  df = df.dropna(axis=1, how='all')
+
+  # Filter to rows where Island == "Total"
+  df = df[df["Island"] == "Total"].copy()
+
+  # Clean column names
+  df.columns = df.columns.str.strip().str.replace(' ', '_').str.replace('/', '_')
+  
+  # Convert all columns that can be numeric
+  for col in df.columns:
+    df[col] = pd.to_numeric(df[col], errors='ignore')  # keep strings like 'Island', 'textDate'
+  return df
 
 def get_header_style():
     # Define the style for the card and header
@@ -530,7 +548,7 @@ def show_budget_card(col):
             </div>
         """, unsafe_allow_html=True)
 
-def show_blank_card(col):
+def show_attendance_card(col):
     # Set up a blue header style for the card
     header_style = get_header_style()
 
@@ -538,9 +556,25 @@ def show_blank_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         # Create a card layout with a blue header
-        create_card_header("Placeholder:", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
+        create_card_header("Attendance", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
 
-    # Close the card div
+        df_total = fetch_attendance_data()
+
+        # Drop rows with missing data in required columns
+        df_total = df_total.dropna(subset=["Marketing_and_Outreach", "Attend_Rate"])
+
+        fig, ax = plt.subplots()
+        sns.regplot(
+            x=df_total["Marketing_and_Outreach"],
+            y=df_total["Attend_Rate"],
+            ax=ax,
+            scatter_kws={"s": 40}
+        )
+        ax.set_title("Attend Rate vs Marketing and Outreach")
+        ax.set_xlabel("Marketing and Outreach")
+        ax.set_ylabel("Attend Rate")
+        st.pyplot(fig)
+
     # Add the footer with "Read more about it" and a button
     st.markdown("""
             </div>
@@ -551,6 +585,12 @@ def show_blank_card(col):
                         <path d="M24 12l-12-9v5h-12v8h12v5l12-9z" fill="white"/>
                     </svg>
                 </a>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Close the card footer and card div
+    st.markdown("""
             </div>
         </div>
     """, unsafe_allow_html=True)
@@ -572,9 +612,10 @@ def main():
     show_digital_literacy_card(col1)
     show_open_data_card(col1)
     show_broadband_card(col2)
-    show_sample_data_table(col1)
+    show_attendance_card(col1)
     show_budget_card(col2)
     show_user_feedback_card(col2)
+    show_sample_data_table()
     show_digital_equity_card()
     show_income_distribution_card()
 
