@@ -23,7 +23,7 @@ def main():
   st.header("Attendance Rate vs. Budget")
   df_total = load_and_clean_data()
   
-  x_axis = st.selectbox("X-axis", df_total.columns, index=df_total.columns.get_loc("Marketing and Outreach"))
+  x_axis = st.selectbox("X-axis", df_total.columns, index=df_total.columns.get_loc("Marketing_and_Outreach"))
   y_axis = st.selectbox("Y-axis", df_total.columns, index=df_total.columns.get_loc("Attend_Rate"))
 
   fig, ax = plt.subplots()
