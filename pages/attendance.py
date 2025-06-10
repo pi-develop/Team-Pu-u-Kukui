@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-import altair as alt
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 from streamlit_extras.add_vertical_space import add_vertical_space
 
@@ -22,40 +23,15 @@ def main():
   st.header("Attendance Rate vs. Budget")
   df_total = load_and_clean_data()
   
-  # Limit dropdowns to numeric columns only
-  numeric_cols = df_total.select_dtypes(include='number').columns.tolist()
+  x_axis = st.selectbox("X-axis", df_total.columns, index=df_total.columns.get_loc("Marketing and Outreach"))
+  y_axis = st.selectbox("Y-axis", df_total.columns, index=df_total.columns.get_loc("Attend_Rate"))
 
-  st.markdown("### Regression Inputs")
-  col1, col2 = st.columns(2)
-  with col1:
-    x_axis = st.selectbox("X-axis", numeric_cols, index=numeric_cols.index("Marketing_and_Outreach"))
-  with col2:
-    y_axis = st.selectbox("Y-axis", numeric_cols, index=numeric_cols.index("Attend_Rate"))
-  
-  st.subheader(f"Scatter plot of {y_axis.replace('_', ' ')} vs {x_axis.replace('_', ' ')}")
-  
-  # Create chart
-  chart = alt.Chart(df_total).mark_circle(size=60).encode(
-      x=alt.X(x_axis, title=x_axis.replace('_', ' ')),
-      y=alt.Y(y_axis, title=y_axis.replace('_', ' ')),
-      tooltip=["textDate", "Total"]
-  ).properties(
-      width=700,
-      height=400,
-      title="Attendance Rate vs Budget Used"
-  ).interactive()
-  
-  # Add regression line
-  reg_line = chart.transform_regression(
-      x_axis, y_axis, method="loess"
-  ).mark_line(color="orange")
-  
-  # Display chart
-  st.altair_chart(chart + reg_line, use_container_width=True)
-  
-  # Optional raw data view
-  with st.expander("Show raw data"):
-      st.dataframe(df_total)
+  fig, ax = plt.subplots()
+  sns.regplot(x=df_total[x_axis], y=df_total[y_axis], ax=ax, scatter_kws={"s": 40})
+  ax.set_title(f"{y_axis} vs {x_axis}")
+  ax.set_xlabel(x_axis)
+  ax.set_ylabel(y_axis)
+  st.pyplot(fig)
 
 if __name__ == "__main__":
   main()
