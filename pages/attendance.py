@@ -22,12 +22,15 @@ def main():
   st.header("Attendance Rate vs. Budget")
   df_total = load_and_clean_data()
   
+  # Limit dropdowns to numeric columns only
+  numeric_cols = df_total.select_dtypes(include='number').columns.tolist()
+
   st.markdown("### Regression Inputs")
   col1, col2 = st.columns(2)
   with col1:
-      x_axis = st.selectbox("X-axis", df_total.columns, index=df_total.columns.get_loc("Marketing_and_Outreach"))
+    x_axis = st.selectbox("X-axis", numeric_cols, index=numeric_cols.index("Marketing_and_Outreach"))
   with col2:
-      y_axis = st.selectbox("Y-axis", df_total.columns, index=df_total.columns.get_loc("Attend_Rate"))
+    y_axis = st.selectbox("Y-axis", numeric_cols, index=numeric_cols.index("Attend_Rate"))
   
   st.subheader(f"Scatter plot of {y_axis.replace('_', ' ')} vs {x_axis.replace('_', ' ')}")
   
