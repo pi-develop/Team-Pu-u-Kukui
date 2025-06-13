@@ -645,7 +645,7 @@ def main():
     show_digital_literacy_card(col1)
     show_open_data_card(col2)
     show_broadband_card(col1)
-    # show_user_feedback_card(col2)
+    show_user_feedback_card(col2)
     show_business_intelligence_data_table()
     show_digital_equity_card()
     show_income_distribution_card()
