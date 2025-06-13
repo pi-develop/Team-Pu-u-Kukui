@@ -477,7 +477,7 @@ def show_business_intelligence_data_table():
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
     # Create a card layout with a blue header
-    create_card_header("Telecom Filings", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
+    create_card_header("Telecom Filings", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/cloud-connection.png")
 
     # Load the JSON data
     df = pd.read_json('data/sample.json')
@@ -486,8 +486,6 @@ def show_business_intelligence_data_table():
     st.write("Sample Data table")
     st.dataframe(df)
     
-    # st.markdown("""</div>""", unsafe_allow_html=True)
-
     # Close the card div
     # Add the footer with "Read more about it" and a button
     st.markdown("""
