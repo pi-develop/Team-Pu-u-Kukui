@@ -399,7 +399,6 @@ def show_user_feedback_card(col):
     try:
         df = fetch_feedback_data()
     except Exception as e:
-        st.warning("Unable to load user feedback data at the moment.")
         return  # Exit the function early, don't render the card
 
     with col:
@@ -474,7 +473,7 @@ def show_income_distribution_card():
         </div>
     """, unsafe_allow_html=True)
 
-def show_business_intelligence_data_table():
+def show_telecom_filings_table():
     # Set up a blue header style for the card
     header_style = get_header_style()
 
@@ -646,7 +645,7 @@ def main():
     show_open_data_card(col2)
     show_broadband_card(col1)
     show_user_feedback_card(col2)
-    show_business_intelligence_data_table()
+    show_telecom_filings_table()
     show_digital_equity_card()
     show_income_distribution_card()
 
