@@ -396,13 +396,17 @@ def show_user_feedback_card(col):
     # Set up a blue header style for the card
     header_style = get_header_style()
 
+    try:
+        df = fetch_feedback_data()
+    except Exception as e:
+        st.warning("Unable to load user feedback data at the moment.")
+        return  # Exit the function early, don't render the card
+
     with col:
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
-
         create_card_header("User Feedback", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
 
-        df = fetch_feedback_data()
         satisfied_count = df['Satisfied'][0]
         unsatisfied_count = df['Unsatisfied'][0]
         
