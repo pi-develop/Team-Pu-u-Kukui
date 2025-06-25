@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 from streamlit_extras.add_vertical_space import add_vertical_space
 
@@ -36,6 +37,10 @@ def monthly_overview(total_data):
   ax.set_ylabel("Amount ($)")
   ax.set_title("Total Budget vs Used")
   ax.legend()
+
+  # Format y-axis as $20K, $40K, etc.
+  ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f"${int(x/1000)}K"))
+
   st.pyplot(fig)
 
 def category_breakdown(category_data):
