@@ -144,7 +144,7 @@ def create_card_header(title, image_link=None):
 
     # Only add image div if image_link is not None/empty
     if image_link:
-        html += "<img src="{image_link}" alt="Card Header Image">"
+        html += """<img src="{image_link}" alt="Card Header Image">"""
 
     # Close the header and open the content div
     html += """
