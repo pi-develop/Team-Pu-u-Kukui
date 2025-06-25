@@ -139,6 +139,7 @@ def create_card_header(title, image_link=None):
         <div class="card">
             <div class="card-header">
                 <div>{title}</div>
+                <div class="card-header-image"></div>
     """
 
     # Only add image div if image_link is not None/empty
