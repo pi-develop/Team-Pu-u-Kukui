@@ -134,28 +134,15 @@ def get_header_style():
     return header_style
 
 def create_card_header(title, image_link=None):
-    # Start the card header div
-    html = f"""
+    st.markdown(f"""
         <div class="card">
             <div class="card-header">
                 <div>{title}</div>
-    """
-
-    # Only add image div if image_link is not None/empty
-    if image_link:
-        html += f"""
                 <div class="card-header-image">
-                    <img src="{image_link}" alt="Card Header Image">
                 </div>
-        """
-
-    # Close the header and open the content div
-    html += """
             </div>
             <div>
-    """
-
-    st.markdown(html, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
 def show_digital_equity_card():
     # Set up a blue header style for the card
