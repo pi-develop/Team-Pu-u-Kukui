@@ -154,16 +154,6 @@ def create_card_header(title, image_link=None):
     """
 
     st.markdown(html, unsafe_allow_html=True)
-    
-    st.markdown(f"""
-        <div class="card">
-            <div class="card-header">
-                <div>{title}</div>
-                <div class="card-header-image">
-                </div>
-            </div>
-            <div>
-    """, unsafe_allow_html=True)
 
 def show_digital_equity_card():
     # Set up a blue header style for the card
