@@ -133,17 +133,29 @@ def get_header_style():
     """
     return header_style
 
-def create_card_header(title, image_link):
-    st.markdown(f"""
+def create_card_header(title, image_link=None):
+    # Start the card header div
+    html = f"""
         <div class="card">
             <div class="card-header">
                 <div>{title}</div>
+    """
+
+    # Only add image div if image_link is not None/empty
+    if image_link:
+        html += f"""
                 <div class="card-header-image">
                     <img src="{image_link}" alt="Card Header Image">
                 </div>
+        """
+
+    # Close the header and open the content div
+    html += """
             </div>
             <div>
-    """, unsafe_allow_html=True)
+    """
+
+    st.markdown(html, unsafe_allow_html=True)
 
 def show_digital_equity_card():
     # Set up a blue header style for the card
@@ -152,7 +164,7 @@ def show_digital_equity_card():
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
 
-    create_card_header("Geographical Breakdown", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/earth-line.png")
+    create_card_header("Geographical Breakdown")
 
     components.iframe("https://app.powerbi.com/view?r=eyJrIjoiM2JmM2QxZjEtYWEzZi00MDI5LThlZDMtODMzMjhkZTY2Y2Q2IiwidCI6ImMxMzZlZWMwLWZlOTItNDVlMC1iZWFlLTQ2OTg0OTczZTIzMiIsImMiOjF9", 
                       height=500)
@@ -184,7 +196,7 @@ def show_device_access_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         
-        create_card_header("Device Access", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/monitor-mobbile.png")
+        create_card_header("Device Access")
 
         df = fetch_usage_data()
             
@@ -243,7 +255,7 @@ def show_broadband_card(col):
         st.markdown(header_style, unsafe_allow_html=True)
         
         # Create a card layout with a blue header
-        create_card_header("Broadband Connectivity", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/cloud-connection.png")
+        create_card_header("Broadband Connectivity")
         
         st.subheader("Broadband Connectivity Map")
         
@@ -299,7 +311,7 @@ def show_digital_literacy_card(col):
         st.markdown(header_style, unsafe_allow_html=True)
         
         # Create a card layout with a blue header
-        create_card_header("Digital Literacy", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/book.png")
+        create_card_header("Digital Literacy")
 
         df = fetch_readiness_data()
         # Select the first row where Dimension is 'Overall' and specific columns
@@ -355,7 +367,7 @@ def show_open_data_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         
-        create_card_header("Open Data", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/stack-line.png")
+        create_card_header("Open Data")
 
         # Get data from the MySQL table
         df = fetch_campaign_fund_data()
@@ -404,7 +416,7 @@ def show_user_feedback_card(col):
     with col:
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
-        create_card_header("User Feedback", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
+        create_card_header("User Feedback")
 
         satisfied_count = df['Satisfied'][0]
         unsatisfied_count = df['Unsatisfied'][0]
@@ -449,7 +461,7 @@ def show_income_distribution_card():
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
 
-    create_card_header("Income Distribution Impact", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
+    create_card_header("Income Distribution Impact")
 
     components.iframe("https://uhero.hawaii.edu/analytics-dashboards/hawaii-income-distribution-map/", 
                       height=1000)
@@ -480,7 +492,7 @@ def show_telecom_filings_table():
     # Display the custom styles in Streamlit
     st.markdown(header_style, unsafe_allow_html=True)
     # Create a card layout with a blue header
-    create_card_header("Telecom Filings", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/cloud-connection.png")
+    create_card_header("Telecom Filings")
 
     # Load the JSON data
     df = pd.read_json('data/sample.json')
@@ -516,7 +528,7 @@ def show_budget_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         # Create a card layout with a blue header
-        create_card_header("Budget", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/money-dollar-circle-line.png")
+        create_card_header("Budget")
 
         _, total_data = fetch_budget_data()
 
@@ -546,7 +558,7 @@ def show_survey_results_card(col):
     header_style = get_header_style()
     with col:
         st.markdown(header_style, unsafe_allow_html=True)
-        create_card_header("Survey Results (Digital Literacy Classes)", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/book.png")
+        create_card_header("Survey Results (Digital Literacy Classes)")
 
         df3 = pd.read_excel("data/SurveyClass3.xlsx", engine="openpyxl")
         df4 = pd.read_excel("data/SurveyClass4.xlsx", engine="openpyxl")
@@ -585,7 +597,7 @@ def show_attendance_card(col):
         # Display the custom styles in Streamlit
         st.markdown(header_style, unsafe_allow_html=True)
         # Create a card layout with a blue header
-        create_card_header("Attendance", "https://raw.githubusercontent.com/datjandra/Team-Pu-u-Kukui/refs/heads/main/images/user-line.png")
+        create_card_header("Attendance")
 
         df_total = fetch_attendance_data()
 
