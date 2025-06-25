@@ -3,6 +3,7 @@ import streamlit.components.v1 as components
 import leafmap.foliumap as leafmap
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 import plotly.express as px
 import streamlit_shadcn_ui as ui
 import json
@@ -600,6 +601,10 @@ def show_attendance_card(col):
         ax.set_title("Total vs Registered")
         ax.set_xlabel("Registered")
         ax.set_ylabel("Total")
+
+        # Format y-axis as $20K, $40K, etc.
+        ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f"${int(x/1000)}K"))
+
         st.pyplot(fig)
 
         # Add the footer with "Read more about it" and a button
