@@ -133,22 +133,17 @@ def get_header_style():
     """
     return header_style
 
-def create_card_header(title, image_link=None):
+def create_card_header(title):
     # Start the card header div
     html = f"""
         <div class="card">
             <div class="card-header">
                 <div>{title}</div>
-                <div class="card-header-image">
+                <div class="card-header-image"></div>
     """
-
-    # Only add image div if image_link is not None/empty
-    if image_link:
-        html += """<img src="{image_link}" alt="Card Header Image">"""
 
     # Close the header and open the content div
     html += """
-                </div>
             </div>
             <div>
     """
