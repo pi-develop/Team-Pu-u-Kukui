@@ -525,6 +525,10 @@ def show_budget_card(col):
         ax.set_ylabel("Amount ($)")
         ax.set_title("Total Budget vs Used")
         ax.legend()
+
+        # Format y-axis as $20K, $40K, etc.
+        ax.yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f"${int(x/1000)}K"))
+        
         st.pyplot(fig)
 
         # Add the footer with "Read more about it" and a button
