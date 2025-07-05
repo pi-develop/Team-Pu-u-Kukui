@@ -634,7 +634,7 @@ def show_attendance_card(col):
 def main():
     apply_custom_style(suppress_anchor=True)
     
-    st.header("Bridging Hawaii's Digital Divide")
+    st.header("Bridging Hawaii's Digital Divide test")
     
     st.markdown(
         """
